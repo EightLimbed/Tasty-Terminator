@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvcjedeo54fs0"]
+[gd_scene load_steps=5 format=4 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
 [ext_resource type="Texture2D" uid="uid://dq4vefy8ogye6" path="res://World/RoadTemplate.png" id="2_r8as5"]
@@ -29,6 +29,7 @@ script = ExtResource("1_tvg2w")
 [node name="Background" type="TileMapLayer" parent="."]
 
 [node name="Roads" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAP//AAABAAAAAAABAP//AAADAAAAAAD/////AAAAAAAAAAABAAEAAAADAAMAAAD//wEAAAAAAAMAAAABAAAAAAADAAEAAAD//wAAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_xdpnf")
 
 [node name="Buildings" type="TileMapLayer" parent="."]
