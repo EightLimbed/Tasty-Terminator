@@ -4,3 +4,9 @@
 
 [resource]
 script = ExtResource("1_bbxeo")
+length_range = Vector2i(0, 0)
+branching_chance = 0
+building_height = 0
+shuffle_top = false
+shuffle_middle = false
+shuffle_bottom = false
