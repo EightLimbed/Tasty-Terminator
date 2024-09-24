@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br10h14ewrcc7"
-path="res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"
+uid="uid://by5xjmtqfs0bw"
+path="res://.godot/imported/ScaredFace.png-8abbc4ec8d7cc76b269840e47d8ca17d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/RoadTemplate.png"
-dest_files=["res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"]
+source_file="res://Player/Art/Faces/ScaredFace.png"
+dest_files=["res://.godot/imported/ScaredFace.png-8abbc4ec8d7cc76b269840e47d8ca17d.ctex"]
 
 [params]
 

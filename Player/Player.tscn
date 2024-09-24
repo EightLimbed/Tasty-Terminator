@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo2ksvo7qxsqe"]
 
-[ext_resource type="Texture2D" uid="uid://dyock211jlk8o" path="res://Player/Art/CookieDefault.png" id="1_tilk7"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
+[ext_resource type="Texture2D" uid="uid://c4quy5d73m62h" path="res://Player/Art/Cookie/CookieStand.png" id="2_daiug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14ouf"]
 
@@ -10,9 +10,10 @@ texture_filter = 1
 script = ExtResource("1_tksie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_tilk7")
+texture = ExtResource("2_daiug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_14ouf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)

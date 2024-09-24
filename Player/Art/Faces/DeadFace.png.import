@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br10h14ewrcc7"
-path="res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"
+uid="uid://pxx526vnf4g4"
+path="res://.godot/imported/DeadFace.png-f39ce12d593afe2cd767dd05db0df649.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/RoadTemplate.png"
-dest_files=["res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"]
+source_file="res://Player/Art/Faces/DeadFace.png"
+dest_files=["res://.godot/imported/DeadFace.png-f39ce12d593afe2cd767dd05db0df649.ctex"]
 
 [params]
 

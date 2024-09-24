@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br10h14ewrcc7"
-path="res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"
+uid="uid://dvytqvkcigcqi"
+path="res://.godot/imported/CookieWalk-1.png-96cf467ba2c451acb92757e492a87273.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/RoadTemplate.png"
-dest_files=["res://.godot/imported/RoadTemplate.png-0a44d143a9082eb437b77ae2ec8ef8f1.ctex"]
+source_file="res://Player/Art/Cookie/CookieWalk-1.png"
+dest_files=["res://.godot/imported/CookieWalk-1.png-96cf467ba2c451acb92757e492a87273.ctex"]
 
 [params]
 
