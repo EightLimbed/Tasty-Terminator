@@ -27,5 +27,5 @@ texture_filter = 1
 script = ExtResource("1_tvg2w")
 
 [node name="Roads" type="TileMapLayer" parent="."]
-scale = Vector2(5, 5)
+position = Vector2(500, 300)
 tile_set = SubResource("TileSet_kewf7")

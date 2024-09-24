@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo2ksvo7qxsqe"]
+
+[ext_resource type="Texture2D" uid="uid://dyock211jlk8o" path="res://Player/Art/CookieDefault.png" id="1_tilk7"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14ouf"]
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_tksie")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tilk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_14ouf")
+
+[node name="Camera2D" type="Camera2D" parent="."]

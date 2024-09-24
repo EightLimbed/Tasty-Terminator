@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="World" load_steps=2 format=3 uid="uid://b03lihxkci7c3"]
 
-[ext_resource type="Script" path="res://World/world_resource.gd" id="1_bbxeo"]
+[ext_resource type="Script" path="res://World/world_resource.gd" id="1_vew7r"]
 
 [resource]
-script = ExtResource("1_bbxeo")
+script = ExtResource("1_vew7r")
 length_range = Vector2i(0, 0)
 branching_chance = 0
 building_height = 0
