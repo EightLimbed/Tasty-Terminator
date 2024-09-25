@@ -24,20 +24,25 @@ sources/0 = SubResource("TileSetAtlasSource_ut5un")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rl3kn"]
 noise_type = 2
-frequency = 0.05
-fractal_type = 2
-fractal_octaves = 1
+frequency = 0.1
+fractal_type = 0
+fractal_octaves = 3
 fractal_lacunarity = 0.0
 fractal_gain = 0.0
 fractal_weighted_strength = 1.0
 cellular_distance_function = 2
-cellular_jitter = 0.5
 cellular_return_type = 0
+domain_warp_type = 1
+domain_warp_amplitude = 1.0
+domain_warp_frequency = 0.1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wn2cq"]
 width = 64
 height = 64
-bump_strength = 32.0
+generate_mipmaps = false
+as_normal_map = true
+bump_strength = 1000.0
+normalize = false
 noise = SubResource("FastNoiseLite_rl3kn")
 
 [node name="World" type="Node2D"]
@@ -47,5 +52,7 @@ script = ExtResource("1_tvg2w")
 [node name="Roads" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_kewf7")
 
-[node name="Preview" type="Sprite2D" parent="."]
+[node name="Noise" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+texture_filter = 1
 texture = SubResource("NoiseTexture2D_wn2cq")
