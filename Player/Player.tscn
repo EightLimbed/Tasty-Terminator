@@ -16,4 +16,3 @@ texture = ExtResource("2_daiug")
 shape = SubResource("RectangleShape2D_14ouf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
