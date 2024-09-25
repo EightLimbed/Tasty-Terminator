@@ -7,4 +7,4 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta: float):
-	world.generate_roads(player.position, Vector2i(16,16))
+	world.generate_roads(player.position, Vector2i(24,24), 1152)
