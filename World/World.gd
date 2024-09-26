@@ -33,9 +33,9 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 			if surrounding[0] != alt or surrounding[1] != alt or surrounding[2] != alt or surrounding[3] != alt:
 				var atlas = Vector2i(1,1)
 				if not roads_cache.has(updated_pos+Vector2i(1,0)):
-					atlas.x += 3
+					atlas.x += 1
 				if not roads_cache.has(updated_pos+Vector2i(0,1)):
-					atlas.y += 3
+					atlas.y += 1
 				if not roads_cache.has(updated_pos+Vector2i(-1,0)):
 					atlas.x -= 1
 				if not roads_cache.has(updated_pos+Vector2i(0,-1)):

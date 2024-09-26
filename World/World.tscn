@@ -1,25 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
-[ext_resource type="Texture2D" uid="uid://kr5hsa4juhc3" path="res://World/RoadTemp.png" id="2_nb5ks"]
+[ext_resource type="Texture2D" uid="uid://bap6665c50opj" path="res://World/roadV2.png" id="2_xwdmu"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o7pqe"]
-texture = ExtResource("2_nb5ks")
-texture_region_size = Vector2i(60, 60)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4p48"]
+texture = ExtResource("2_xwdmu")
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+1:0/0 = 0
 2:0/0 = 0
-4:0/0 = 0
-0:2/0 = 0
-4:2/0 = 0
-0:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-1:1/size_in_atlas = Vector2i(3, 3)
+0:1/0 = 0
 1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kewf7"]
-tile_size = Vector2i(60, 60)
-sources/0 = SubResource("TileSetAtlasSource_o7pqe")
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_u4p48")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rl3kn"]
 noise_type = 2
