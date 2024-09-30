@@ -1,16 +1,30 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://dxajpy3cxiyps"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://dxajpy3cxiyps"]
 
+[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="1_ew6oe"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwfam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ew6oe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_nc1db")
 aim_type = 1
-spread = Vector2i(15, 15)
-multishot = Vector2i(2, 24)
-damage = Vector2i(10, 20)
-ammo = Vector2i(0, 0)
-unload_time = Vector2(0, 0)
-reload_time = Vector2(0, 0)
-pierce = Vector2i(0, 0)
-speed = Vector2i(0, 0)
-hitbox_size = Vector2(0, 0)
+spread = Vector2(15, 0)
+multishot = Vector2(1, 2)
+damage = Vector2(10, 1)
+ammo = Vector2(3, 0)
+unload_time = Vector2(0.2, 0)
+reload_time = Vector2(1, -0.01)
+pierce = Vector2(1, 0.2)
+speed = Vector2(15000, 0)
+scale = Vector2(1, 0.1)
+projectile_frames = SubResource("SpriteFrames_lwfam")
+hitbox_size_base = Vector2(8, 8)

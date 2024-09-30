@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 		distance = (get_global_mouse_position()-global_position-Vector2(64,64)).limit_length(64)/64
 		knob.position = distance*64+Vector2(64,64)
 		modulate.a = 255
+
 func _on_pressed() -> void:
 	joystick_pressed = true
 

@@ -4,30 +4,31 @@ class_name Weapon
 
 #load profiles to weapons
 
-#stats, left is starting, right is final
+#stats, left is starting, right is increase every level
 
 #aim type (0 for fixed, 1 for directional, 2 for autoaim)
 @export var aim_type : int
 #spread in degrees, between each bullet
-@export var spread : Vector2i
+@export var spread : Vector2
 #projectiles per shot
-@export var multishot : Vector2i
+@export var multishot : Vector2
 #damage per projectile
-@export var damage : Vector2i
+@export var damage : Vector2
 #ammo before reload period
-@export var ammo : Vector2i
+@export var ammo : Vector2
 #time between each shot in seconds
 @export var unload_time : Vector2
 #time to reload in seconds
 @export var reload_time : Vector2
 #pierce before destroying bullet(set to -1 for infinite)
-@export var pierce : Vector2i
+@export var pierce : Vector2
 #speed (pixels per second)
-@export var speed : Vector2i
-#size of bullet hitbox
-@export var hitbox_size : Vector2
-
+@export var speed : Vector2
+#scale of bullet
+@export var scale : Vector2
 #appearance
 @export var projectile_frames : SpriteFrames
 #trail
 @export var trail : ParticleProcessMaterial
+#size of bullet hitbox
+@export var hitbox_size_base : Vector2

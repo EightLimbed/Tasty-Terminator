@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkk6h2ay8b1el"]
+[gd_scene load_steps=4 format=3 uid="uid://bkk6h2ay8b1el"]
+
+[ext_resource type="Script" path="res://Weapons/Projectile.gd" id="1_70jct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_058vm"]
 size = Vector2(1, 1)
@@ -6,9 +8,12 @@ size = Vector2(1, 1)
 [sub_resource type="SpriteFrames" id="SpriteFrames_s6j0e"]
 
 [node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_70jct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_058vm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s6j0e")
+
+[node name="Lifetime" type="Timer" parent="."]
