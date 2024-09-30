@@ -1,7 +1,6 @@
 extends Node2D
 
-var random = RandomNumberGenerator.new()
-#upgrade window directly increases a random stat on the profile that is lower than a certain value, up to a maximum of 7 times
+#upgrade window directly increases a cycled stat on the profile, taken from the profiles list of upgradeable stats
 var profile : Weapon
 
 # Called when the node enters the scene tree for the first time.

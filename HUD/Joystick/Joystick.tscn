@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnrs76bn7y2f"]
 
 [ext_resource type="Texture2D" uid="uid://de0rx2d0s677q" path="res://HUD/Joystick/Art/Joystick.png" id="1_b6bk4"]
-[ext_resource type="Script" path="res://Joystick.gd" id="1_i8p71"]
+[ext_resource type="Script" path="res://HUD/Joystick/Joystick.gd" id="1_i8p71"]
 [ext_resource type="Texture2D" uid="uid://bn64u7jn23fsi" path="res://HUD/Joystick/Art/Knob.png" id="3_y5pfh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ya6i"]

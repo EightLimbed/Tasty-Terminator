@@ -2,11 +2,9 @@ extends Resource
 
 class_name World
 
-#tiles to choose from for background
-@export var main_tiles : TileSet
+#tiles to choose from (0 for roads, 1 for buildings)
+@export var tileset : TileSet
 
-#tiles to choose from for roads
-@export var road_tiles : TileSet
 @export var road_frequency : float = 0.006
 
 #tiles to choose from for building, y is roof, middle, bottom, x is kinds of things for each (do 3)

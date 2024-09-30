@@ -11,7 +11,7 @@ var noise = FastNoiseLite.new()
 func _ready():
 	profile = load("res://World/Resources/NewYork.tres")
 
-	roads.tile_set = profile.road_tiles
+	roads.tile_set = profile.tileset
 	noise.frequency = profile.road_frequency
 
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR

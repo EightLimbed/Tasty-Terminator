@@ -5,12 +5,12 @@
 [resource]
 script = ExtResource("1_nc1db")
 aim_type = 1
-spread = 25
-multishot = 2
-damage = 10
-ammo = 5
-unload_time = 0.2
-reload_time = 1.0
-pierce = 1
-speed = 15000
-hitbox_size = Vector2(8, 8)
+spread = Vector2i(15, 15)
+multishot = Vector2i(2, 24)
+damage = Vector2i(10, 20)
+ammo = Vector2i(0, 0)
+unload_time = Vector2(0, 0)
+reload_time = Vector2(0, 0)
+pierce = Vector2i(0, 0)
+speed = Vector2i(0, 0)
+hitbox_size = Vector2(0, 0)
