@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgix3klmg5hu"
-path="res://.godot/imported/ed-1.png-dec2909c9bb41f9f60371a33e2022a19.ctex"
+uid="uid://bn64u7jn23fsi"
+path="res://.godot/imported/Knob.png-1beb0ff51ac6304fd391959704caf94d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/ed/ed-1.png"
-dest_files=["res://.godot/imported/ed-1.png-dec2909c9bb41f9f60371a33e2022a19.ctex"]
+source_file="res://HUD/Joystick/Art/Knob.png"
+dest_files=["res://.godot/imported/Knob.png-1beb0ff51ac6304fd391959704caf94d.ctex"]
 
 [params]
 

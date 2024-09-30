@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1niv20s7sj14"
-path="res://.godot/imported/tristan-1.png-4aa80457790b5382b51f5e0e3b63873e.ctex"
+uid="uid://de0rx2d0s677q"
+path="res://.godot/imported/Joystick.png-4a29309d584c5b6094b4f25252037fb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/tristan/tristan-1.png"
-dest_files=["res://.godot/imported/tristan-1.png-4aa80457790b5382b51f5e0e3b63873e.ctex"]
+source_file="res://HUD/Joystick/Art/Joystick.png"
+dest_files=["res://.godot/imported/Joystick.png-4a29309d584c5b6094b4f25252037fb0.ctex"]
 
 [params]
 

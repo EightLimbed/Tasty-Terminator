@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqoiofsj83ps"
-path="res://.godot/imported/dryd-0.png-b6b2900cb191e22cbbb1a1377f6f6237.ctex"
+uid="uid://c2hl61ki1ovcw"
+path="res://.godot/imported/ginger1-1.png-39847d811a1f0031aa0ad5e0a12cefc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/dryd/dryd-0.png"
-dest_files=["res://.godot/imported/dryd-0.png-b6b2900cb191e22cbbb1a1377f6f6237.ctex"]
+source_file="res://Enemies/Art/ginger1/ginger1-1.png"
+dest_files=["res://.godot/imported/ginger1-1.png-39847d811a1f0031aa0ad5e0a12cefc1.ctex"]
 
 [params]
 

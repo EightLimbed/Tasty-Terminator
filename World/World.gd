@@ -1,24 +1,27 @@
 extends Node2D
 
+var profile : World
+
 var roads_cache : Array = []
 
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
 @onready var roads = $Roads
-@onready var visual_noise = $Noise
 
 func _ready():
+	profile = load("res://World/Resources/NewYork.tres")
+
+	roads.tile_set = profile.road_tiles
+	noise.frequency = profile.road_frequency
+
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR
 	noise.cellular_jitter = 0
-	#noise.cellular_distance_function = FastNoiseLite.DISTANCE_MANHATTAN
-	noise.frequency = 0.007
 	noise.cellular_return_type = FastNoiseLite.RETURN_CELL_VALUE
 	noise.seed = random.randi()
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
-	var cache_size = size.x*size.y
-	#noise.position = pos
+	var cache_size = size.x*size.y*1.1
 	roads.clear()
 
 	for x in size.x:
@@ -42,6 +45,6 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 					atlas.y -= 1
 				roads.set_cell(updated_pos, 0, atlas)
 				if not roads_cache.has(updated_pos):
+					roads_cache.append(updated_pos)
 					if roads_cache.size() > cache_size:
 						roads_cache.remove_at(0)
-					roads_cache.append(updated_pos)

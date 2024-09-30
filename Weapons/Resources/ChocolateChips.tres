@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://dxajpy3cxiyps"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
+
+[resource]
+script = ExtResource("1_nc1db")
+aim_type = 1
+spread = 25
+multishot = 2
+damage = 10
+ammo = 5
+unload_time = 0.2
+reload_time = 1.0
+pierce = 1
+speed = 15000
+hitbox_size = Vector2(8, 8)

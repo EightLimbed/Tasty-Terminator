@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wnq12srt341r"
-path="res://.godot/imported/FatPerson.png-dd608908bd620ebb045443beb41284cd.ctex"
+uid="uid://dckqil6ppvsem"
+path="res://.godot/imported/guy1-1.png-49755103d4597df2f32b5e1d863615c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Art/FatPerson.png"
-dest_files=["res://.godot/imported/FatPerson.png-dd608908bd620ebb045443beb41284cd.ctex"]
+source_file="res://Enemies/Art/guy1/guy1-1.png"
+dest_files=["res://.godot/imported/guy1-1.png-49755103d4597df2f32b5e1d863615c4.ctex"]
 
 [params]
 

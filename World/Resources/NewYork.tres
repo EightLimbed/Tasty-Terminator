@@ -1,11 +1,29 @@
-[gd_resource type="Resource" script_class="World" load_steps=2 format=3 uid="uid://b03lihxkci7c3"]
+[gd_resource type="Resource" script_class="World" load_steps=5 format=3 uid="uid://b03lihxkci7c3"]
 
-[ext_resource type="Script" path="res://World/world_resource.gd" id="1_vew7r"]
+[ext_resource type="Texture2D" uid="uid://blkva3x1ep80j" path="res://World/road.png" id="1_6kwfh"]
+[ext_resource type="Script" path="res://World/world_profile.gd" id="1_vew7r"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vq1n1"]
+texture = ExtResource("1_6kwfh")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_awpyi"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_vq1n1")
 
 [resource]
 script = ExtResource("1_vew7r")
-length_range = Vector2i(0, 0)
-branching_chance = 0
+road_tiles = SubResource("TileSet_awpyi")
+road_frequency = 0.006
 building_height = 0
 shuffle_top = false
 shuffle_middle = false

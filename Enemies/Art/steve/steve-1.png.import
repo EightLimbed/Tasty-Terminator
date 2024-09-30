@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2hl61ki1ovcw"
-path="res://.godot/imported/ginger1-1.png-698249b879e48b4baa39a00a47c46e3b.ctex"
+uid="uid://baf4t74w80agg"
+path="res://.godot/imported/steve-1.png-c4f6cf4ba33a55f4152d58f625ecfa99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/ginger1/ginger1-1.png"
-dest_files=["res://.godot/imported/ginger1-1.png-698249b879e48b4baa39a00a47c46e3b.ctex"]
+source_file="res://Enemies/Art/steve/steve-1.png"
+dest_files=["res://.godot/imported/steve-1.png-c4f6cf4ba33a55f4152d58f625ecfa99.ctex"]
 
 [params]
 

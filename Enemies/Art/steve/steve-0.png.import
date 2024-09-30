@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7huol0rlrcc6"
-path="res://.godot/imported/tristan-0.png-6cb150028493b623250a138cb26a5b03.ctex"
+uid="uid://dta1i4iaaqwl5"
+path="res://.godot/imported/steve-0.png-de203582848b89f1e1d49ec029aec033.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/tristan/tristan-0.png"
-dest_files=["res://.godot/imported/tristan-0.png-6cb150028493b623250a138cb26a5b03.ctex"]
+source_file="res://Enemies/Art/steve/steve-0.png"
+dest_files=["res://.godot/imported/steve-0.png-de203582848b89f1e1d49ec029aec033.ctex"]
 
 [params]
 
