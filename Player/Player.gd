@@ -14,5 +14,5 @@ func _physics_process(delta: float) -> void:
 		weapon1.upgrade()
 	#PC
 	#input = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
-	velocity = input*speed*delta*joystick.touched
+	velocity = input*speed*delta*joystick.press
 	move_and_slide()

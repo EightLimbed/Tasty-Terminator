@@ -8,9 +8,9 @@ size = Vector2(8, 8)
 
 [resource]
 script = ExtResource("1_nc1db")
-aim_type = 1
-spread = Vector2(15, 0)
-multishot = Vector2(1, 2)
+aim_type = 0
+spread = Vector2(360, 0)
+multishot = Vector2(2, 2)
 damage = Vector2(10, 1)
 ammo = Vector2(2, 0.1)
 unload_time = Vector2(0.3, 0)

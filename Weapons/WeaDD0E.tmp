@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://n6s6q7am74l5"]
+
+[ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_j22h7"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_j22h7")
+
+[node name="Unload" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="Reload" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="Unload" to="." method="_on_unload_timeout"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
