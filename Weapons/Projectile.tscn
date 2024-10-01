@@ -1,19 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkk6h2ay8b1el"]
 
 [ext_resource type="Script" path="res://Weapons/Projectile.gd" id="1_70jct"]
+[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="2_u655g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_058vm"]
 size = Vector2(1, 1)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s6j0e"]
-
 [node name="Projectile" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 24
+collision_mask = 0
 script = ExtResource("1_70jct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_058vm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_s6j0e")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u655g")
 
 [node name="Lifetime" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

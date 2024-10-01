@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="World" load_steps=5 format=3 uid="uid://b03lihxkci7c3"]
 
 [ext_resource type="Script" path="res://World/world_profile.gd" id="1_vew7r"]
-[ext_resource type="Texture2D" uid="uid://crpbn6g6u7r3a" path="res://World/roadV4.png" id="2_o2soy"]
+[ext_resource type="Texture2D" uid="uid://cjhqie4wsuw" path="res://World/roadV5.png" id="2_v74xa"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7fx6p"]
-texture = ExtResource("2_o2soy")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbe6m"]
+texture = ExtResource("2_v74xa")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -18,7 +18,7 @@ texture_region_size = Vector2i(48, 48)
 
 [sub_resource type="TileSet" id="TileSet_lavpr"]
 tile_size = Vector2i(48, 48)
-sources/0 = SubResource("TileSetAtlasSource_7fx6p")
+sources/0 = SubResource("TileSetAtlasSource_fbe6m")
 
 [resource]
 script = ExtResource("1_vew7r")

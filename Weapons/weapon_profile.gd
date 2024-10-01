@@ -27,8 +27,8 @@ class_name Weapon
 #scale of bullet
 @export var scale : Vector2
 #appearance
-@export var projectile_frames : SpriteFrames
+@export var texture : Texture2D
 #trail
 @export var trail : ParticleProcessMaterial
 #size of bullet hitbox
-@export var hitbox_size_base : Vector2
+@export var collision_shape : Shape2D

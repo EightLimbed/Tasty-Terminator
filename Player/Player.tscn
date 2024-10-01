@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=6 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
 [ext_resource type="Texture2D" uid="uid://c4quy5d73m62h" path="res://Player/Art/Cookie/CookieStand.png" id="2_daiug"]
 [ext_resource type="PackedScene" uid="uid://cnrs76bn7y2f" path="res://HUD/Joystick/Joystick.tscn" id="3_yls5l"]
+[ext_resource type="PackedScene" uid="uid://n6s6q7am74l5" path="res://Weapons/Weapon.tscn" id="4_tvyiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14ouf"]
 
@@ -21,3 +22,7 @@ shape = SubResource("RectangleShape2D_14ouf")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Joystick" parent="CanvasLayer" instance=ExtResource("3_yls5l")]
+
+[node name="WeaponContainer" type="Node2D" parent="."]
+
+[node name="Weapon" parent="WeaponContainer" instance=ExtResource("4_tvyiw")]

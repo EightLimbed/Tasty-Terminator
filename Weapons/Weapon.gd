@@ -1,46 +1,45 @@
 extends Node2D
 
-#upgrade window directly increases a cycled stat on the profile, taken from the profiles list of upgradeable stats
 var profile : Weapon
 var level : int = 0
+var ammo : int = 0
 
 var projectile_container
 var projectile = preload("res://Weapons/Projectile.tscn")
 var random = RandomNumberGenerator.new()
+@onready var player = get_parent().get_parent()
+@onready var unload = $Unload
+@onready var reload = $Reload
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	profile = load("res://Weapons/Resources/ChocolateChips.tres")
 	projectile_container = get_tree().get_root().get_node("Game").get_node("ProjectileContainer")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	reload.wait_time = profile.reload_time.x
+	unload.wait_time = profile.unload_time.x
+	reload.start()
 
 #need to add collision layers
 func shoot():
-	var spread_index : int
-	var used_spread = []
-	multishot = spread.size()
-
-	for i in profile.multishot:
-		spread_index = random.randi_range(0,profile.multishot)
-		while used_spread.has(spread_index):
-			spread_index = random.randi_range(0,spread.size()-1)
-		used_spread.append(spread_index)
+	var spread_offset = (deg_to_rad(profile.spread.x)*(profile.multishot.x-1)/2)
+	for i in profile.multishot.x:
 		var instance = projectile.instantiate()
-		#sets starting transfom
 		instance.global_position = global_position
 		instance.collision_layer = 4
-		instance.scale = profile.scale
-		instance.frames = profile.projectile_frames
-		instance.speed = speed
-		instance.time = lifetime
-		instance.pierce = pierce
-		instance.damage = damage
+		instance.scale.x = profile.scale.x
+		instance.scale.y = profile.scale.x
+		instance.frames = profile.texture
+		instance.speed = profile.speed.x
+		instance.pierce = profile.pierce.x
+		instance.damage = profile.damage.x
+		instance.collision_shape = profile.collision_shape
+		if profile.aim_type == 0:
+			instance.direction = Vector2(0,1).rotated((deg_to_rad(profile.spread.x)*i)-spread_offset)
+		if profile.aim_type == 1:
+			instance.direction = player.input.normalized().rotated((deg_to_rad(profile.spread.x)*i)-spread_offset)
+		if profile.aim_type == 2:
+			instance.direction = Vector2(0,-1).rotated((deg_to_rad(profile.spread.x)*i)-spread_offset)
 		projectile_container.add_child.call_deferred(instance)
-
 
 func upgrade():
 	#spread
@@ -50,7 +49,7 @@ func upgrade():
 	#damage
 	profile.damage.x += profile.damage.y
 	#ammo
-	profile.ammo.x += profile.damage.y
+	profile.ammo.x += profile.ammo.y
 	#unload_time
 	profile.unload_time.x += profile.unload_time.y
 	#reload_time
@@ -60,7 +59,23 @@ func upgrade():
 	#speed
 	profile.speed.x += profile.speed.y
 	#scale
-	profile.speed.x += profile.speed.y
-
+	profile.scale.x += profile.scale.y
+	#timers
+	reload.wait_time = profile.reload_time.x
+	unload.wait_time = profile.unload_time.x
+	ammo = round(profile.ammo.x)
+	unload.start()
 	#level
 	level += 1
+
+func _on_unload_timeout() -> void:
+	if ammo > 0:
+		shoot()
+		ammo -= 1
+		unload.start()
+	else:
+		reload.start()
+
+func _on_reload_timeout() -> void:
+	ammo = round(profile.ammo.x)
+	unload.start()

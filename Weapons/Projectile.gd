@@ -1,18 +1,29 @@
 extends CharacterBody2D
 
-var frames : SpriteFrames
-var speed : int
+var frames : Texture2D
+var speed : int = 15000
 var damage : int
 var pierce : int
-var lifetime : float
+var direction : Vector2 = Vector2(1,0)
+var collision_shape : Shape2D
 
 @onready var collision = $CollisionShape2D
-@onready var spriteframes = $AnimatedSprite2D
-@onready var timer = $Lifetime
+@onready var texture = $Sprite2D
+@onready var lifetime = $Lifetime
 
-func _ready():
-	timer.wait_time = lifetime
-	
+func _ready() -> void:
+	lifetime.wait_time = 100000.0/speed
+	texture.texture = frames
+	collision.shape = collision_shape
 
 func _physics_process(delta):
-	pass
+	velocity = delta*speed*direction
+	move_and_slide()
+
+func update_pierce():
+	pierce -= 1
+	if pierce == 0:
+		queue_free()
+
+func _on_lifetime_timeout() -> void:
+	queue_free()
