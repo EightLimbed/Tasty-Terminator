@@ -23,3 +23,6 @@ func _on_area_2d_body_entered(body):
 			queue_free()
 	if body.collision_layer == 2:
 		body.update_health(profile.melee_damage)
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()

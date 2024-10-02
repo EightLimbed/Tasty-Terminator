@@ -10,11 +10,10 @@ var noise = FastNoiseLite.new()
 @onready var buildings = $Buildings
 
 func _ready():
-	profile = load("res://World/Resources/NewYork.tres")
-
+	if not profile:
+		profile = load("res://World/Resources/NewYork.tres")
 	roads.tile_set = profile.tileset
 	noise.frequency = profile.road_frequency
-
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR
 	noise.cellular_jitter = 0
 	noise.cellular_return_type = FastNoiseLite.RETURN_CELL_VALUE

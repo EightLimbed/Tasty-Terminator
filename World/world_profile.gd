@@ -15,5 +15,8 @@ class_name World
 @export var shuffle_middle : bool
 @export var shuffle_bottom : bool
 
+#possible enemies (does same algorithm for selection, so keep in mind order used
+@export var possible_enemies : Array[Enemy]
+
 #powerup textures
 @export var crate_textures : SpriteFrames
