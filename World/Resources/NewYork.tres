@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="World" load_steps=5 format=3 uid="uid://b03lihxkci7c3"]
 
 [ext_resource type="Script" path="res://World/world_profile.gd" id="1_vew7r"]
-[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/Road.png" id="2_daq8u"]
+[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/NewYorkRoad.png" id="2_daq8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6qvj"]
 texture = ExtResource("2_daq8u")

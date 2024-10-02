@@ -4,7 +4,8 @@
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_w0adr"]
 [ext_resource type="Texture2D" uid="uid://cce657tnu8y4f" path="res://Enemies/Art/guy1/guy1-1.png" id="2_m1slb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcaao"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnpix"]
+radius = 12.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mv2ti"]
 animations = [{
@@ -20,7 +21,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gduty"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si3uo"]
+size = Vector2(32, 32)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -29,7 +31,7 @@ motion_mode = 1
 script = ExtResource("1_w0adr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_bcaao")
+shape = SubResource("CircleShape2D_dnpix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -42,6 +44,6 @@ collision_layer = 0
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_gduty")
+shape = SubResource("RectangleShape2D_si3uo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

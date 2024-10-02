@@ -29,3 +29,7 @@ shape = SubResource("RectangleShape2D_14ouf")
 [node name="WeaponContainer" type="Node2D" parent="."]
 
 [node name="Weapon" parent="WeaponContainer" instance=ExtResource("4_tvyiw")]
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

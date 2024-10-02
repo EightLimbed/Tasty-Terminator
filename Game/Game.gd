@@ -7,6 +7,7 @@ extends Node2D
 var enemy = preload("res://Enemies/Enemy.tscn")
 var random = RandomNumberGenerator.new()
 var wave : int = 1
+var possible_enemies : Array[String] = ["res://Enemies/Resources/Default.tres"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +25,9 @@ func spawn_enemies_normal(amount):
 
 
 func _on_wave_timer_timeout() -> void:
-	spawn_enemies_normal(wave**2)
+	if wave <= 20:
+		spawn_enemies_normal(wave**2)
+	else:
+		spawn_enemies_normal(400)
 	wave+= 1
 	wave_timer.start()

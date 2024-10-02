@@ -7,6 +7,7 @@ var roads_cache : Array = []
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
 @onready var roads = $Roads
+@onready var buildings = $Buildings
 
 func _ready():
 	profile = load("res://World/Resources/NewYork.tres")

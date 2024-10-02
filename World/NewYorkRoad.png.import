@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ihluxn5xw5i"
-path="res://.godot/imported/Road.png-57850ac3b0457857344ea0871810036d.ctex"
+path="res://.godot/imported/NewYorkRoad.png-490ba80943fa07cbfaf37ca29b7a7b52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Road.png"
-dest_files=["res://.godot/imported/Road.png-57850ac3b0457857344ea0871810036d.ctex"]
+source_file="res://World/NewYorkRoad.png"
+dest_files=["res://.godot/imported/NewYorkRoad.png-490ba80943fa07cbfaf37ca29b7a7b52.ctex"]
 
 [params]
 
