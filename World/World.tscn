@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
-[ext_resource type="Texture2D" uid="uid://bap6665c50opj" path="res://World/roadV2.png" id="2_xwdmu"]
+[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/Road.png" id="2_24wxo"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4p48"]
-texture = ExtResource("2_xwdmu")
-texture_region_size = Vector2i(64, 64)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ob045"]
+texture = ExtResource("2_24wxo")
+texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -17,8 +17,8 @@ texture_region_size = Vector2i(64, 64)
 2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kewf7"]
-tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_u4p48")
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_ob045")
 
 [node name="World" type="Node2D"]
 texture_filter = 1
