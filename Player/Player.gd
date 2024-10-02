@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #movement
 var input : Vector2
-var speed : int = 30000
+var speed : int = 20000
 var health : int = 20
 @onready var joystick = $CanvasLayer/Joystick
 #temp

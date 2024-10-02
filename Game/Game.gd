@@ -15,7 +15,7 @@ func _ready():
 
 func _process(_delta: float):
 	world.generate_roads(player.position, Vector2i(24,24))
-
+	world.generate_buildings(player.position, Vector2i(24,24))
 func spawn_enemies_normal(amount):
 	for i in amount-enemy_container.get_child_count():
 		var instance = enemy.instantiate()

@@ -4,6 +4,8 @@ var profile : World
 
 var roads_cache : Array = []
 
+var corners : Array = []
+
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
 @onready var roads = $Roads
@@ -49,3 +51,27 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 					roads_cache.append(updated_pos)
 					if roads_cache.size() > cache_size:
 						roads_cache.remove_at(0)
+#buildings
+func generate_buildings(pos : Vector2i, size : Vector2i):
+	
+	buildings.clear()
+	for x in size.x:
+		for y in size.y:
+			var updated_pos = buildings.local_to_map(pos)-size/2+Vector2i(x,y)
+			var surrounding : Array[Vector2i] = [updated_pos+Vector2i(1,0), 
+											updated_pos+Vector2i(-1,0), 
+											updated_pos+Vector2i(0,-1), 
+											updated_pos+Vector2i(0,1)]
+			if not roads_cache.has(updated_pos):
+				var connections = 0
+				if roads_cache.has(surrounding[0]):
+					connections +=1
+				if roads_cache.has(surrounding [1]):
+					connections +=1
+				if roads_cache.has(surrounding [2]):
+					connections +=1
+				if roads_cache.has(surrounding [3]):
+					connections +=1
+				if connections ==2:
+					buildings.set_cell(updated_pos, 0, Vector2i(0,0))
+					corners.append(updated_pos)#firgure this out
