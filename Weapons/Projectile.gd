@@ -10,6 +10,7 @@ var collision_shape : Shape2D
 @onready var collision = $CollisionShape2D
 @onready var texture = $Sprite2D
 @onready var lifetime = $Lifetime
+@onready var label = $Label
 
 func _ready() -> void:
 	lifetime.wait_time = 50000.0/speed

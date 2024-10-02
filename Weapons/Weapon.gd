@@ -26,7 +26,7 @@ func shoot():
 	for i in round(profile.multishot.x):
 		var instance = projectile.instantiate()
 		instance.global_position = global_position
-		instance.collision_layer = 4
+		#instance.collision_layer = 4
 		instance.scale.x = profile.scale.x
 		instance.scale.y = profile.scale.x
 		instance.frames = profile.texture
@@ -48,6 +48,8 @@ func shoot():
 func upgrade():
 	#spread
 	profile.spread.x += profile.spread.y
+	if profile.spread.x > 360:
+		profile.spread.x = 360
 	#multishot
 	profile.multishot.x += profile.multishot.y
 	#damage

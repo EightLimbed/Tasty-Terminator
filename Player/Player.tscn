@@ -8,7 +8,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14ouf"]
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 texture_filter = 1
+collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_tksie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

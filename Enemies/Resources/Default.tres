@@ -1,7 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://78fr3evm7s8r"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://78fr3evm7s8r"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_3lu5h"]
 
 [resource]
 script = ExtResource("1_3lu5h")
-health = 0
+health = 40
+speed = 15000
+melee_damage = 10
+ranged_damage = 0
