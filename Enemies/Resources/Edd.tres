@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://chemtbmxj513n"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_fl54v"]
+
+[resource]
+script = ExtResource("1_fl54v")
+health = 40
+speed = 15000
+melee_damage = 10
+experience_drop = 1
+ranged_damage = 0

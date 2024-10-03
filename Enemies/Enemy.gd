@@ -4,9 +4,12 @@ extends CharacterBody2D
 @onready var animation = $AnimatedSprite2D
 var profile : Enemy
 var health : int
+var death = preload("res://Enemies/DeathEffect.tscn")
+var experience_container
 
 func _ready():
-	profile = preload("res://Enemies/Resources/Default.tres")
+	experience_container = get_tree().get_root().get_node("Game").get_node("ExperienceContainer")
+	profile = load("res://Enemies/Resources/Default.tres")
 	health = profile.health
 	animation.play()
 
@@ -20,9 +23,15 @@ func _on_area_2d_body_entered(body):
 		body.update_pierce()
 		health -= body.damage
 		if health <= 0:
-			queue_free()
+			die()
 	if body.collision_layer == 2:
 		body.update_health(profile.melee_damage)
+
+func die():
+	var instance = death.instantiate()
+	instance.experience = profile.experience_drop
+	experience_container.add_child.call_deferred(instance)
+	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

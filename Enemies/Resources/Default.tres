@@ -7,4 +7,5 @@ script = ExtResource("1_3lu5h")
 health = 40
 speed = 15000
 melee_damage = 10
+experience_drop = 1
 ranged_damage = 0

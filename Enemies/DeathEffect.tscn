@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://fu2cca1sbgyp"]
+
+[ext_resource type="Texture2D" uid="uid://k2fdxkxf1b5f" path="res://Enemies/Art/BloodDrop.png" id="2_5kje8"]
+
+[node name="DeathEffect" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("2_5kje8")
