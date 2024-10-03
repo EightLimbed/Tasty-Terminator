@@ -4,14 +4,12 @@ var profile : World
 
 var roads_cache : Array = []
 
-var generated : Array = []
-var built : Array = []
-
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
 @onready var roads = $Roads
 @onready var buildings = $Buildings
 
+var state = random.state
 func _ready():
 	profile = load("res://World/Resources/NewYork.tres")
 
@@ -58,17 +56,17 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 	buildings.clear()
 	for x in size.x:
 		for y in size.y:
+			random.seed = hash('x,y')
+			random.state = state
 			var updated_pos = buildings.local_to_map(pos)-size/2+Vector2i(x,y)
 			var surrounding : Array[Vector2i] = [updated_pos+Vector2i(1,0), 
 											updated_pos+Vector2i(-1,0), 
 											updated_pos+Vector2i(0,-1), 
 											updated_pos+Vector2i(0,1)]
-			if  updated_pos not in generated:
-				if not roads_cache.has(updated_pos):
+
+			if not roads_cache.has(updated_pos):
 					if roads_cache.has(surrounding[0]) or roads_cache.has(surrounding [1]) or roads_cache.has(surrounding [2]) or roads_cache.has(surrounding [3]):
-						generated.append(updated_pos)
-						if random.randi_range(0,10) ==9:
+						
+						if random.randi_range(0,10) >5:
+							
 							buildings.set_cell(updated_pos, 0, Vector2i(0,0))
-							built.append(updated_pos)
-			if updated_pos in built:
-				buildings.set_cell(updated_pos, 0, Vector2i(0,0))
