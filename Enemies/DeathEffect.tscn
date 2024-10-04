@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://fu2cca1sbgyp"]
+[gd_scene load_steps=4 format=3 uid="uid://fu2cca1sbgyp"]
 
 [ext_resource type="Texture2D" uid="uid://k2fdxkxf1b5f" path="res://Enemies/Art/BloodDrop.png" id="2_5kje8"]
+[ext_resource type="Script" path="res://Enemies/DeathEffect.gd" id="2_6omjw"]
 
-[node name="DeathEffect" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6jxb"]
+radius = 4.0
+
+[node name="DeathEffect" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_6omjw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_5kje8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i6jxb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

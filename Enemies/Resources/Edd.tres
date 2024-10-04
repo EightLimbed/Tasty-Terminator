@@ -1,11 +1,28 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://chemtbmxj513n"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://chemtbmxj513n"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_fl54v"]
+[ext_resource type="Texture2D" uid="uid://dp7wyoauj0v37" path="res://Enemies/Art/ed/ed-0.png" id="1_p3qef"]
+[ext_resource type="Texture2D" uid="uid://b4yjju6jr4mrf" path="res://Enemies/Art/ed/ed-1.png" id="2_aaqmi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki7hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p3qef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aaqmi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_fl54v")
-health = 40
-speed = 15000
-melee_damage = 10
-experience_drop = 1
+frames = SubResource("SpriteFrames_ki7hf")
+health = 80
+speed = 20000
+melee_damage = 15
+experience_drop = 2
 ranged_damage = 0

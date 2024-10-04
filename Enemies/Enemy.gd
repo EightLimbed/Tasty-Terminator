@@ -9,8 +9,9 @@ var experience_container
 
 func _ready():
 	experience_container = get_tree().get_root().get_node("Game").get_node("ExperienceContainer")
-	profile = load("res://Enemies/Resources/Default.tres")
+	#profile = load("res://Enemies/Resources/Default.tres")
 	health = profile.health
+	animation.sprite_frames = profile.frames
 	animation.play()
 
 func _physics_process(delta):
@@ -29,6 +30,7 @@ func _on_area_2d_body_entered(body):
 
 func die():
 	var instance = death.instantiate()
+	instance.global_position = global_position
 	instance.experience = profile.experience_drop
 	experience_container.add_child.call_deferred(instance)
 	queue_free()

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://dk4nsth4f4c1e"]
+
+[ext_resource type="Texture2D" uid="uid://bqoiofsj83ps" path="res://Enemies/Art/dryd/dryd-0.png" id="1_gerlg"]
+[ext_resource type="Texture2D" uid="uid://bx5a6y8e6cup5" path="res://Enemies/Art/dryd/dryd-1.png" id="2_41vgt"]
+[ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="3_rlen2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ki7hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gerlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_41vgt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_rlen2")
+frames = SubResource("SpriteFrames_ki7hf")
+health = 100
+speed = 40000
+melee_damage = 15
+experience_drop = 10
+ranged_damage = 0

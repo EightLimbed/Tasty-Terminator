@@ -18,7 +18,7 @@ func _process(_delta: float):
 
 func spawn_enemies_normal(amount):
 	for i in amount-enemy_container.get_child_count():
-		var enemy_index = random.randi_range(0, world_profile.possible_enemies.size()-1)
+		var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 		var instance = enemy.instantiate()
 		instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 		instance.profile = world_profile.possible_enemies[enemy_index]
@@ -31,3 +31,5 @@ func _on_wave_timer_timeout() -> void:
 		spawn_enemies_normal(400)
 	wave+= 1
 	wave_timer.start()
+	print(wave)
+	print(min(world_profile.possible_enemies.size()-1, wave))
