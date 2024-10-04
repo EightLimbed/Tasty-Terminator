@@ -32,6 +32,12 @@ shape = SubResource("CircleShape2D_855um")
 
 [node name="Joystick" parent="CanvasLayer" instance=ExtResource("3_yls5l")]
 
+[node name="Healthbar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("4_fpcfm")
+texture_progress = ExtResource("5_4v53a")
+
 [node name="WeaponContainer" type="Node2D" parent="."]
 
 [node name="Weapon" parent="WeaponContainer" instance=ExtResource("4_tvyiw")]
@@ -42,26 +48,5 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExperiencePickup"]
 shape = SubResource("CircleShape2D_d0mw4")
-
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -24.0
-offset_right = 16.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 2
-nine_patch_stretch = true
-stretch_margin_left = 3
-stretch_margin_top = 3
-stretch_margin_right = 3
-stretch_margin_bottom = 3
-texture_under = ExtResource("4_fpcfm")
-texture_progress = ExtResource("5_4v53a")
 
 [connection signal="body_entered" from="ExperiencePickup" to="." method="_on_experience_pickup_body_entered"]

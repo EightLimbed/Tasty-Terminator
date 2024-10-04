@@ -3,10 +3,10 @@ extends CharacterBody2D
 #movement
 var input : Vector2
 var speed : int = 30000
-var health : int = 20
+var health : int = 100
 var experience : int = 0
 @onready var joystick = $CanvasLayer/Joystick
-@onready var health_bar = $HealthBar
+@onready var health_bar = $CanvasLayer/Healthbar
 #temp
 @onready var weapon1 = $WeaponContainer/Weapon
 
@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	#mobile
 	input = joystick.distance
-	if experience > weapon1.level**4:
+	if experience > weapon1.level**2:
 		weapon1.upgrade()
 		experience = 0
 	#PC
