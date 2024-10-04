@@ -56,17 +56,28 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 	buildings.clear()
 	for x in size.x:
 		for y in size.y:
-			random.seed = hash('x,y')
-			random.state = state
 			var updated_pos = buildings.local_to_map(pos)-size/2+Vector2i(x,y)
-			var surrounding : Array[Vector2i] = [updated_pos+Vector2i(1,0), 
-											updated_pos+Vector2i(-1,0), 
-											updated_pos+Vector2i(0,-1), 
-											updated_pos+Vector2i(0,1)]
-
+			var directions : Array[Vector2i] = [Vector2i(1,0), 
+											Vector2i(-1,0), 
+											Vector2i(0,1), 
+											Vector2i(0,-1)]
+			
+			random.seed = hash(updated_pos)
+			
+			var build_size = Vector2i(2,2)
 			if not roads_cache.has(updated_pos):
-					if roads_cache.has(surrounding[0]) or roads_cache.has(surrounding [1]) or roads_cache.has(surrounding [2]) or roads_cache.has(surrounding [3]):
+				for d in len(directions):
+					if roads_cache.has(updated_pos +directions[d]):
 						
-						if random.randi_range(0,10) >5:
+						if random.randi_range(0,10) ==10:
 							
-							buildings.set_cell(updated_pos, 0, Vector2i(0,0))
+								for i in build_size.x:
+									for j in build_size.y:
+										if d < 2:
+											i *= -directions[d].x 
+										if d >1:
+											j *= -directions[d].y 
+										
+										#if not roads_cache.has(updated_pos+ Vector2i(i,j) ):
+										buildings.set_cell(updated_pos + Vector2i(i,j), 0, Vector2i(1,0))
+								buildings.set_cell(updated_pos, 0, Vector2i(0,0))
