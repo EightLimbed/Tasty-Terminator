@@ -4,7 +4,8 @@ var profile : Weapon
 var level : int = 0
 var ammo : int = 0
 
-var projectile_container
+var projectile_container : Node2D
+var enemy_container : Node2D
 var projectile = preload("res://Weapons/Projectile.tscn")
 var random = RandomNumberGenerator.new()
 @onready var player = get_parent().get_parent()
@@ -15,6 +16,7 @@ var random = RandomNumberGenerator.new()
 func _ready() -> void:
 	profile = load("res://Weapons/Resources/ChocolateChips.tres")
 	projectile_container = get_tree().get_root().get_node("Game").get_node("ProjectileContainer")
+	enemy_container = get_tree().get_root().get_node("Game").get_node("EnemyContainer")
 	reload.wait_time = profile.reload_time.x
 	unload.wait_time = profile.unload_time.x
 	reload.start()
@@ -43,7 +45,8 @@ func shoot():
 				dir = Vector2(0,1)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		if profile.aim_type == 2:
-			instance.direction = Vector2(0,-1).rotated(spread*i-spread_offset)
+			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/2)
+			instance.direction = dir.rotated(spread*i-spread_offset)
 		projectile_container.add_child.call_deferred(instance)
 
 func upgrade():
@@ -63,8 +66,14 @@ func upgrade():
 	profile.ammo.x += profile.ammo.y
 	#unload_time
 	profile.unload_time.x += profile.unload_time.y
+	if not profile.unload_time.x >= 0.05:
+		profile.damage.x += 1
+		profile.unload_time.x = 0.05
 	#reload_time
 	profile.reload_time.x += profile.reload_time.y
+	if not profile.reload_time.x >= 0.05:
+		profile.damage.x += 2
+		profile.reload_time.x = 0.05
 	#pierce
 	profile.pierce.x += profile.pierce.y
 	#speed
@@ -72,14 +81,19 @@ func upgrade():
 	#scale
 	profile.scale.x += profile.scale.y
 	#timers
-	if profile.reload_time.x > 0:
-		reload.wait_time = profile.reload_time.x
-	if profile.unload_time.x > 0:
-		unload.wait_time = profile.unload_time.x
+	reload.wait_time = profile.reload_time.x
+	unload.wait_time = profile.unload_time.x
 	ammo = round(profile.ammo.x)
 	unload.start()
 	#level
 	level += 1
+
+func find_closest(from : Vector2, selection : Array):
+	var closest : Vector2 = selection[0].global_position
+	for pos in selection:
+		if from.distance_to(closest) > from.distance_to(pos.global_position):
+			closest = pos.global_position
+	return closest
 
 func _on_unload_timeout() -> void:
 	if ammo > 0:

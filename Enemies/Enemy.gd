@@ -9,6 +9,7 @@ var experience_container
 var random = RandomNumberGenerator.new()
 var personality = Vector2.ZERO
 var difficulty : float = 1
+var attacking : bool = false
 
 func _ready():
 	experience_container = get_tree().get_root().get_node("Game").get_node("ExperienceContainer")
@@ -22,7 +23,9 @@ func _ready():
 func _physics_process(delta):
 	if random.randi_range(0,10) == 0:
 		personality = Vector2(random.randi_range(-profile.speed,profile.speed), random.randi_range(-profile.speed,profile.speed))/2
-	velocity = (profile.speed*global_position.direction_to(player.global_position)+personality)*delta*difficulty
+	if attacking:
+		player.update_health(profile.melee_damage*delta)
+	velocity = (profile.speed*global_position.direction_to(player.global_position)+personality)*delta*(difficulty+1)/2
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
@@ -33,8 +36,11 @@ func _on_area_2d_body_entered(body):
 		if health <= 0:
 			die()
 	if body.collision_layer == 2:
-		body.update_health(profile.melee_damage*difficulty)
-		
+		attacking = true
+
+func _on_area_2d_body_exited(body):
+	if body.collision_layer == 2:
+		attacking = false
 
 func die():
 	var instance = death.instantiate()

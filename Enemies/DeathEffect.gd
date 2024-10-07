@@ -10,6 +10,7 @@ func _physics_process(delta: float):
 		velocity = (global_position.distance_to(goal)*300+10000)*global_position.direction_to(goal)*delta
 		if global_position.distance_to(goal) < 16:
 			queue_free()
+			player.update_experience(experience)
 		move_and_slide()
 
 func _on_timer_timeout():

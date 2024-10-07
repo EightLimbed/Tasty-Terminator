@@ -39,9 +39,9 @@ func spawn_enemies_formation(amount):
 	pass
 
 func _on_wave_timer_timeout() -> void:
-	if wave <= 20:
-		spawn_enemies_normal(wave**2, wave)
-		if random.randi_range(0,4) == 0:
+	if wave**1.1+3 <= 400:
+		spawn_enemies_normal(wave**1.1+3, wave)
+		if random.randi_range(0,5) == 0:
 			spawn_enemies_strong(wave)
 	else:
 		spawn_enemies_normal(400, wave)

@@ -8,15 +8,15 @@ size = Vector2(8, 8)
 
 [resource]
 script = ExtResource("1_nc1db")
-aim_type = 1
-spread = Vector2(48, 3)
-multishot = Vector2(2, 2)
+aim_type = 2
+spread = Vector2(5, 1)
+multishot = Vector2(1, 0.1)
 damage = Vector2(10, 1)
-ammo = Vector2(2, 0.1)
-unload_time = Vector2(0.3, 0)
-reload_time = Vector2(1, -0.05)
+ammo = Vector2(3, 0)
+unload_time = Vector2(0.3, -0.05)
+reload_time = Vector2(0.5, -0.05)
 pierce = Vector2(1, 0.2)
-speed = Vector2(55000, 0)
+speed = Vector2(55000, 1000)
 scale = Vector2(1, 0.1)
 texture = ExtResource("1_ew6oe")
 collision_shape = SubResource("RectangleShape2D_8hvse")

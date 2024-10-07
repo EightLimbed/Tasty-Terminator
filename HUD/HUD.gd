@@ -15,13 +15,13 @@ func _ready():
 func _process(delta):
 	pass
 
-func update_health(min,val,max):
-	health_bar.min_value = min
-	health_bar.max_value = max
-	health_bar.value = val
+func update_health(minim,value,maxim):
+	health_bar.min_value = minim
+	health_bar.max_value = maxim
+	health_bar.value = value
 
-func update_experience(min,val,max):
-	experience_bar.min_value = min
-	experience_bar.max_value = max
-	experience_bar.value = val
+func update_experience(minim,value,maxim):
+	experience_bar.min_value = minim
+	experience_bar.max_value = maxim
+	experience_bar.value = value
 	

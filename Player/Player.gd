@@ -29,7 +29,9 @@ func update_health(damage):
 	health -= damage
 	hud.update_health(0,health,100)
 
+func update_experience(increase):
+	experience += increase
+	hud.update_experience(0,experience,weapon1.level**2)
+
 func _on_hitbox_body_entered(body):
 	body.activated = true
-	experience += body.experience
-	hud.update_experience(0,experience,weapon1.level**2)

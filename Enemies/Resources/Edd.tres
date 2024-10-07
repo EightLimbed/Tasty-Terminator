@@ -24,5 +24,5 @@ frames = SubResource("SpriteFrames_ki7hf")
 health = 80
 speed = 10000
 melee_damage = 15
-experience_drop = 2
+experience_drop = 3
 ranged_damage = 0
