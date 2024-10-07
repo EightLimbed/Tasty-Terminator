@@ -63,21 +63,30 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 											Vector2i(0,-1)]
 			
 			random.seed = hash(updated_pos)
-			
-			var build_size = Vector2i(2,2)
+			var sx = random.randi_range(3,4)
+			var sy = random.randi_range(3,4)
+			var build_size = Vector2i(sx,sy)
 			if not roads_cache.has(updated_pos):
-				for d in len(directions):
-					if roads_cache.has(updated_pos +directions[d]):
-						
-						if random.randi_range(0,10) ==10:
+				
+					if roads_cache.has(updated_pos +directions[0]*2) or roads_cache.has(updated_pos +directions[1]*2) or roads_cache.has(updated_pos +directions[2]*2)or roads_cache.has(updated_pos +directions[3]*2):
+						if random.randi_range(0,10) ==0:
 							
-								for i in build_size.x:
-									for j in build_size.y:
-										if d < 2:
-											i *= -directions[d].x 
-										if d >1:
-											j *= -directions[d].y 
-										
-										#if not roads_cache.has(updated_pos+ Vector2i(i,j) ):
-										buildings.set_cell(updated_pos + Vector2i(i,j), 0, Vector2i(1,0))
-								buildings.set_cell(updated_pos, 0, Vector2i(0,0))
+							for i in build_size.x:
+								for j in build_size.y:
+									var cx = i
+									var cy = j
+									if cy> build_size.y/2:
+										cy -= build_size.y/2
+										cy*= -1
+									if cx> build_size.x/2:
+										cx -= build_size.x/2
+										cx*= -1
+									'''for d in directions.size():
+										if roads_cache.has(updated_pos +directions[d]):
+											if d <= 1:
+												cx = i * -directions[d].x
+											if d >=2:
+												cy = j* -directions[d].y '''
+									if not roads_cache.has(updated_pos + Vector2i(cx , cy)):
+										buildings.set_cell(updated_pos + (Vector2i(cx,cy)), 0, Vector2i(1,0))
+							buildings.set_cell(updated_pos, 0, Vector2i(0,0))
