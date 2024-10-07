@@ -24,4 +24,3 @@ func update_experience(minim,value,maxim):
 	experience_bar.min_value = minim
 	experience_bar.max_value = maxim
 	experience_bar.value = value
-	

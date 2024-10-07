@@ -7,7 +7,7 @@ extends Node2D
 var enemy = preload("res://Enemies/Enemy.tscn")
 var random = RandomNumberGenerator.new()
 var wave : int = 1
-var world_profile : World = preload("res://World/Resources/NewYork.tres")
+var world_profile : World
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
