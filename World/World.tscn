@@ -25,6 +25,7 @@ texture_filter = 1
 script = ExtResource("1_tvg2w")
 
 [node name="Roads" type="TileMapLayer" parent="."]
+z_index = -2
 tile_set = SubResource("TileSet_kewf7")
 
 [node name="Buildings" type="TileMapLayer" parent="."]

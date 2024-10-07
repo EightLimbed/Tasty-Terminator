@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=8 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
 [ext_resource type="Texture2D" uid="uid://c4quy5d73m62h" path="res://Player/Art/Cookie/CookieStand.png" id="2_daiug"]
 [ext_resource type="PackedScene" uid="uid://cnrs76bn7y2f" path="res://HUD/Joystick/Joystick.tscn" id="3_yls5l"]
-[ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://Player/Art/HealthbarEmpty.png" id="4_fpcfm"]
 [ext_resource type="PackedScene" uid="uid://n6s6q7am74l5" path="res://Weapons/Weapon.tscn" id="4_tvyiw"]
-[ext_resource type="Texture2D" uid="uid://beu622n0q0igx" path="res://Player/Art/HealthbarFull.png" id="5_4v53a"]
+[ext_resource type="PackedScene" uid="uid://doi3fmv48pifv" path="res://HUD/HUD.tscn" id="4_us2v5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_855um"]
 radius = 12.0
@@ -28,25 +27,19 @@ shape = SubResource("CircleShape2D_855um")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("3_yls5l")]
-
-[node name="Healthbar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture_under = ExtResource("4_fpcfm")
-texture_progress = ExtResource("5_4v53a")
-
 [node name="WeaponContainer" type="Node2D" parent="."]
 
 [node name="Weapon" parent="WeaponContainer" instance=ExtResource("4_tvyiw")]
 
-[node name="ExperiencePickup" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExperiencePickup"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_d0mw4")
 
-[connection signal="body_entered" from="ExperiencePickup" to="." method="_on_experience_pickup_body_entered"]
+[node name="HUD" parent="." instance=ExtResource("4_us2v5")]
+
+[node name="Joystick" parent="." instance=ExtResource("3_yls5l")]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -34,6 +34,7 @@ func shoot():
 		instance.pierce = profile.pierce.x
 		instance.damage = profile.damage.x
 		instance.collision_shape = profile.collision_shape
+		instance.initial_velocity = player.velocity
 		if profile.aim_type == 0:
 			instance.direction = Vector2(0,1).rotated(spread*(i-1))
 		if profile.aim_type == 1:
@@ -51,7 +52,11 @@ func upgrade():
 	if profile.spread.x > 360:
 		profile.spread.x = 360
 	#multishot
-	profile.multishot.x += profile.multishot.y
+	if profile.multishot.x < profile.spread.x/10:
+		profile.multishot.x += profile.multishot.y
+	else:
+		profile.multishot.x = round(profile.spread.x/10)
+		profile.damage.x += profile.multishot.y*profile.damage.y
 	#damage
 	profile.damage.x += profile.damage.y
 	#ammo

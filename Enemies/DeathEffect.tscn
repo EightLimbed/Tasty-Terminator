@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://fu2cca1sbgyp"]
 
-[ext_resource type="Texture2D" uid="uid://k2fdxkxf1b5f" path="res://Enemies/Art/BloodDrop.png" id="2_5kje8"]
 [ext_resource type="Script" path="res://Enemies/DeathEffect.gd" id="2_6omjw"]
+[ext_resource type="Texture2D" uid="uid://ciyg6mu5y30k2" path="res://Enemies/Art/XP.png" id="2_8f71y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6jxb"]
 radius = 4.0
 
 [node name="DeathEffect" type="CharacterBody2D"]
+z_index = -1
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("2_6omjw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_5kje8")
+texture = ExtResource("2_8f71y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i6jxb")
@@ -24,17 +25,8 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-texture_filter = 1
-emitting = false
-amount = 16
-one_shot = true
-explosiveness = 0.9
-lifetime_randomness = 0.1
-texture = ExtResource("2_5kje8")
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-500, -500, 1000, 1000)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

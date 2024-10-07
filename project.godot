@@ -13,6 +13,8 @@ config_version=5
 config/name="Tasty Terminator"
 run/main_scene="res://Game/Game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://Enemies/Art/ed/ed-0.png"
 config/icon="res://icon.svg"
 
 [display]
@@ -33,3 +35,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="Pproj"
 2d_physics/layer_5="Eproj"
 2d_physics/layer_6="Experience"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.201683, 0.355126, 0.0781502, 1)

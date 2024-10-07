@@ -1,12 +1,8 @@
 extends CharacterBody2D
 
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
-@onready var particles = $CPUParticles2D
 var activated : bool = false
 var experience : int = 0
-
-func _ready():
-	particles.emitting = true
 
 func _physics_process(delta: float):
 	if activated:
@@ -17,4 +13,7 @@ func _physics_process(delta: float):
 		move_and_slide()
 
 func _on_timer_timeout():
+	queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

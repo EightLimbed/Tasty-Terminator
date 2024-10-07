@@ -13,8 +13,10 @@ var difficulty : float = 1
 func _ready():
 	experience_container = get_tree().get_root().get_node("Game").get_node("ExperienceContainer")
 	#profile = load("res://Enemies/Resources/Default.tres")
-	health = profile.health*difficulty
+	health = round(profile.health*difficulty)
 	animation.sprite_frames = profile.frames
+	if difficulty > 10.0:
+		scale *= 2
 	animation.play()
 
 func _physics_process(delta):
@@ -32,6 +34,7 @@ func _on_area_2d_body_entered(body):
 			die()
 	if body.collision_layer == 2:
 		body.update_health(profile.melee_damage*difficulty)
+		
 
 func die():
 	var instance = death.instantiate()
