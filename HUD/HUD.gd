@@ -2,6 +2,9 @@ extends CanvasLayer
 
 @onready var health_bar = $Healthbar
 @onready var experience_bar = $Experiencebar
+#add weapon children
+@onready var player = get_tree().get_root().get_node("Game").get_node("Player")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
