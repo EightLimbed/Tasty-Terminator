@@ -8,7 +8,6 @@ var experience : int = 0
 @onready var joystick = $Joystick
 @onready var hud = $HUD
 #temp
-@onready var weapon1 = $WeaponContainer/Weapon
 
 func _ready():
 	hud.update_health(0,health,100)
@@ -16,10 +15,10 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	#mobile
 	input = joystick.distance
-	if experience > weapon1.level**2:
-		weapon1.upgrade()
-		experience = 0
-		hud.update_experience(0,experience,weapon1.level**2)
+	#if experience > weapon1.level**2:
+		#weapon1.upgrade()
+		#experience = 0
+		#hud.update_experience(0,experience,weapon1.level**2)
 	#PC
 	#input = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
 	velocity = input*speed*delta*joystick.press
@@ -31,7 +30,6 @@ func update_health(damage):
 
 func update_experience(increase):
 	experience += increase
-	hud.update_experience(0,experience,weapon1.level**2)
 
 func _on_hitbox_body_entered(body):
 	body.activated = true

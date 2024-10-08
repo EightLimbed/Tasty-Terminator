@@ -1,6 +1,6 @@
 extends Node2D
 
-var profile : Weapon
+@export var profile : Weapon
 var level : int = 0
 var ammo : int = 0
 
@@ -14,7 +14,6 @@ var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	profile = load("res://Weapons/Resources/ChocolateChips.tres")
 	projectile_container = get_tree().get_root().get_node("Game").get_node("ProjectileContainer")
 	enemy_container = get_tree().get_root().get_node("Game").get_node("EnemyContainer")
 	reload.wait_time = profile.reload_time.x

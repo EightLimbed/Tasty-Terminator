@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://n6s6q7am74l5"]
+[gd_scene load_steps=3 format=3 uid="uid://n6s6q7am74l5"]
 
 [ext_resource type="Script" path="res://Weapons/Weapon.gd" id="1_j22h7"]
+[ext_resource type="Resource" uid="uid://dxajpy3cxiyps" path="res://Weapons/Resources/ChocolateChips.tres" id="2_3qmx6"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_j22h7")
+profile = ExtResource("2_3qmx6")
 
 [node name="Unload" type="Timer" parent="."]
 process_callback = 0

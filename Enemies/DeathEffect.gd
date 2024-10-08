@@ -7,7 +7,7 @@ var experience : int = 0
 func _physics_process(delta: float):
 	if activated:
 		var goal = player.global_position
-		velocity = (global_position.distance_to(goal)*400+40000)*global_position.direction_to(goal)*delta
+		velocity = (global_position.distance_to(goal)*300+40000)*global_position.direction_to(goal)*delta
 		if global_position.distance_to(goal) < 16:
 			queue_free()
 			player.update_experience(experience)
