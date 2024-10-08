@@ -3,6 +3,7 @@ extends Node2D
 var profile : World
 
 var roads_cache : Array = []
+var building_cache : Array = []
 
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
@@ -52,7 +53,7 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 						roads_cache.remove_at(0)
 #buildings
 func generate_buildings(pos : Vector2i, size : Vector2i):
-	
+	var cache_size = size.x*size.y*1.1
 	buildings.clear()
 	for x in size.x:
 		for y in size.y:
@@ -68,7 +69,7 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 			var build_size = Vector2i(sx,sy)
 			if not roads_cache.has(updated_pos):
 				
-					if roads_cache.has(updated_pos +directions[0]*2) or roads_cache.has(updated_pos +directions[1]*2) or roads_cache.has(updated_pos +directions[2]*2)or roads_cache.has(updated_pos +directions[3]*2):
+					if roads_cache.has(updated_pos +directions[0]) or roads_cache.has(updated_pos +directions[1]) or roads_cache.has(updated_pos +directions[2])or roads_cache.has(updated_pos +directions[3]):
 						if random.randi_range(0,10) ==0:
 							
 							for i in build_size.x:
@@ -81,6 +82,7 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 									if cx> build_size.x/2:
 										cx -= build_size.x/2
 										cx*= -1
+									
 									'''for d in directions.size():
 										if roads_cache.has(updated_pos +directions[d]):
 											if d <= 1:
@@ -88,5 +90,18 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 											if d >=2:
 												cy = j* -directions[d].y '''
 									if not roads_cache.has(updated_pos + Vector2i(cx , cy)):
-										buildings.set_cell(updated_pos + (Vector2i(cx,cy)), 0, Vector2i(1,0))
-							buildings.set_cell(updated_pos, 0, Vector2i(0,0))
+										var atlas = Vector2i(1,1)
+										if not building_cache.has(updated_pos+Vector2i(1,0)+Vector2i(cx,cy)):
+											atlas.x =2
+										if not building_cache.has(updated_pos+Vector2i(0,1)+Vector2i(cx,cy)):
+											atlas.y = 2
+										if not building_cache.has(updated_pos+Vector2i(-1,0)+Vector2i(cx,cy)):
+											atlas.x = 0
+										if not building_cache.has(updated_pos+Vector2i(0,-1)+Vector2i(cx,cy)):
+											atlas.y = 0
+										buildings.set_cell(updated_pos+Vector2i(cx,cy), 0, atlas)
+										if not building_cache.has(updated_pos):
+											building_cache.append(updated_pos)
+											if building_cache.size() > cache_size:
+												roads_cache.remove_at(0)
+							

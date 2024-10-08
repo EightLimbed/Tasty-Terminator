@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
 [ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/NewYorkRoad.png" id="2_vbeli"]
-[ext_resource type="Texture2D" uid="uid://bjap543fvscix" path="res://icon.svg" id="3_or72b"]
+[ext_resource type="Texture2D" uid="uid://b31oc5ls20ev" path="res://World/house.png" id="3_h8d8g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_buiqc"]
 texture = ExtResource("2_vbeli")
@@ -21,15 +21,22 @@ texture_region_size = Vector2i(48, 48)
 tile_size = Vector2i(48, 48)
 sources/0 = SubResource("TileSetAtlasSource_buiqc")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yd3kx"]
-texture = ExtResource("3_or72b")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1rqm"]
+texture = ExtResource("3_h8d8g")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_nrngr"]
 tile_size = Vector2i(48, 48)
-sources/0 = SubResource("TileSetAtlasSource_yd3kx")
+sources/0 = SubResource("TileSetAtlasSource_q1rqm")
 
 [node name="World" type="Node2D"]
 texture_filter = 1
