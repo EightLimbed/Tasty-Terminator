@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var profile : Weapon
-var level : int = 0
 var ammo : int = 0
 
 var projectile_container : Node2D
@@ -84,8 +83,6 @@ func upgrade():
 	unload.wait_time = profile.unload_time.x
 	ammo = round(profile.ammo.x)
 	unload.start()
-	#level
-	level += 1
 
 func find_closest(from : Vector2, selection : Array):
 	var closest : Vector2 = selection[0].global_position

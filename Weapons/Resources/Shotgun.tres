@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bt23d0n107ukt"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_ht1ju"]
+[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="2_wbylc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
+size = Vector2(8, 8)
+
+[resource]
+script = ExtResource("1_ht1ju")
+aim_type = 2
+spread = Vector2(45, 0)
+multishot = Vector2(5, 1)
+damage = Vector2(10, 1)
+ammo = Vector2(3, 0)
+unload_time = Vector2(0.2, 0)
+reload_time = Vector2(0.3, 0)
+pierce = Vector2(1, 0.2)
+speed = Vector2(55000, 1000)
+scale = Vector2(1, 0.1)
+texture = ExtResource("2_wbylc")
+collision_shape = SubResource("RectangleShape2D_8hvse")
