@@ -7,6 +7,7 @@ var health : int = 100
 var experience : int = 0
 @onready var joystick = $Joystick
 @onready var hud = $HUD
+var level : int = 0
 #temp
 
 func _ready():
@@ -30,6 +31,11 @@ func update_health(damage):
 
 func update_experience(increase):
 	experience += increase
+	if experience >= level**2 + 2:
+		level += 1
+		experience = 0
+		hud.level_up()
+	hud.update_experience(0, experience, level**2 + 2)
 
 func _on_hitbox_body_entered(body):
 	body.activated = true

@@ -13,8 +13,5 @@ func _physics_process(delta: float):
 			player.update_experience(experience)
 		move_and_slide()
 
-func _on_timer_timeout():
-	queue_free()
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

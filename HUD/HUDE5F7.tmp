@@ -49,7 +49,6 @@ texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("3_a3f6f")
 
 [node name="Levelup" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -44,7 +44,7 @@ func shoot():
 				dir = Vector2(0,1)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		if profile.aim_type == 2:
-			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/2)
+			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/3)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		projectile_container.add_child.call_deferred(instance)
 
