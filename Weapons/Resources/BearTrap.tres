@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://b2i4um2wn8wr4"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_cu0f2"]
+[ext_resource type="Texture2D" uid="uid://pxx526vnf4g4" path="res://Player/Art/Faces/DeadFace.png" id="1_d72eu"]
+[ext_resource type="Texture2D" uid="uid://by5xjmtqfs0bw" path="res://Player/Art/Faces/ScaredFace.png" id="2_x6402"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
+size = Vector2(8, 8)
+
+[resource]
+script = ExtResource("1_cu0f2")
+name = "Bear Trap"
+display = ExtResource("1_d72eu")
+aim_type = 3
+spread = Vector2(5, 0)
+multishot = Vector2(5, 1)
+damage = Vector2(40, 5)
+ammo = Vector2(1, 0)
+unload_time = Vector2(0.2, -0.05)
+reload_time = Vector2(0.2, -0.05)
+pierce = Vector2(1, 0.5)
+speed = Vector2(1, 0)
+scale = Vector2(1, 0.2)
+texture = ExtResource("2_x6402")
+collision_shape = SubResource("RectangleShape2D_8hvse")

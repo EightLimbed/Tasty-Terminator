@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bt23d0n107ukt"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://bt23d0n107ukt"]
 
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_ht1ju"]
+[ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="1_xnd5v"]
 [ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="2_wbylc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
@@ -8,6 +9,8 @@ size = Vector2(8, 8)
 
 [resource]
 script = ExtResource("1_ht1ju")
+name = "Shotgun"
+display = ExtResource("1_xnd5v")
 aim_type = 2
 spread = Vector2(45, 0)
 multishot = Vector2(5, 1)

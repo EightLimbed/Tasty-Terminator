@@ -14,7 +14,7 @@ var initial_velocity : Vector2
 @onready var label = $Label
 
 func _ready() -> void:
-	lifetime.wait_time = 30000.0/speed
+	lifetime.wait_time = min(30000.0/speed, 10)
 	texture.texture = frames
 	collision.shape = collision_shape
 	lifetime.start()

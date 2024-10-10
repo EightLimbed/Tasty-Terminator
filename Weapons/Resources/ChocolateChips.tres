@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://dxajpy3cxiyps"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dxajpy3cxiyps"]
 
 [ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="1_ew6oe"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
+[ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="1_r6vpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(8, 8)
 
 [resource]
 script = ExtResource("1_nc1db")
+name = "Cookie"
+display = ExtResource("1_r6vpx")
 aim_type = 2
 spread = Vector2(5, 1)
 multishot = Vector2(1, 0.1)

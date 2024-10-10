@@ -3,6 +3,9 @@ extends Resource
 class_name Weapon
 
 #load profiles to weapons
+@export var name : String
+@export var display : Texture2D
+
 
 #stats, left is starting, right is increase every level
 
