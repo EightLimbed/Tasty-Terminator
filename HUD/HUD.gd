@@ -9,7 +9,7 @@ extends CanvasLayer
 @onready var level_up_window = $Levelup
 var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
-var max_weapons : int = 6
+var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
 @onready var option1_button = $Levelup/NinePatchRect/Option1
@@ -21,29 +21,22 @@ var option3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level_up_window.visible = false
-	for child in weapon_container.get_children():
-		possible_weapons.erase(child.profile)
 	add_weapon(possible_weapons[0])
-
-func _process(delta: float) -> void:
-	print(levels_cached)
+	possible_weapons.erase(possible_weapons[0])
+	level_up_window.visible = false
 
 #say "new" above new weapon, have overlay on it, and give description when hovered. everything else will be "upgrade to [level] and show what stats are, and what increases when hovered." Both will have picture of weapon
 func level_up():
 	if level_up_window.visible:
 		levels_cached += 1
 	else:
-		var children = weapon_container.get_children()
-		for child in children:
-			possible_weapons.erase(child.profile)
 		level_up_window.visible = true
-		if weapon_container.get_child_count() < min(max_weapons, possible_weapons.size()):
+		if weapon_container.get_child_count() < 2 and possible_weapons.size() > 1:
 			option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			option3 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 		else:
-			if weapon_container.get_child_count() < min(max_weapons, possible_weapons.size()) and random.randi_range(0,2) == 0:
+			if weapon_container.get_child_count() < max_weapons and random.randi_range(0,2) == 0:
 				option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			else:
 				option1 = random.randi_range(0, weapon_container.get_child_count()-1)
@@ -56,7 +49,6 @@ func level_up():
 		levels_display.text = str(levels_cached+1) + " Level Ups"
 	else:
 		levels_display.text = "Level Up"
-	
 
 func update_health(minim,value,maxim):
 	health_bar.min_value = minim
@@ -80,8 +72,9 @@ func upgrade_weapon(index : int):
 func _on_option_1_pressed():
 	if option1 is int:
 		upgrade_weapon(option1)
-	if option1 is Weapon:
+	else:
 		add_weapon(option1)
+		possible_weapons.erase(option1)
 	level_up_window.visible = false
 	if levels_cached > 0:
 		levels_cached -= 1
@@ -90,8 +83,9 @@ func _on_option_1_pressed():
 func _on_option_2_pressed():
 	if option2 is int:
 		upgrade_weapon(option2)
-	if option2 is Weapon:
+	else:
 		add_weapon(option2)
+		possible_weapons.erase(option2)
 	level_up_window.visible = false
 	if levels_cached > 0:
 		levels_cached -= 1
@@ -100,14 +94,10 @@ func _on_option_2_pressed():
 func _on_option_3_pressed():
 	if option3 is int:
 		upgrade_weapon(option3)
-	if option3 is Weapon:
+	else:
 		add_weapon(option3)
+		possible_weapons.erase(option3)
 	level_up_window.visible = false
 	if levels_cached > 0:
 		levels_cached -= 1
-		level_up()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		levels_cached = 0
 		level_up()

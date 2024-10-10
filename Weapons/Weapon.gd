@@ -35,6 +35,7 @@ func shoot():
 		instance.damage = profile.damage.x
 		instance.collision_shape = profile.collision_shape
 		instance.initial_velocity = player.velocity
+		instance.lifetime_override = profile.lifetime_override
 		if profile.aim_type == 0:
 			instance.direction = Vector2(0,1).rotated(spread*(i-1))
 		if profile.aim_type == 1:
@@ -48,7 +49,10 @@ func shoot():
 		if profile.aim_type == 3:
 			var dir = 0
 			instance.initial_velocity = Vector2.ZERO
-		projectile_container.add_child.call_deferred(instance)
+			if player.velocity != Vector2.ZERO:
+				projectile_container.add_child.call_deferred(instance)
+		else:
+			projectile_container.add_child.call_deferred(instance)
 
 func upgrade():
 	#spread
@@ -88,11 +92,14 @@ func upgrade():
 	unload.start()
 
 func find_closest(from : Vector2, selection : Array):
-	var closest : Vector2 = selection[0].global_position
-	for pos in selection:
-		if from.distance_to(closest) > from.distance_to(pos.global_position):
-			closest = pos.global_position
-	return closest
+	if selection.size() > 0:
+		var closest : Vector2 = selection[0].global_position
+		for pos in selection:
+			if from.distance_to(closest) > from.distance_to(pos.global_position):
+				closest = pos.global_position
+		return closest
+	else:
+		return Vector2.ZERO
 
 func _on_unload_timeout() -> void:
 	if ammo > 0:

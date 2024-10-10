@@ -29,6 +29,8 @@ class_name Weapon
 @export var speed : Vector2
 #scale of bullet
 @export var scale : Vector2
+#ovverides lifetime of projectile when > 0
+@export var lifetime_override : float
 #appearance
 @export var texture : Texture2D
 #trail

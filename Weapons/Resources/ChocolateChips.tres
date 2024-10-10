@@ -21,5 +21,6 @@ reload_time = Vector2(0.5, -0.05)
 pierce = Vector2(1, 0.2)
 speed = Vector2(55000, 1000)
 scale = Vector2(1, 0.1)
+lifetime_override = 0.0
 texture = ExtResource("1_ew6oe")
 collision_shape = SubResource("RectangleShape2D_8hvse")
