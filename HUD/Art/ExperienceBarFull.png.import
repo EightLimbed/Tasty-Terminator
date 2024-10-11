@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3rujxkrgrhfo"
-path="res://.godot/imported/ExperienceBarFull.png-6319bd5af38282275feeb57e5669201a.ctex"
+path="res://.godot/imported/ExperienceBarFull.png-849be9f37ffa2c11de968702139574bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Art/ExperienceBarFull.png"
-dest_files=["res://.godot/imported/ExperienceBarFull.png-6319bd5af38282275feeb57e5669201a.ctex"]
+source_file="res://HUD/Art/ExperienceBarFull.png"
+dest_files=["res://.godot/imported/ExperienceBarFull.png-849be9f37ffa2c11de968702139574bb.ctex"]
 
 [params]
 

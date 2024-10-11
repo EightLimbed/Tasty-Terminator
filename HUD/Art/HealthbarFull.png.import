@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckoeib04uh05t"
-path="res://.godot/imported/CookieDead.png-1b28a3ecaf16433a97aec00f14c392bf.ctex"
+uid="uid://beu622n0q0igx"
+path="res://.godot/imported/HealthbarFull.png-ac1ce758c4afd184181f653b3fdd7ceb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Art/Cookie/CookieDead.png"
-dest_files=["res://.godot/imported/CookieDead.png-1b28a3ecaf16433a97aec00f14c392bf.ctex"]
+source_file="res://HUD/Art/HealthbarFull.png"
+dest_files=["res://.godot/imported/HealthbarFull.png-ac1ce758c4afd184181f653b3fdd7ceb.ctex"]
 
 [params]
 

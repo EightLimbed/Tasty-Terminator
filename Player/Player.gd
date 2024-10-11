@@ -1,37 +1,51 @@
 extends CharacterBody2D
 
+#character profile
+var profile = preload("res://Player/Characters/Resources/Cookie.tres")
+
 #movement
 var input : Vector2
-var speed : int = 30000
-var health : int = 100
+var health : float = float(profile.max_health.x)
 var experience : int = 0
 @onready var joystick = $Joystick
 @onready var hud = $HUD
+@onready var animation = $AnimatedSprite2D
 var level : int = 0
 #temp
 
 func _ready():
-	hud.update_health(0,health,100)
+	animation.sprite_frames = profile.sprite_frames
+	hud.update_health(0,health,profile.max_health.x)
+	for i in profile.head_start:
+		hud.level_up()
+	animation.play()
 
 func _physics_process(delta: float) -> void:
+	if input.x > 0:
+		animation.flip_h = true
+	else:
+		animation.flip_h = false
+	if health < profile.max_health.x:
+		update_health(-profile.health_regen.x * delta)
 	#mobile
 	input = joystick.distance
-	#if experience > weapon1.level**2:
-		#weapon1.upgrade()
-		#experience = 0
-		#hud.update_experience(0,experience,weapon1.level**2)
 	#PC
 	#input = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
-	velocity = input*speed*delta*joystick.press
+	velocity = input*profile.speed.x*delta*joystick.press
 	move_and_slide()
 
-func update_health(damage):
+func update_health(damage : float):
 	health -= damage
-	hud.update_health(0,health,100)
+	hud.update_health(0,health,profile.max_health.x)
 
 func update_experience(increase):
-	experience += increase
-	if experience >= level**2 + 2:
+	experience += increase*profile.flavor.x
+	if experience >= level**1.5 + 2:
+		profile.max_health.x += profile.max_health.y
+		profile.health_regen.x += profile.health_regen.y
+		profile.speed.x += profile.speed.y
+		profile.hunger.x += profile.hunger.y
+		profile.flavor.x += profile.flavor.y
 		level += 1
 		experience = 0
 		hud.level_up()

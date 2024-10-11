@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4quy5d73m62h"
-path="res://.godot/imported/CookieStand.png-42801d4a9c1c90d8aec4558c188406bb.ctex"
+uid="uid://dvytqvkcigcqi"
+path="res://.godot/imported/CookieWalk-1.png-f05e4a588b8e890da2ffc99ebba8f9b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Art/Cookie/CookieStand.png"
-dest_files=["res://.godot/imported/CookieStand.png-42801d4a9c1c90d8aec4558c188406bb.ctex"]
+source_file="res://Player/Characters/Art/CookieWalk-1.png"
+dest_files=["res://.godot/imported/CookieWalk-1.png-f05e4a588b8e890da2ffc99ebba8f9b8.ctex"]
 
 [params]
 

@@ -39,12 +39,13 @@ func spawn_enemies_formation(amount):
 	pass
 
 func _on_wave_timer_timeout() -> void:
+	var difficulty = wave*player.profile.hunger.x
 	if wave**1.1+3 <= 400:
-		spawn_enemies_normal(wave**1.1+3, wave)
+		spawn_enemies_normal(wave**1.1+3, difficulty)
 		if random.randi_range(0,5) == 0:
-			spawn_enemies_strong(wave)
+			spawn_enemies_strong(difficulty)
 	else:
-		spawn_enemies_normal(400, wave)
-		spawn_enemies_strong(wave)
+		spawn_enemies_normal(400, difficulty)
+		spawn_enemies_strong(difficulty)
 	wave+= 1
 	wave_timer.start()

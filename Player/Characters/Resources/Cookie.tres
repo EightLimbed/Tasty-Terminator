@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Character" load_steps=6 format=3 uid="uid://idkpu5s4mdpu"]
+
+[ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_6ra5x"]
+[ext_resource type="Resource" uid="uid://dxajpy3cxiyps" path="res://Weapons/Resources/ChocolateChips.tres" id="2_ih4wo"]
+[ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="3_67823"]
+[ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="4_rm3ge"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eokbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_67823")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rm3ge")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_6ra5x")
+sprite_frames = SubResource("SpriteFrames_eokbm")
+starting_weapon = ExtResource("2_ih4wo")
+head_start = 100
+max_health = Vector2i(100, 5)
+health_regen = Vector2(10, 0.5)
+speed = Vector2i(30000, 0)
+hunger = Vector2(1, 0)
+flavor = Vector2(1.5, 0)

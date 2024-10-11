@@ -2,13 +2,14 @@ extends CanvasLayer
 
 @onready var health_bar = $Healthbar
 @onready var experience_bar = $Experiencebar
+@onready var level_display = $LevelDisplay
 #add weapon children
 @onready var weapon_scene = preload("res://Weapons/Weapon.tscn")
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var weapon_container = player.get_node("WeaponContainer")
 @onready var level_up_window = $Levelup
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -21,12 +22,13 @@ var option3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_weapon(possible_weapons[0])
-	possible_weapons.erase(possible_weapons[0])
+	possible_weapons.erase(player.profile.starting_weapon)
+	level_display.text = "Level " + str(player.level+1)
 	level_up_window.visible = false
 
 #say "new" above new weapon, have overlay on it, and give description when hovered. everything else will be "upgrade to [level] and show what stats are, and what increases when hovered." Both will have picture of weapon
 func level_up():
+	level_display.text = "Level " + str(player.level+1)
 	if level_up_window.visible:
 		levels_cached += 1
 	else:
@@ -36,7 +38,7 @@ func level_up():
 			option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			option3 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 		else:
-			if weapon_container.get_child_count() < max_weapons and random.randi_range(0,2) == 0:
+			if weapon_container.get_child_count() < max_weapons and random.randi_range(0,2) == 0 and possible_weapons.size()>0:
 				option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			else:
 				option1 = random.randi_range(0, weapon_container.get_child_count()-1)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=8 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
-[ext_resource type="Texture2D" uid="uid://c4quy5d73m62h" path="res://Player/Art/Cookie/CookieStand.png" id="2_daiug"]
+[ext_resource type="PackedScene" uid="uid://n6s6q7am74l5" path="res://Weapons/Weapon.tscn" id="3_7elcq"]
 [ext_resource type="PackedScene" uid="uid://cnrs76bn7y2f" path="res://HUD/Joystick/Joystick.tscn" id="3_yls5l"]
 [ext_resource type="PackedScene" uid="uid://doi3fmv48pifv" path="res://HUD/HUD.tscn" id="4_us2v5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwdok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_855um"]
 radius = 12.0
@@ -18,8 +20,8 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_tksie")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_daiug")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uwdok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_855um")
@@ -27,6 +29,8 @@ shape = SubResource("CircleShape2D_855um")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WeaponContainer" type="Node2D" parent="."]
+
+[node name="StartingWeapon" parent="WeaponContainer" instance=ExtResource("3_7elcq")]
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
