@@ -10,6 +10,7 @@ var random = RandomNumberGenerator.new()
 @onready var player = get_parent().get_parent()
 @onready var unload = $Unload
 @onready var reload = $Reload
+var level : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,6 +90,7 @@ func upgrade():
 	unload.wait_time = profile.unload_time.x
 	ammo = round(profile.ammo.x)
 	unload.start()
+	level += 1
 
 func find_closest(from : Vector2, selection : Array):
 	if selection.size() > 0:

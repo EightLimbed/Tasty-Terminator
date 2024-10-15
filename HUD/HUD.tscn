@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=11 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -7,17 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://00h3ow8yv7ji" path="res://HUD/Art/UpgradeWeapon.png" id="5_3or5x"]
 [ext_resource type="Script" path="res://HUD/LevelOption.gd" id="6_xajst"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="7_sv64g"]
+[ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amjjq"]
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_qu632"]
 font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_bl0yn"]
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_6d4f8"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_32x74")
@@ -73,9 +69,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -232.0
+offset_top = -214.0
 offset_right = 20.0
-offset_bottom = -192.0
+offset_bottom = -174.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -99,19 +95,6 @@ patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
-
-[node name="Title" type="Label" parent="Levelup/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -128.0
-offset_top = -46.0
-offset_right = 128.0
-grow_horizontal = 2
-text = "Level Up"
-label_settings = SubResource("LabelSettings_qu632")
-horizontal_alignment = 1
 
 [node name="Option1" type="TextureButton" parent="Levelup/NinePatchRect"]
 texture_filter = 1
@@ -139,7 +122,7 @@ offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0
 offset_bottom = 98.0
-label_settings = SubResource("LabelSettings_bl0yn")
+label_settings = ExtResource("8_w8bml")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -169,7 +152,7 @@ offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0
 offset_bottom = 98.0
-label_settings = SubResource("LabelSettings_bl0yn")
+label_settings = ExtResource("8_w8bml")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -200,28 +183,43 @@ offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0
 offset_bottom = 98.0
-label_settings = SubResource("LabelSettings_bl0yn")
+label_settings = ExtResource("8_w8bml")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tooltip" type="NinePatchRect" parent="Levelup/NinePatchRect"]
+[node name="LevelTooltip" type="NinePatchRect" parent="Levelup/NinePatchRect"]
 layout_mode = 0
 offset_top = 136.0
 offset_right = 288.0
-offset_bottom = 160.0
+offset_bottom = 159.0
 texture = ExtResource("2_7wn1q")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Label" type="Label" parent="Levelup/NinePatchRect/Tooltip"]
+[node name="Label" type="Label" parent="Levelup/NinePatchRect/LevelTooltip"]
 layout_mode = 0
 offset_left = 3.0
+offset_top = 1.0
 offset_right = 287.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_6d4f8")
+offset_bottom = 19.0
+label_settings = ExtResource("8_w8bml")
 autowrap_mode = 3
+
+[node name="Title" type="Label" parent="Levelup/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = -50.0
+offset_right = 145.0
+offset_bottom = -4.0
+grow_horizontal = 2
+text = "Level Up"
+label_settings = SubResource("LabelSettings_qu632")
+horizontal_alignment = 1
 
 [node name="Inventory" type="Control" parent="."]
 layout_mode = 3
@@ -239,22 +237,28 @@ grow_vertical = 0
 [node name="NinePatchRect" type="NinePatchRect" parent="Inventory"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -202.5
-offset_top = -32.0
+offset_top = -72.0
 offset_right = 202.5
-offset_bottom = 32.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("2_7wn1q")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/NinePatchRect"]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 405.0
+offset_bottom = 78.0
+alignment = 1
 
 [connection signal="pressed" from="Levelup/NinePatchRect/Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option2" to="." method="_on_option_2_pressed"]

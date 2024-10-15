@@ -8,8 +8,9 @@ extends CanvasLayer
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var weapon_container = player.get_node("WeaponContainer")
 @onready var level_up_window = $Levelup
-@onready var tooltip_label = $Levelup/NinePatchRect/Tooltip/Label
-@onready var tooltip_box = $Levelup/NinePatchRect/Tooltip
+@onready var tooltip_label = $Levelup/NinePatchRect/LevelTooltip/Label
+@onready var tooltip_box = $Levelup/NinePatchRect/LevelTooltip
+@onready var inventory = $Inventory/NinePatchRect/HBoxContainer
 var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
@@ -29,7 +30,9 @@ func _ready():
 	tooltip_box.visible = false
 
 func _process(delta: float) -> void:
+	#stuff that cant go off of existing updates
 	tooltip_box.size.y = tooltip_label.size.y+3
+	update_inventory()
 
 func level_up():
 	level_display.text = "Level " + str(player.level+1)
@@ -75,44 +78,69 @@ func upgrade_weapon(index : int):
 	var child = weapon_container.get_child(index)
 	child.upgrade()
 
-func update_tooltip(option):
-	var text = "Upgrade"
+func update_inventory():
+	for child in inventory.get_children():
+		child.queue_free()
+	for child in weapon_container.get_children():
+		var display = TextureRect.new()
+		display.texture = child.profile.display
+		display.custom_minimum_size = Vector2(72,72)
+		display.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+		var level_label = Label.new()
+		var name_label = Label.new()
+		name_label.label_settings = load("res://HUD/Name.tres")
+		name_label.custom_minimum_size = Vector2(72,72)
+		name_label.position = Vector2(0,-5)
+		name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		name_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+		name_label.text = str(child.profile.name)
+		level_label.label_settings = load("res://HUD/Name.tres")
+		level_label.custom_minimum_size = Vector2(64,64)
+		level_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		level_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		level_label.text = str(child.level+1)
+		display.add_child(level_label)
+		display.add_child(name_label)
+		inventory.add_child(display)
+
+func update_level_tooltip(option):
+	tooltip_label.text = "Upgrade"
 	tooltip_box.visible = true
 	if option is int:
 		var child = weapon_container.get_child(option)
 		if round(child.profile.damage.x + child.profile.damage.y) != round(child.profile.damage.x):
-			text += ", +" + str(round(child.profile.damage.x + child.profile.damage.y)-round(child.profile.damage.x)) + " damage"
+			tooltip_label.text += ", +" + str(round(child.profile.damage.x + child.profile.damage.y)-round(child.profile.damage.x)) + " damage"
 
 		if round(child.profile.spread.x + child.profile.spread.y) != round(child.profile.spread.x):
-			text += ", +" + str(round(child.profile.spread.x + child.profile.spread.y)-round(child.profile.spread.x)) + " spread"
+			tooltip_label.text += ", +" + str(round(child.profile.spread.x + child.profile.spread.y)-round(child.profile.spread.x)) + " spread"
 
 		if round(child.profile.multishot.x + child.profile.multishot.y) != round(child.profile.multishot.x):
-			text += ", +" + str(round(child.profile.multishot.x + child.profile.multishot.y)-round(child.profile.multishot.x)) + " multishot"
+			tooltip_label.text += ", +" + str(round(child.profile.multishot.x + child.profile.multishot.y)-round(child.profile.multishot.x)) + " multishot"
 
 		if round(child.profile.ammo.x + child.profile.ammo.y) != round(child.profile.ammo.x):
-			text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
+			tooltip_label.text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
 
 		if round(child.profile.unload_time.x + child.profile.unload_time.y) != round(child.profile.unload_time.x):
-			text += ", -" + str(-1*(round(child.profile.unload_time.x + child.profile.unload_time.y)-round(child.profile.unload_time.x))) + " unload time"
+			tooltip_label.text += ", -" + str(-1*(round(child.profile.unload_time.x + child.profile.unload_time.y)-round(child.profile.unload_time.x))) + " unload time"
 
 		if round(child.profile.reload_time.x + child.profile.reload_time.y) != round(child.profile.reload_time.x):
-			text += ", -" + str(-1*(round(child.profile.reload_time.x + child.profile.reload_time.y)-round(child.profile.reload_time.x))) + " reload time"
+			tooltip_label.text += ", -" + str(-1*(round(child.profile.reload_time.x + child.profile.reload_time.y)-round(child.profile.reload_time.x))) + " reload time"
 
 		if round(child.profile.pierce.x + child.profile.pierce.y) != round(child.profile.pierce.x):
-			text += ", +" + str(round(child.profile.pierce.x + child.profile.pierce.y)-round(child.profile.pierce.x)) + " more pierce"
+			tooltip_label.text += ", +" + str(round(child.profile.pierce.x + child.profile.pierce.y)-round(child.profile.pierce.x)) + " more pierce"
 
 		if round(child.profile.speed.x + child.profile.speed.y) != round(child.profile.speed.x):
-			text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " more speed"
+			tooltip_label.text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " faster"
 
 		if round(child.profile.scale.x + child.profile.scale.y) != round(child.profile.scale.x):
-			text += ", +" + str(round(child.profile.scale.x + child.profile.scale.y)-round(child.profile.scale.x)) + " higher scale"
-		tooltip_label.text = text
+			tooltip_label.text += ", +" + str(round(child.profile.scale.x + child.profile.scale.y)-round(child.profile.scale.x)) + " size"
+
 	else:
 		tooltip_label.text = option.description
 
 func _on_option_1_pressed():
 	if option1_button.scale == Vector2(1,1):
-		update_tooltip(option1)
+		update_level_tooltip(option1)
 		option1_button.scale = Vector2(1.2,1.2)
 		option2_button.scale = Vector2(1,1)
 		option3_button.scale = Vector2(1,1)
@@ -133,7 +161,7 @@ func _on_option_1_pressed():
 
 func _on_option_2_pressed():
 	if option2_button.scale == Vector2(1,1):
-		update_tooltip(option2)
+		update_level_tooltip(option2)
 		option1_button.scale = Vector2(1,1)
 		option2_button.scale = Vector2(1.2,1.2)
 		option3_button.scale = Vector2(1,1)
@@ -154,7 +182,7 @@ func _on_option_2_pressed():
 
 func _on_option_3_pressed():
 	if option3_button.scale == Vector2(1,1):
-		update_tooltip(option3)
+		update_level_tooltip(option3)
 		option1_button.scale = Vector2(1,1)
 		option2_button.scale = Vector2(1,1)
 		option3_button.scale = Vector2(1.2,1.2)
