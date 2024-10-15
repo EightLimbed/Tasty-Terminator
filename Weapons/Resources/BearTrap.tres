@@ -11,6 +11,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_cu0f2")
 name = "Bear Trap"
 display = ExtResource("1_d72eu")
+description = "Leaves gummy bear traps behind you."
 aim_type = 3
 spread = Vector2(5, 0)
 multishot = Vector2(5, 1)

@@ -11,6 +11,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_nc1db")
 name = "Cookie"
 display = ExtResource("1_r6vpx")
+description = "Quickly fires choclate chips towards the nearest enemy"
 aim_type = 2
 spread = Vector2(5, 1)
 multishot = Vector2(1, 0.1)

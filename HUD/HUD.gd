@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var weapon_container = player.get_node("WeaponContainer")
 @onready var level_up_window = $Levelup
+@onready var tooltip_label = $Levelup/NinePatchRect/Tooltip/Label
+@onready var tooltip_box = $Levelup/NinePatchRect/Tooltip
 var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
@@ -20,13 +22,15 @@ var option1
 var option2
 var option3
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	possible_weapons.erase(player.profile.starting_weapon)
 	level_display.text = "Level " + str(player.level+1)
 	level_up_window.visible = false
+	tooltip_box.visible = false
 
-#say "new" above new weapon, have overlay on it, and give description when hovered. everything else will be "upgrade to [level] and show what stats are, and what increases when hovered." Both will have picture of weapon
+func _process(delta: float) -> void:
+	tooltip_box.size.y = tooltip_label.size.y+3
+
 func level_up():
 	level_display.text = "Level " + str(player.level+1)
 	if level_up_window.visible:
@@ -71,35 +75,100 @@ func upgrade_weapon(index : int):
 	var child = weapon_container.get_child(index)
 	child.upgrade()
 
-func _on_option_1_pressed():
-	if option1 is int:
-		upgrade_weapon(option1)
+func update_tooltip(option):
+	var text = "Upgrade"
+	tooltip_box.visible = true
+	if option is int:
+		var child = weapon_container.get_child(option)
+		if round(child.profile.damage.x + child.profile.damage.y) != round(child.profile.damage.x):
+			text += ", +" + str(round(child.profile.damage.x + child.profile.damage.y)-round(child.profile.damage.x)) + " damage"
+
+		if round(child.profile.spread.x + child.profile.spread.y) != round(child.profile.spread.x):
+			text += ", +" + str(round(child.profile.spread.x + child.profile.spread.y)-round(child.profile.spread.x)) + " spread"
+
+		if round(child.profile.multishot.x + child.profile.multishot.y) != round(child.profile.multishot.x):
+			text += ", +" + str(round(child.profile.multishot.x + child.profile.multishot.y)-round(child.profile.multishot.x)) + " multishot"
+
+		if round(child.profile.ammo.x + child.profile.ammo.y) != round(child.profile.ammo.x):
+			text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
+
+		if round(child.profile.unload_time.x + child.profile.unload_time.y) != round(child.profile.unload_time.x):
+			text += ", -" + str(-1*(round(child.profile.unload_time.x + child.profile.unload_time.y)-round(child.profile.unload_time.x))) + " unload time"
+
+		if round(child.profile.reload_time.x + child.profile.reload_time.y) != round(child.profile.reload_time.x):
+			text += ", -" + str(-1*(round(child.profile.reload_time.x + child.profile.reload_time.y)-round(child.profile.reload_time.x))) + " reload time"
+
+		if round(child.profile.pierce.x + child.profile.pierce.y) != round(child.profile.pierce.x):
+			text += ", +" + str(round(child.profile.pierce.x + child.profile.pierce.y)-round(child.profile.pierce.x)) + " more pierce"
+
+		if round(child.profile.speed.x + child.profile.speed.y) != round(child.profile.speed.x):
+			text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " more speed"
+
+		if round(child.profile.scale.x + child.profile.scale.y) != round(child.profile.scale.x):
+			text += ", +" + str(round(child.profile.scale.x + child.profile.scale.y)-round(child.profile.scale.x)) + " higher scale"
+		tooltip_label.text = text
 	else:
-		add_weapon(option1)
-		possible_weapons.erase(option1)
-	level_up_window.visible = false
-	if levels_cached > 0:
-		levels_cached -= 1
-		level_up()
+		tooltip_label.text = option.description
+
+func _on_option_1_pressed():
+	if option1_button.scale == Vector2(1,1):
+		update_tooltip(option1)
+		option1_button.scale = Vector2(1.2,1.2)
+		option2_button.scale = Vector2(1,1)
+		option3_button.scale = Vector2(1,1)
+	else:
+		option1_button.scale = Vector2(1,1)
+		option2_button.scale = Vector2(1,1)
+		option3_button.scale = Vector2(1,1)
+		tooltip_box.visible = false
+		if option1 is int:
+			upgrade_weapon(option1)
+		else:
+			add_weapon(option1)
+			possible_weapons.erase(option1)
+		level_up_window.visible = false
+		if levels_cached > 0:
+			levels_cached -= 1
+			level_up()
 
 func _on_option_2_pressed():
-	if option2 is int:
-		upgrade_weapon(option2)
+	if option2_button.scale == Vector2(1,1):
+		update_tooltip(option2)
+		option1_button.scale = Vector2(1,1)
+		option2_button.scale = Vector2(1.2,1.2)
+		option3_button.scale = Vector2(1,1)
 	else:
-		add_weapon(option2)
-		possible_weapons.erase(option2)
-	level_up_window.visible = false
-	if levels_cached > 0:
-		levels_cached -= 1
-		level_up()
+		option1_button.scale = Vector2(1,1)
+		option2_button.scale = Vector2(1,1)
+		option3_button.scale = Vector2(1,1)
+		tooltip_box.visible = false
+		if option2 is int:
+			upgrade_weapon(option2)
+		else:
+			add_weapon(option2)
+			possible_weapons.erase(option2)
+		level_up_window.visible = false
+		if levels_cached > 0:
+			levels_cached -= 1
+			level_up()
 
 func _on_option_3_pressed():
-	if option3 is int:
-		upgrade_weapon(option3)
+	if option3_button.scale == Vector2(1,1):
+		update_tooltip(option3)
+		option1_button.scale = Vector2(1,1)
+		option2_button.scale = Vector2(1,1)
+		option3_button.scale = Vector2(1.2,1.2)
 	else:
-		add_weapon(option3)
-		possible_weapons.erase(option3)
-	level_up_window.visible = false
-	if levels_cached > 0:
-		levels_cached -= 1
-		level_up()
+		option1_button.scale = Vector2(1,1)
+		option2_button.scale = Vector2(1,1)
+		option3_button.scale = Vector2(1,1)
+		tooltip_box.visible = false
+		if option3 is int:
+			upgrade_weapon(option3)
+		else:
+			add_weapon(option3)
+			possible_weapons.erase(option3)
+		level_up_window.visible = false
+		if levels_cached > 0:
+			levels_cached -= 1
+			level_up()

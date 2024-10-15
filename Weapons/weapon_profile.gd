@@ -5,7 +5,7 @@ class_name Weapon
 #load profiles to weapons
 @export var name : String
 @export var display : Texture2D
-
+@export var description : String
 
 #stats, left is starting, right is increase every level
 

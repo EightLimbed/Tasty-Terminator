@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=12 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -16,6 +16,8 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_bl0yn"]
 font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_6d4f8"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_32x74")
@@ -118,6 +120,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 80.0
 offset_bottom = 112.0
+pivot_offset = Vector2(32, 48)
 texture_normal = ExtResource("5_3or5x")
 stretch_mode = 4
 script = ExtResource("6_xajst")
@@ -147,6 +150,7 @@ offset_left = 112.0
 offset_top = 16.0
 offset_right = 176.0
 offset_bottom = 112.0
+pivot_offset = Vector2(32, 48)
 texture_normal = ExtResource("5_3or5x")
 stretch_mode = 4
 script = ExtResource("6_xajst")
@@ -176,6 +180,7 @@ offset_left = 212.0
 offset_top = 16.0
 offset_right = 276.0
 offset_bottom = 112.0
+pivot_offset = Vector2(32, 48)
 texture_normal = ExtResource("5_3or5x")
 stretch_mode = 4
 script = ExtResource("6_xajst")
@@ -198,6 +203,25 @@ offset_bottom = 98.0
 label_settings = SubResource("LabelSettings_bl0yn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tooltip" type="NinePatchRect" parent="Levelup/NinePatchRect"]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 288.0
+offset_bottom = 160.0
+texture = ExtResource("2_7wn1q")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="Levelup/NinePatchRect/Tooltip"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 287.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_6d4f8")
+autowrap_mode = 3
 
 [node name="Inventory" type="Control" parent="."]
 layout_mode = 3
