@@ -82,12 +82,13 @@ func generate_buildings(pos : Vector2i, size : Vector2i):
 						if not building_cache.has(updated_pos+directions[3]):
 							atlas.y -=1 
 						
-						buildings.set_cell(updated_pos, 0, atlas)
-						if atlas.y == 1:
+						buildings.set_cell(updated_pos+ Vector2i(0,-1), 0, atlas)
+						if atlas.x == 1:
 							if roads_cache.has(updated_pos + directions[0]) or roads_cache.has(updated_pos + directions[1]):
-								#buildings.set_cell(updated_pos, -1, atlas)
-								pass
-						if atlas.x ==1:
-							if roads_cache.has(updated_pos + directions[2]) or roads_cache.has(updated_pos + directions[3]):
-								#buildings.set_cell(updated_pos, -1, atlas)
-								pass
+								buildings.set_cell(updated_pos+ Vector2i(0,-1), -1, atlas)
+						
+						if atlas.y ==1:
+							
+								if roads_cache.has(updated_pos + directions[2]) or roads_cache.has(updated_pos + directions[3]):
+									buildings.set_cell(updated_pos+ Vector2i(0,-1), -1, atlas)
+							
