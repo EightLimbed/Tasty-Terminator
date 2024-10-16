@@ -1,7 +1,5 @@
 extends Node2D
 
-var profile : World
-
 var roads_cache : Array = []
 
 var random = RandomNumberGenerator.new()
@@ -9,9 +7,7 @@ var noise = FastNoiseLite.new()
 @onready var roads = $Roads
 @onready var buildings = $Buildings
 
-func _ready():
-	if not profile:
-		profile = load("res://World/Resources/NewYork.tres")
+func update_profile(profile : World):
 	roads.tile_set = profile.tileset
 	noise.frequency = profile.road_frequency
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR

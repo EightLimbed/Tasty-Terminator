@@ -10,6 +10,7 @@ var experience : int = 0
 @onready var joystick = $Joystick
 @onready var hud = $HUD
 @onready var animation = $AnimatedSprite2D
+@onready var face = $Face
 var level : int = 0
 #temp
 
@@ -23,10 +24,18 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if input.x > 0:
 		animation.flip_h = true
+		face.flip_h = true
 	else:
 		animation.flip_h = false
+		face.flip_h = false
 	if health < profile.max_health.x:
 		update_health(-profile.health_regen.x * delta)
+	if  health <= 0:
+		face.frame = 2
+	elif health < profile.max_health.x/2:
+		face.frame = 1
+	else:
+		face.frame = 0
 	#mobile
 	input = joystick.distance
 	#PC

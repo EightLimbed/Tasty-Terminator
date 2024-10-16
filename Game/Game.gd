@@ -11,7 +11,7 @@ var world_profile : World
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	world.profile = world_profile
+	world.update_profile(world_profile)
 	spawn_enemies_normal(2, wave)
 
 func _process(_delta: float):
@@ -40,12 +40,12 @@ func spawn_enemies_formation(amount):
 
 func _on_wave_timer_timeout() -> void:
 	var difficulty = wave*player.profile.hunger.x
-	if wave**1.1+3 <= 400:
+	if wave**1.5+3 <= 800:
 		spawn_enemies_normal(wave**1.1+3, difficulty)
 		if random.randi_range(0,5) == 0:
 			spawn_enemies_strong(difficulty)
 	else:
-		spawn_enemies_normal(400, difficulty)
-		spawn_enemies_strong(difficulty)
+		spawn_enemies_normal(800, difficulty*1.1)
+		spawn_enemies_strong(difficulty*1.1)
 	wave+= 1
 	wave_timer.start()

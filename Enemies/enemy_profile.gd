@@ -7,5 +7,6 @@ class_name Enemy
 @export var speed : int
 @export var melee_damage : int
 @export var experience_drop : int
+@export var hitbox : Shape2D
 #set to 0 for no ranged attack
 @export var ranged_damage : int

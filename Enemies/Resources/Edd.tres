@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=5 format=3 uid="uid://chemtbmxj513n"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://chemtbmxj513n"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_fl54v"]
 [ext_resource type="Texture2D" uid="uid://dp7wyoauj0v37" path="res://Enemies/Art/ed/ed-0.png" id="1_p3qef"]
@@ -18,6 +18,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojw8c"]
+size = Vector2(32, 32)
+
 [resource]
 script = ExtResource("1_fl54v")
 frames = SubResource("SpriteFrames_ki7hf")
@@ -25,4 +28,5 @@ health = 80
 speed = 10000
 melee_damage = 15
 experience_drop = 3
+hitbox = SubResource("RectangleShape2D_ojw8c")
 ranged_damage = 0

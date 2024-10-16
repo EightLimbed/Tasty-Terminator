@@ -5,7 +5,8 @@ extends CanvasLayer
 @onready var level_display = $LevelDisplay
 #add weapon children
 @onready var weapon_scene = preload("res://Weapons/Weapon.tscn")
-@onready var player = get_tree().get_root().get_node("Game").get_node("Player")
+@onready var game = get_tree().get_root().get_node("Game")
+@onready var player = game.get_node("Player")
 @onready var weapon_container = player.get_node("WeaponContainer")
 @onready var level_up_window = $Levelup
 @onready var tooltip_label = $Levelup/NinePatchRect/LevelTooltip/Label
@@ -25,12 +26,12 @@ var option3
 
 func _ready():
 	possible_weapons.erase(player.profile.starting_weapon)
-	level_display.text = "Level " + str(player.level+1)
 	level_up_window.visible = false
 	tooltip_box.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#stuff that cant go off of existing updates
+	level_display.text = "Level " + str(player.level+1) + ", Wave " + str(game.wave)
 	tooltip_box.size.y = tooltip_label.size.y+3
 	update_inventory()
 

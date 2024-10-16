@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var animation = $AnimatedSprite2D
+@onready var hitbox = $Area2D/CollisionShape2D
 var profile : Enemy
 var health : int
 var death = preload("res://Enemies/DeathEffect.tscn")
@@ -16,6 +17,7 @@ func _ready():
 	#profile = load("res://Enemies/Resources/Default.tres")
 	health = round(profile.health*difficulty)
 	animation.sprite_frames = profile.frames
+	hitbox.shape = profile.hitbox
 	if difficulty > 10.0:
 		scale *= 2
 	animation.play()

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Character" load_steps=5 format=3 uid="uid://bkwvqhh78jk3f"]
+
+[ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_1ospb"]
+[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/TownRoad.png" id="2_bds0n"]
+[ext_resource type="Resource" uid="uid://b2i4um2wn8wr4" path="res://Weapons/Resources/BearTrap.tres" id="2_iqiq8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eokbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bds0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bds0n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_1ospb")
+sprite_frames = SubResource("SpriteFrames_eokbm")
+starting_weapon = ExtResource("2_iqiq8")
+head_start = 1
+max_health = Vector2i(200, 5)
+health_regen = Vector2(4, 0.2)
+speed = Vector2i(15000, 0)
+hunger = Vector2(1.5, 0)
+flavor = Vector2(0.5, 0.1)
