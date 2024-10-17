@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://c3cxyaeocwgvj"]
+
+[ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="1_jaa4q"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="2_d84at"]
+[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="3_xgp8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
+size = Vector2(8, 8)
+
+[resource]
+script = ExtResource("2_d84at")
+name = "Radial"
+display = ExtResource("1_jaa4q")
+description = "skibbidy"
+aim_type = 0
+spread = Vector2(360, 0)
+multishot = Vector2(8, 2)
+damage = Vector2(10, 1)
+ammo = Vector2(3, 0)
+unload_time = Vector2(0.2, 0)
+reload_time = Vector2(0.3, 0)
+pierce = Vector2(1, 0.2)
+speed = Vector2(55000, 1000)
+scale = Vector2(1, 0.1)
+lifetime_override = 0.0
+texture = ExtResource("3_xgp8v")
+collision_shape = SubResource("RectangleShape2D_8hvse")

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="World" load_steps=9 format=3 uid="uid://brlpdpyxwrob1"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_3rkm6"]
+[ext_resource type="Resource" uid="uid://78fr3evm7s8r" path="res://Enemies/Resources/Default.tres" id="2_40nt1"]
+[ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_h7xvx"]
+[ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_h8te5"]
+[ext_resource type="Script" path="res://World/world_profile.gd" id="5_es17m"]
+[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/TownRoad.png" id="6_5y7fv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6qvj"]
+texture = ExtResource("6_5y7fv")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lavpr"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_c6qvj")
+
+[resource]
+script = ExtResource("5_es17m")
+tileset = SubResource("TileSet_lavpr")
+road_frequency = 0.006
+building_height = 0
+shuffle_top = false
+shuffle_middle = false
+shuffle_bottom = false
+possible_enemies = Array[ExtResource("1_3rkm6")]([ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("3_h7xvx"), ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("4_h8te5")])
