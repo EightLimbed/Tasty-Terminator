@@ -12,8 +12,9 @@ extends CanvasLayer
 @onready var tooltip_label = $Levelup/NinePatchRect/LevelTooltip/Label
 @onready var tooltip_box = $Levelup/NinePatchRect/LevelTooltip
 @onready var inventory = $Inventory/NinePatchRect/HBoxContainer
+@onready var autolevel_display = $Autolevel
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -25,7 +26,7 @@ var option2
 var option3
 
 func _ready():
-	possible_weapons.erase(player.profile.starting_weapon)
+	autolevel_display.visible = false
 	level_up_window.visible = false
 	tooltip_box.visible = false
 
@@ -36,29 +37,34 @@ func _process(_delta: float) -> void:
 	update_inventory()
 
 func level_up():
-	level_display.text = "Level " + str(player.level+1)
-	if level_up_window.visible:
-		levels_cached += 1
-	else:
-		level_up_window.visible = true
-		if weapon_container.get_child_count() < 2 and possible_weapons.size() > 1:
-			option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
-			option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
-			option3 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
+	if player.level < 10 or levels_cached > 0:
+		autolevel_display.visible = false
+		level_display.text = "Level " + str(player.level+1)
+		if level_up_window.visible:
+			levels_cached += 1
 		else:
-			if weapon_container.get_child_count() < max_weapons and random.randi_range(0,2) == 0 and possible_weapons.size()>0:
+			level_up_window.visible = true
+			if player.level - levels_cached == 1 and possible_weapons.size() >= 1:
 				option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
+				option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
+				option3 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 			else:
-				option1 = random.randi_range(0, weapon_container.get_child_count()-1)
-			option2 = random.randi_range(0, weapon_container.get_child_count()-1)
-			option3 = random.randi_range(0, weapon_container.get_child_count()-1)
-		option1_button.update_texture(option1)
-		option2_button.update_texture(option2)
-		option3_button.update_texture(option3)
-	if levels_cached > 0:
-		levels_display.text = str(levels_cached+1) + " Level Ups"
+				if weapon_container.get_child_count() < max_weapons and random.randi_range(0,2) == 0 and possible_weapons.size()>0:
+					option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
+				else:
+					option1 = random.randi_range(0, weapon_container.get_child_count()-1)
+				option2 = random.randi_range(0, weapon_container.get_child_count()-1)
+				option3 = random.randi_range(0, weapon_container.get_child_count()-1)
+			option1_button.update_texture(option1)
+			option2_button.update_texture(option2)
+			option3_button.update_texture(option3)
+		if levels_cached > 0:
+			levels_display.text = str(levels_cached+1) + " Level Ups"
+		else:
+			levels_display.text = "Level Up"
 	else:
-		levels_display.text = "Level Up"
+		autolevel_display.visible = true
+		upgrade_weapon(random.randi_range(0, weapon_container.get_child_count()-1))
 
 func update_health(minim,value,maxim):
 	health_bar.min_value = minim

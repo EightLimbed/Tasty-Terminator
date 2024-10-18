@@ -1,26 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvcjedeo54fs0"]
+[gd_scene load_steps=2 format=3 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
-[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/TownRoad.png" id="2_vbeli"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ays70"]
-texture = ExtResource("2_vbeli")
-texture_region_size = Vector2i(72, 72)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_p5f8y"]
-tile_size = Vector2i(72, 72)
-sources/0 = SubResource("TileSetAtlasSource_ays70")
 
 [node name="World" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_tvg2w")
 
+[node name="Obstacles" type="TileMapLayer" parent="."]
+
 [node name="Roads" type="TileMapLayer" parent="."]
 z_index = -2
-tile_set = SubResource("TileSet_p5f8y")
 
-[node name="Buildings" type="TileMapLayer" parent="."]
+[node name="Ground" type="TileMapLayer" parent="."]
+z_index = -100

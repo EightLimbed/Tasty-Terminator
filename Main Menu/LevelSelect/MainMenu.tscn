@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlsxkapbmu8a5"]
+
+[ext_resource type="Script" path="res://Main Menu/LevelSelect/MainMenu.gd" id="1_geu8k"]
+[ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7v2bj"]
+font_size = 64
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_geu8k")
+
+[node name="LevelSelect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -24.0
+offset_right = 128.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.5
+offset_right = 202.5
+offset_bottom = 96.0
+grow_horizontal = 2
+text = "Level Select"
+label_settings = SubResource("LabelSettings_7v2bj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="NinePatchRect" parent="LevelSelect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 608.0
+offset_right = 385.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_6as2u")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="LevelSelect/Description"]
+layout_mode = 0
+offset_left = 182.5
+offset_top = 32.0
+offset_right = 222.5
+offset_bottom = 55.0
+
+[node name="TempStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 219.0
+offset_right = 218.0
+offset_bottom = 283.0
+text = "Start
+"
+
+[node name="TempRight" type="Button" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 173.0
+offset_right = 261.0
+offset_bottom = 204.0
+text = "Change Character"
+
+[connection signal="pressed" from="TempStart" to="." method="_on_temp_start_pressed"]
+[connection signal="pressed" from="TempRight" to="." method="_on_temp_right_pressed"]

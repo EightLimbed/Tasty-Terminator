@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=14 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="2_sbuvf"]
@@ -27,6 +27,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_0d6vo"]
+offsets = PackedFloat32Array(0.55, 0.73)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1mwr"]
+gradient = SubResource("Gradient_0d6vo")
+width = 48
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_855um"]
 radius = 12.0
 
@@ -45,6 +57,12 @@ sprite_frames = SubResource("SpriteFrames_uwdok")
 
 [node name="Face" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5fv6r")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+z_index = -1
+position = Vector2(0, 12)
+texture = SubResource("GradientTexture2D_x1mwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_855um")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=12 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
 [ext_resource type="Texture2D" uid="uid://beu622n0q0igx" path="res://HUD/Art/HealthbarFull.png" id="3_a3f6f"]
 [ext_resource type="Texture2D" uid="uid://3rujxkrgrhfo" path="res://HUD/Art/ExperienceBarFull.png" id="4_1x6n8"]
 [ext_resource type="Texture2D" uid="uid://00h3ow8yv7ji" path="res://HUD/Art/UpgradeWeapon.png" id="5_3or5x"]
+[ext_resource type="Texture2D" uid="uid://ru4lid6uuk2m" path="res://HUD/Art/Autolevel.png" id="5_x65on"]
 [ext_resource type="Script" path="res://HUD/LevelOption.gd" id="6_xajst"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="7_sv64g"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
@@ -32,21 +33,6 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("4_1x6n8")
 
-[node name="LevelDisplay" type="Label" parent="."]
-texture_filter = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -68.5
-offset_top = 16.0
-offset_right = 151.5
-offset_bottom = 36.0
-grow_horizontal = 2
-text = "Level 69
-"
-label_settings = SubResource("LabelSettings_amjjq")
-clip_text = true
-
 [node name="Healthbar" type="TextureProgressBar" parent="."]
 texture_filter = 1
 offset_left = 3.0
@@ -60,6 +46,28 @@ stretch_margin_right = 3
 stretch_margin_bottom = 3
 texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("3_a3f6f")
+
+[node name="LevelDisplay" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -68.5
+offset_top = 16.0
+offset_right = 151.5
+offset_bottom = 36.0
+grow_horizontal = 2
+text = "Level 420, Wave 69"
+label_settings = SubResource("LabelSettings_amjjq")
+clip_text = true
+
+[node name="Autolevel" type="TextureRect" parent="."]
+texture_filter = 1
+offset_top = 35.0
+offset_right = 38.0
+offset_bottom = 61.0
+texture = ExtResource("5_x65on")
+stretch_mode = 3
 
 [node name="Levelup" type="Control" parent="."]
 layout_mode = 3

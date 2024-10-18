@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ihluxn5xw5i"
-path="res://.godot/imported/TownRoad.png-f87dfdb81505ec2853da80f8d47b2440.ctex"
+path="res://.godot/imported/TownRoad.png-bb827688659dadb97e150f73d9089c67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/TownRoad.png"
-dest_files=["res://.godot/imported/TownRoad.png-f87dfdb81505ec2853da80f8d47b2440.ctex"]
+source_file="res://World/Art/TownRoad.png"
+dest_files=["res://.godot/imported/TownRoad.png-bb827688659dadb97e150f73d9089c67.ctex"]
 
 [params]
 

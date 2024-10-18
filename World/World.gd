@@ -4,11 +4,14 @@ var roads_cache : Array = []
 
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
+@onready var ground = $Ground
 @onready var roads = $Roads
-@onready var buildings = $Buildings
+@onready var obstacles = $Obstacles
 
 func update_profile(profile : World):
+	ground.tile_set = profile.tileset
 	roads.tile_set = profile.tileset
+	obstacles.tile_set = profile.tileset
 	noise.frequency = profile.road_frequency
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR
 	noise.cellular_jitter = 0
@@ -23,12 +26,15 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 	for x in size.x:
 		for y in size.y:
 			var updated_pos = roads.local_to_map(pos)-size/2+Vector2i(x,y)
+			#roads
 			var alt : int = round(noise.get_noise_2dv(updated_pos)*10)
+			random.seed = hash(updated_pos)
+			ground.set_cell(updated_pos, 1, Vector2i(random.randi_range(0,2), random.randi_range(0,2)))
 			var surrounding : Array[int] = [round(noise.get_noise_2dv(updated_pos+Vector2i(1,1))*10), 
 											round(noise.get_noise_2dv(updated_pos+Vector2i(-1,1))*10), 
 											round(noise.get_noise_2dv(updated_pos+Vector2i(1,-1))*10), 
 											round(noise.get_noise_2dv(updated_pos+Vector2i(-1,-1))*10)]
-			#autotile
+			#autotile roads
 			if surrounding[0] != alt or surrounding[1] != alt or surrounding[2] != alt or surrounding[3] != alt:
 				var atlas = Vector2i(1,1)
 				if not roads_cache.has(updated_pos+Vector2i(1,0)):

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #character profile
-var profile = preload("res://Player/Characters/Resources/Cookie.tres")
+var profile = preload("res://Player/Characters/Resources/GummyBear.tres")
 
 #movement
 var input : Vector2
@@ -11,10 +11,14 @@ var experience : int = 0
 @onready var hud = $HUD
 @onready var animation = $AnimatedSprite2D
 @onready var face = $Face
+@onready var starting_weapon = $WeaponContainer/StartingWeapon
 var level : int = 0
 #temp
 
-func _ready():
+func start(character_profile):
+	profile = character_profile
+	starting_weapon.profile = profile.starting_weapon
+	hud.possible_weapons.erase(profile.starting_weapon)
 	animation.sprite_frames = profile.sprite_frames
 	hud.update_health(0,health,profile.max_health.x)
 	for i in profile.head_start:

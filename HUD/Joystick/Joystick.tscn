@@ -8,6 +8,7 @@
 radius = 64.0
 
 [node name="Joystick" type="TouchScreenButton"]
+z_index = 100
 texture_filter = 1
 texture_normal = ExtResource("1_b6bk4")
 shape = SubResource("CircleShape2D_1ya6i")
@@ -15,6 +16,7 @@ script = ExtResource("1_i8p71")
 
 [node name="Knob" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.392157)
+z_index = 100
 position = Vector2(64, 64)
 texture = ExtResource("3_y5pfh")
 
