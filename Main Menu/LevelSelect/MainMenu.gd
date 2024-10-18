@@ -1,12 +1,19 @@
 extends Control
 
 @onready var game = preload("res://Game/Game.tscn").instantiate()
+@onready var character_display = $VBoxContainer/CharacterSelect/Display
+@onready var character_description = $VBoxContainer/CharacterDescription
+@onready var character_description_label = $VBoxContainer/CharacterDescription/Label
+@onready var character_name = $VBoxContainer/CharacterSelect/Display/Name
 var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/GummyBear.tres")]
 var c_index : int = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	character_display.play()
+
+#things that cannot be called by updates
 func _process(_delta: float) -> void:
-	pass
+	character_description.custom_minimum_size.y = character_description_label.size.y
 
 func select_town():
 	game.world_profile = load("res://World/Resources/Rural.tres")
@@ -21,13 +28,20 @@ func character_left():
 		c_index += 1
 	else:
 		c_index = 0
+	character_display.sprite_frames = characters[c_index].sprite_frames
+	character_name.text = characters[c_index].name
+	character_description_label.text = characters[c_index].description
+	character_display.play()
 
 func character_right():
 	if 0 < c_index:
 		c_index -= 1
 	else:
 		c_index = characters.size()-1
-
+	character_display.sprite_frames = characters[c_index].sprite_frames
+	character_name.text = characters[c_index].name
+	character_description_label.text = characters[c_index].description
+	character_display.play()
 
 func _on_temp_start_pressed() -> void:
 	game.character_profile = characters[c_index]
@@ -35,6 +49,14 @@ func _on_temp_start_pressed() -> void:
 	get_tree().root.add_child(game)
 	queue_free()
 
+func _on_temp_left_character_pressed():
+	character_left()
 
-func _on_temp_right_pressed() -> void:
+func _on_temp_right_character_pressed():
 	character_right()
+
+func _on_face_toggled(toggled_on):
+	if toggled_on:
+		character_description.visible = true
+	else:
+		character_description.visible = false

@@ -35,5 +35,7 @@ class_name Weapon
 @export var texture : Texture2D
 #trail
 @export var trail : ParticleProcessMaterial
+
+#@export var sound
 #size of bullet hitbox
 @export var collision_shape : Shape2D

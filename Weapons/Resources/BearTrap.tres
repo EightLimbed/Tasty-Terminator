@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://b2i4um2wn8wr4"]
 
-[ext_resource type="Texture2D" uid="uid://dquqqjsen23cn" path="res://Weapons/Art/GummyBearTrap.png" id="1_cft25"]
+[ext_resource type="Texture2D" uid="uid://jqlomtrlh3c2" path="res://Weapons/Art/GummyBearTrap.png" id="1_cft25"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_cu0f2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
@@ -16,11 +16,11 @@ spread = Vector2(5, 0)
 multishot = Vector2(1, 0)
 damage = Vector2(40, 5)
 ammo = Vector2(1, 0)
-unload_time = Vector2(0.2, -0.01)
-reload_time = Vector2(0.2, -0.01)
+unload_time = Vector2(0.2, -0.005)
+reload_time = Vector2(0.2, -0.005)
 pierce = Vector2(1, 0.5)
 speed = Vector2(1, 0)
-scale = Vector2(1, 0.05)
+scale = Vector2(1, 0.03)
 lifetime_override = 0.0
 texture = ExtResource("1_cft25")
 collision_shape = SubResource("RectangleShape2D_8hvse")
