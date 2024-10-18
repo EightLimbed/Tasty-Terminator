@@ -15,6 +15,7 @@ var lifetime_override : float = 0
 @onready var label = $Label
 
 func _ready() -> void:
+	
 	if lifetime_override > 0:
 		lifetime.wait_ttime = lifetime_override
 	else:

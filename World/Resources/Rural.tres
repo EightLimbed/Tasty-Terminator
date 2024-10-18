@@ -41,6 +41,8 @@ sources/1 = SubResource("TileSetAtlasSource_xcoho")
 
 [resource]
 script = ExtResource("5_2dm3i")
+name = ""
+description = ""
 tileset = SubResource("TileSet_lavpr")
 road_frequency = 0.006
 possible_enemies = Array[ExtResource("1_xl7js")]([ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("3_fxpnn"), ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("4_a2aly")])

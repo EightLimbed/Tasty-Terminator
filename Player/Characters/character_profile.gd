@@ -4,6 +4,9 @@ class_name Character
 
 #sprite frames, put stand at beginning, two walking in middle, and dead at end
 @export var sprite_frames : SpriteFrames
+#name and description
+@export var name : String
+@export var description : String
 #starting weapon
 @export var starting_weapon : Weapon
 #amount of level ups you start with

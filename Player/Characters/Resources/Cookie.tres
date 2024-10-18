@@ -22,10 +22,12 @@ animations = [{
 [resource]
 script = ExtResource("1_6ra5x")
 sprite_frames = SubResource("SpriteFrames_eokbm")
+name = "Cookie"
+description = "The original tasty terminator, fires chocolate chips. gains health and speed every level."
 starting_weapon = ExtResource("2_ih4wo")
 head_start = 0
 max_health = Vector2i(100, 2)
 health_regen = Vector2(2, 0.1)
-speed = Vector2i(12000, 0)
+speed = Vector2i(12000, 100)
 hunger = Vector2(1, 0)
 flavor = Vector2(1.5, 0)
