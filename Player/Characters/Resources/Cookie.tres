@@ -26,6 +26,6 @@ starting_weapon = ExtResource("2_ih4wo")
 head_start = 0
 max_health = Vector2i(100, 2)
 health_regen = Vector2(2, 0.1)
-speed = Vector2i(30000, 0)
+speed = Vector2i(12000, 0)
 hunger = Vector2(1, 0)
 flavor = Vector2(1.5, 0)
