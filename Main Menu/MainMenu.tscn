@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dlsxkapbmu8a5"]
 
-[ext_resource type="Script" path="res://Main Menu/LevelSelect/MainMenu.gd" id="1_geu8k"]
+[ext_resource type="Script" path="res://Main Menu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="3_dksqh"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="4_5lfsp"]

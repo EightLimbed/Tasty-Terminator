@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AchievmentsLog" load_steps=2 format=3 uid="uid://bc8xrwomtvpi7"]
+
+[ext_resource type="Script" path="res://Main Menu/Achievments/AchievmentLog.gd" id="1_o6ddm"]
+
+[resource]
+script = ExtResource("1_o6ddm")
+achievments = {
+"Reach Level 100 (Unlocks Gummy Bear)": false
+}
