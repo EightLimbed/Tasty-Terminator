@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Character" load_steps=6 format=3 uid="uid://creu8yqvdiax0"]
+
+[ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_c654e"]
+[ext_resource type="Texture2D" uid="uid://x2eyoly4qktx" path="res://Player/Characters/Art/DonutWalk-1.png" id="2_mhjia"]
+[ext_resource type="Texture2D" uid="uid://b0jq7iakl8lr7" path="res://Player/Characters/Art/DonutWalk-0.png" id="3_muydr"]
+[ext_resource type="Resource" uid="uid://bt23d0n107ukt" path="res://Weapons/Resources/Shotgun.tres" id="4_0cqud"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eokbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mhjia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_muydr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_c654e")
+sprite_frames = SubResource("SpriteFrames_eokbm")
+name = "Donut"
+description = "Powerful donut weilding the legendary GLazer"
+starting_weapon = ExtResource("4_0cqud")
+head_start = 0
+max_health = Vector2i(100, 0)
+health_regen = Vector2(4, 0)
+speed = Vector2i(15000, 100)
+hunger = Vector2(1, 0)
+flavor = Vector2(0.5, 0)

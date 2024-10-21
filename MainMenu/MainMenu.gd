@@ -7,7 +7,7 @@ extends Control
 @onready var character_name = $VBoxContainer/CharacterSelect/Display/Name
 @onready var achievement_display = $AchievmentDisplay
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
-var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
+var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/Donut.tres")]
 var c_index : int = 0
 
 func _ready() -> void:

@@ -6,14 +6,8 @@ extends Control
 @onready var player = game.get_node("Player")
 @onready var joystick = player.get_node("Joystick")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func death():
 	wave_timer.stop()
@@ -21,7 +15,6 @@ func death():
 	for child in enemy_container.get_children():
 		child.queue_free()
 	joystick.visible = false
-
 
 func _on_temp_menu_pressed():
 	get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")

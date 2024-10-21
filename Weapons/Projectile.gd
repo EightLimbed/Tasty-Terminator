@@ -17,7 +17,7 @@ var lifetime_override : float = 0
 func _ready() -> void:
 	rotation = direction.angle()
 	if lifetime_override > 0:
-		lifetime.wait_ttime = lifetime_override
+		lifetime.wait_time = lifetime_override
 	else:
 		lifetime.wait_time = min(30000.0/speed, 10)
 	texture.texture = frames

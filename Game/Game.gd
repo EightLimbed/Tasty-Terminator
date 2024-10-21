@@ -29,7 +29,7 @@ func achievments_check():
 		save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"] = true
 		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 	if wave > 100 and world_profile.name == "Rural" and not save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"] == true:
-		save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"]
+		save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"] = true
 		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 
 func spawn_enemies_normal(amount, difficulty):
@@ -50,7 +50,7 @@ func spawn_enemies_strong(difficulty):
 	instance.profile = world_profile.possible_enemies[enemy_index]
 	enemy_container.add_child.call_deferred(instance)
 
-func spawn_enemies_formation(amount):
+func spawn_enemies_formation(_amount):
 	pass
 
 func group_experience():

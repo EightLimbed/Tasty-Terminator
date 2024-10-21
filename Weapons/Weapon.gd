@@ -71,14 +71,14 @@ func upgrade():
 	profile.ammo.x += profile.ammo.y
 	#unload_time
 	profile.unload_time.x += profile.unload_time.y
-	if not profile.unload_time.x >= 0.05:
+	if not profile.unload_time.x >= 0.01:
 		profile.damage.x += 1
-		profile.unload_time.x = 0.05
+		profile.unload_time.x = 0.01
 	#reload_time
 	profile.reload_time.x += profile.reload_time.y
-	if not profile.reload_time.x >= 0.05:
+	if not profile.reload_time.x >= 0.01:
 		profile.damage.x += 2
-		profile.reload_time.x = 0.05
+		profile.reload_time.x = 0.01
 	#pierce
 	profile.pierce.x += profile.pierce.y
 	#speed
