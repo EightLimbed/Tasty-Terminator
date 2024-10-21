@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x2eyoly4qktx"
-path="res://.godot/imported/DonutWalk-1.png-9eb03b41e49cbc69b7ea268efb88578f.ctex"
+uid="uid://bvh1iof6dceof"
+path="res://.godot/imported/pixilart-drawing.png-d580eadb78f7bc524418e940d6501fcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Characters/Art/DonutWalk-1.png"
-dest_files=["res://.godot/imported/DonutWalk-1.png-9eb03b41e49cbc69b7ea268efb88578f.ctex"]
+source_file="res://World/Art/pixilart-drawing.png"
+dest_files=["res://.godot/imported/pixilart-drawing.png-d580eadb78f7bc524418e940d6501fcd.ctex"]
 
 [params]
 
