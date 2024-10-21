@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievmentsLog" load_steps=2 format=3 uid="uid://bc8xrwomtvpi7"]
+
+[ext_resource type="Script" path="res://Main Menu/Achievements/AchievementLog.gd" id="1_0l0ve"]
+
+[resource]
+script = ExtResource("1_0l0ve")
+achievements = {
+"Reach Level 100 (Unlocks Gummy Bear)": false,
+"Reach wave 100 on Rural map (Unlocks Desert map)": false
+}

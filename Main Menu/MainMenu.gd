@@ -5,15 +5,26 @@ extends Control
 @onready var character_description = $VBoxContainer/CharacterDescription
 @onready var character_description_label = $VBoxContainer/CharacterDescription/Label
 @onready var character_name = $VBoxContainer/CharacterSelect/Display/Name
-var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/GummyBear.tres")]
+@onready var achievement_display = $AchievmentDisplay
+@onready var save_file = preload("res://Main Menu/Achievements/LocalAchievements.tres")
+var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
 var c_index : int = 0
 
 func _ready() -> void:
+	achievement_display.visible = false
+	save_file.verify_save()
+	load_achievments()
 	character_display.play()
 
 #things that cannot be called by updates
 func _process(_delta: float) -> void:
 	character_description.custom_minimum_size.y = character_description_label.size.y
+
+func load_achievments():
+	if ResourceLoader.exists("user://save/AchievementLog.tres"):
+		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
+	if save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"]:
+		characters.append(load("res://Player/Characters/Resources/GummyBear.tres"))
 
 func select_town():
 	game.world_profile = load("res://World/Resources/Rural.tres")
@@ -60,3 +71,10 @@ func _on_face_toggled(toggled_on):
 		character_description.visible = true
 	else:
 		character_description.visible = false
+
+func _on_temp_achievments_pressed() -> void:
+	achievement_display.update(save_file)
+	if achievement_display.visible ==true:
+		achievement_display.visible = false
+	else:
+		achievement_display.visible = true
