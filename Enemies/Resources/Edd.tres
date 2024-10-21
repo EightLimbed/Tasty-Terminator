@@ -24,7 +24,7 @@ size = Vector2(32, 32)
 [resource]
 script = ExtResource("1_fl54v")
 frames = SubResource("SpriteFrames_ki7hf")
-health = 80
+health = 100
 speed = 4000
 melee_damage = 15
 experience_drop = 3

@@ -41,7 +41,7 @@ sources/1 = SubResource("TileSetAtlasSource_xcoho")
 
 [resource]
 script = ExtResource("5_2dm3i")
-name = ""
+name = "Rural"
 description = ""
 tileset = SubResource("TileSet_lavpr")
 road_frequency = 0.006

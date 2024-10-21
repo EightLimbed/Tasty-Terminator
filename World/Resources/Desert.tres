@@ -8,5 +8,7 @@
 
 [resource]
 script = ExtResource("5_es17m")
+name = "Desert"
+description = ""
 road_frequency = 0.006
 possible_enemies = Array[ExtResource("1_3rkm6")]([ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("3_h7xvx"), ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("4_h8te5")])

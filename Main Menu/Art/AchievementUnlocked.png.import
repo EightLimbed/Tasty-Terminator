@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbnfer518d7t"
-path="res://.godot/imported/Donut-1.png-a3f234f2360a135412e25e6b79758946.ctex"
+uid="uid://j7s73ymtvcb2"
+path="res://.godot/imported/AchievementUnlocked.png-44c2705e60051e354a1081d69a5369d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Characters/Art/pixilart-frames (6)/Donut-1.png"
-dest_files=["res://.godot/imported/Donut-1.png-a3f234f2360a135412e25e6b79758946.ctex"]
+source_file="res://Main Menu/Art/AchievementUnlocked.png"
+dest_files=["res://.godot/imported/AchievementUnlocked.png-44c2705e60051e354a1081d69a5369d8.ctex"]
 
 [params]
 

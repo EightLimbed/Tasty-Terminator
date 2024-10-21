@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wdohmrd8k0nw"
-path="res://.godot/imported/AchievmentLocked.png-d257440e78cfdd8327676c4b72194743.ctex"
+uid="uid://obr7cxt50037"
+path="res://.godot/imported/ExitButton.png-6b69e5201e4f6d4eb8a1548d6b70d0f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main Menu/Art/AchievmentLocked.png"
-dest_files=["res://.godot/imported/AchievmentLocked.png-d257440e78cfdd8327676c4b72194743.ctex"]
+source_file="res://Main Menu/Art/ExitButton.png"
+dest_files=["res://.godot/imported/ExitButton.png-6b69e5201e4f6d4eb8a1548d6b70d0f9.ctex"]
 
 [params]
 
