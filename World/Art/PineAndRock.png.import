@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yl0awecyw3nb"
-path="res://.godot/imported/pixilart-drawing.png-d580eadb78f7bc524418e940d6501fcd.ctex"
+uid="uid://cfmw25t08ap8e"
+path="res://.godot/imported/PineAndRock.png-0219d6f0907f4ee3f83f8831629b11f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Art/pixilart-drawing.png"
-dest_files=["res://.godot/imported/pixilart-drawing.png-d580eadb78f7bc524418e940d6501fcd.ctex"]
+source_file="res://World/Art/PineAndRock.png"
+dest_files=["res://.godot/imported/PineAndRock.png-0219d6f0907f4ee3f83f8831629b11f7.ctex"]
 
 [params]
 
