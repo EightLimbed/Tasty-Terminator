@@ -6,7 +6,7 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var experience_container = $ExperienceContainer
 @onready var wave_timer = $WaveTimer
-@onready var save_file = preload("res://Main Menu/Achievements/LocalAchievements.tres")
+@onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var enemy = preload("res://Enemies/Enemy.tscn")
 var random = RandomNumberGenerator.new()
 var wave : int = 1
@@ -30,6 +30,7 @@ func achievments_check():
 		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 	if wave > 100 and world_profile.name == "Rural" and not save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"] == true:
 		save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"]
+		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 
 func spawn_enemies_normal(amount, difficulty):
 	for i in amount-enemy_container.get_child_count():

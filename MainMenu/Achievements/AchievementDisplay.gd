@@ -1,8 +1,8 @@
 extends Control
 
 @onready var achievement_container = $ScrollContainer/VBoxContainer
-@onready var unlocked_texture : Texture2D = load("res://Main Menu/Art/AchievementUnlocked.png")
-@onready var locked_texture : Texture2D = load("res://Main Menu/Art/AchievementLocked.png")
+@onready var unlocked_texture : Texture2D = load("res://MainMenu/Art/AchievementUnlocked.png")
+@onready var locked_texture : Texture2D = load("res://MainMenu/Art/AchievementLocked.png")
 
 func update(save_file) -> void:
 	for child in achievement_container.get_children():

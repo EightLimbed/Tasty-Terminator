@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dlsxkapbmu8a5"]
 
-[ext_resource type="Script" path="res://Main Menu/MainMenu.gd" id="1_geu8k"]
+[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="3_dksqh"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="4_5lfsp"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="4_8g5ns"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="5_wyfeg"]
 [ext_resource type="Texture2D" uid="uid://by5xjmtqfs0bw" path="res://Player/Art/Faces/ScaredFace.png" id="6_u6a4v"]
-[ext_resource type="PackedScene" uid="uid://cjh381wkxqgma" path="res://Main Menu/Achievements/AchievementDisplay.tscn" id="8_uwlwx"]
+[ext_resource type="PackedScene" uid="uid://cjh381wkxqgma" path="res://MainMenu/Achievements/AchievementDisplay.tscn" id="8_uwlwx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7v2bj"]
 font_size = 64
@@ -212,6 +212,7 @@ offset_bottom = 713.0
 text = "Settings"
 
 [node name="AchievmentDisplay" parent="." instance=ExtResource("8_uwlwx")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/CharacterSelect/TempRightCharacter" to="." method="_on_temp_right_character_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wdohmrd8k0nw"
-path="res://.godot/imported/AchievementLocked.png-2c4601e82ffabe8d756b6961517123fe.ctex"
+uid="uid://bnwe8k7blf6kc"
+path="res://.godot/imported/LevelOptionClosed.png-c110c5e62dbac175ce160f691519c128.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main Menu/Art/AchievementLocked.png"
-dest_files=["res://.godot/imported/AchievementLocked.png-2c4601e82ffabe8d756b6961517123fe.ctex"]
+source_file="res://MainMenu/Art/LevelOptionClosed.png"
+dest_files=["res://.godot/imported/LevelOptionClosed.png-c110c5e62dbac175ce160f691519c128.ctex"]
 
 [params]
 

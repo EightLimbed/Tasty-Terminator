@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://yrcv5ae5ck0o"]
+
+[ext_resource type="Script" path="res://DeathScreen.gd" id="1_623hs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sgfej"]
+font_size = 48
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_623hs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 405.0
+offset_bottom = 67.0
+text = "You Died"
+label_settings = SubResource("LabelSettings_sgfej")
+horizontal_alignment = 1
+
+[node name="TempRevive" type="Button" parent="."]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 268.0
+offset_right = 226.0
+offset_bottom = 299.0
+text = "Revive"
+
+[node name="TempMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 323.0
+offset_right = 224.0
+offset_bottom = 354.0
+text = "Menu"
+
+[connection signal="pressed" from="TempRevive" to="." method="_on_temp_revive_pressed"]
+[connection signal="pressed" from="TempMenu" to="." method="_on_temp_menu_pressed"]

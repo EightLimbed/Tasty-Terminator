@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjh381wkxqgma"]
 
-[ext_resource type="Script" path="res://Main Menu/Achievements/AchievementDisplay.gd" id="1_ryq6v"]
+[ext_resource type="Script" path="res://MainMenu/Achievements/AchievementDisplay.gd" id="1_ryq6v"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_loxnb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_plboe"]

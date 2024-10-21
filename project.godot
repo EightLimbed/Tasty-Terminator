@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tasty Terminator"
-run/main_scene="res://Main Menu/MainMenu.tscn"
+run/main_scene="res://MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://Enemies/Art/ed/ed-0.png"

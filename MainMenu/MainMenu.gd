@@ -6,7 +6,7 @@ extends Control
 @onready var character_description_label = $VBoxContainer/CharacterDescription/Label
 @onready var character_name = $VBoxContainer/CharacterSelect/Display/Name
 @onready var achievement_display = $AchievmentDisplay
-@onready var save_file = preload("res://Main Menu/Achievements/LocalAchievements.tres")
+@onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
 var c_index : int = 0
 

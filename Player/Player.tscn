@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=15 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="2_sbuvf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cnrs76bn7y2f" path="res://HUD/Joystick/Joystick.tscn" id="3_yls5l"]
 [ext_resource type="Texture2D" uid="uid://pxx526vnf4g4" path="res://Player/Art/Faces/DeadFace.png" id="4_od4f1"]
 [ext_resource type="PackedScene" uid="uid://doi3fmv48pifv" path="res://HUD/HUD.tscn" id="4_us2v5"]
+[ext_resource type="PackedScene" uid="uid://yrcv5ae5ck0o" path="res://DeathScreen.tscn" id="8_v2vt6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uwdok"]
 
@@ -83,5 +84,7 @@ shape = SubResource("CircleShape2D_d0mw4")
 [node name="Joystick" parent="." instance=ExtResource("3_yls5l")]
 
 [node name="HUD" parent="." instance=ExtResource("4_us2v5")]
+
+[node name="DeathScreen" parent="HUD" instance=ExtResource("8_v2vt6")]
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -15,7 +15,7 @@ var lifetime_override : float = 0
 @onready var label = $Label
 
 func _ready() -> void:
-	
+	rotation = direction.angle()
 	if lifetime_override > 0:
 		lifetime.wait_ttime = lifetime_override
 	else:
