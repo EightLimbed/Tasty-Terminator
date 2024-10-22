@@ -1,26 +1,100 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://b2i4um2wn8wr4"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://b2i4um2wn8wr4"]
 
-[ext_resource type="Texture2D" uid="uid://jqlomtrlh3c2" path="res://Weapons/Art/GummyBearTrap.png" id="1_cft25"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_cu0f2"]
+[ext_resource type="Texture2D" uid="uid://jqlomtrlh3c2" path="res://Weapons/Art/GummyBearTrap1.png" id="1_fdoan"]
+[ext_resource type="Texture2D" uid="uid://cesliln3rxeov" path="res://Weapons/Art/GummyBearTrap2.png" id="2_5e60v"]
+[ext_resource type="Texture2D" uid="uid://dfxpisxqoma2r" path="res://Weapons/Art/GummyBearTrap3.png" id="3_w5nm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
-size = Vector2(8, 8)
+size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2jska"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5e60v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w5nm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w5nm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w5nm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5e60v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_fdoan")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [resource]
 script = ExtResource("1_cu0f2")
 name = "Bear Trap"
-display = ExtResource("1_cft25")
+display = ExtResource("1_fdoan")
 description = "Leaves gummy bear traps behind you."
 aim_type = 3
 spread = Vector2(5, 0)
 multishot = Vector2(1, 0)
-damage = Vector2(40, 5)
+damage = Vector2(50, 5)
 ammo = Vector2(1, 0)
-unload_time = Vector2(0.2, -0.005)
-reload_time = Vector2(0.2, -0.005)
-pierce = Vector2(1, 0.5)
+unload_time = Vector2(0.3, -0.008)
+reload_time = Vector2(0.1, 0)
+pierce = Vector2(2, 0.5)
 speed = Vector2(1, 0)
 scale = Vector2(1, 0.03)
 lifetime_override = 0.0
-texture = ExtResource("1_cft25")
+frames = SubResource("SpriteFrames_2jska")
 collision_shape = SubResource("RectangleShape2D_8hvse")
+collision_offset = Vector2(0, 0)

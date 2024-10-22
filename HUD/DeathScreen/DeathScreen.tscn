@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://yrcv5ae5ck0o"]
 
-[ext_resource type="Script" path="res://DeathScreen.gd" id="1_623hs"]
+[ext_resource type="Script" path="res://HUD/DeathScreen/DeathScreen.gd" id="1_623hs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sgfej"]
 font_size = 48
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.607843)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0

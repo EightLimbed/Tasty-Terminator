@@ -31,3 +31,4 @@ health_regen = Vector2(4, 0.2)
 speed = Vector2i(15000, 0)
 hunger = Vector2(1.5, 0)
 flavor = Vector2(0.5, 0.05)
+aroma = 64

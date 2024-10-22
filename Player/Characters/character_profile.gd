@@ -11,6 +11,8 @@ class_name Character
 @export var starting_weapon : Weapon
 #amount of level ups you start with
 @export var head_start : int
+#free revives before univeral ad revive
+@export var revivals : int
 #(flat bonus) max_health.x is starting health, max_health.y is what it goes up by every level
 @export var max_health : Vector2i
 #(flat bonus) health_regen.x is starting value, health_regen.y is increase every level
@@ -21,3 +23,5 @@ class_name Character
 @export var hunger : Vector2
 #(multiplier) flavor multiplies incoming experience, flavor.x is base value, hunger.y is increase every level
 @export var flavor : Vector2
+#experience pickup radius
+@export var aroma : int

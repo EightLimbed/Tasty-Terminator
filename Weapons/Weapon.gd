@@ -3,8 +3,8 @@ extends Node2D
 @export var profile : Weapon
 var ammo : int = 0
 
-var projectile_container : Node2D
-var enemy_container : Node2D
+@onready var projectile_container = get_tree().get_root().get_node("Game").get_node("ProjectileContainer")
+@onready var enemy_container = get_tree().get_root().get_node("Game").get_node("EnemyContainer")
 var projectile = preload("res://Weapons/Projectile.tscn")
 var random = RandomNumberGenerator.new()
 @onready var player = get_parent().get_parent()
@@ -12,13 +12,15 @@ var random = RandomNumberGenerator.new()
 @onready var reload = $Reload
 var level : int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	projectile_container = get_tree().get_root().get_node("Game").get_node("ProjectileContainer")
-	enemy_container = get_tree().get_root().get_node("Game").get_node("EnemyContainer")
+func start():
 	reload.wait_time = profile.reload_time.x
 	unload.wait_time = profile.unload_time.x
-	reload.start()
+	unload.start()
+
+func _ready() -> void:
+	reload.wait_time = profile.reload_time.x
+	unload.wait_time = profile.unload_time.x
+	unload.start()
 
 #need to add collision layers
 func shoot():
@@ -30,13 +32,14 @@ func shoot():
 		#instance.collision_layer = 4
 		instance.scale.x = profile.scale.x
 		instance.scale.y = profile.scale.x
-		instance.frames = profile.texture
+		instance.frames = profile.frames
 		instance.speed = profile.speed.x
 		instance.pierce = profile.pierce.x
 		instance.damage = profile.damage.x
 		instance.collision_shape = profile.collision_shape
 		instance.initial_velocity = player.velocity
 		instance.lifetime_override = profile.lifetime_override
+		instance.collision_offset = profile.collision_offset
 		if profile.aim_type == 0:
 			instance.direction = Vector2(0,1).rotated(spread*(i-1))
 		if profile.aim_type == 1:
@@ -45,7 +48,7 @@ func shoot():
 				dir = Vector2(0,1)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		if profile.aim_type == 2:
-			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/3)
+			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/5)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		if profile.aim_type == 3:
 			instance.initial_velocity = Vector2.ZERO

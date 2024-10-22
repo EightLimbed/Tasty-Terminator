@@ -14,7 +14,7 @@ extends CanvasLayer
 @onready var inventory = $Inventory/NinePatchRect/HBoxContainer
 @onready var autolevel_display = $Autolevel
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/GLazer.tres"), preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -37,14 +37,14 @@ func _process(_delta: float) -> void:
 	update_inventory()
 
 func level_up():
-	if player.level < 10 or levels_cached > 0:
+	if player.level < 100 or levels_cached > 0:
 		autolevel_display.visible = false
 		level_display.text = "Level " + str(player.level+1)
 		if level_up_window.visible:
 			levels_cached += 1
 		else:
 			level_up_window.visible = true
-			if player.level - levels_cached == 1 and possible_weapons.size() >= 1:
+			if player.level - levels_cached <= 1 and possible_weapons.size() >= 1:
 				option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 				option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 				option3 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]

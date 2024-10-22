@@ -1,11 +1,34 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dxajpy3cxiyps"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://dxajpy3cxiyps"]
 
-[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip.png" id="1_ew6oe"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="1_r6vpx"]
+[ext_resource type="Texture2D" uid="uid://bea3nsn8rr2dk" path="res://Weapons/Art/ChocolateChip1.png" id="2_t348f"]
+[ext_resource type="Texture2D" uid="uid://bsuwuk3txhvw6" path="res://Weapons/Art/ChocolateChip2.png" id="3_sq3hm"]
+[ext_resource type="Texture2D" uid="uid://jynha58wxck0" path="res://Weapons/Art/ChocolateChip3.png" id="4_g8ky8"]
+[ext_resource type="Texture2D" uid="uid://cbveqgsqasaga" path="res://Weapons/Art/ChocolateChip4.png" id="5_dbggd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmsbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t348f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sq3hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g8ky8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dbggd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [resource]
 script = ExtResource("1_nc1db")
@@ -23,5 +46,6 @@ pierce = Vector2(1, 0.2)
 speed = Vector2(55000, 1000)
 scale = Vector2(1, 0.05)
 lifetime_override = 0.0
-texture = ExtResource("1_ew6oe")
+frames = SubResource("SpriteFrames_gmsbx")
 collision_shape = SubResource("RectangleShape2D_8hvse")
+collision_offset = Vector2(0, 0)

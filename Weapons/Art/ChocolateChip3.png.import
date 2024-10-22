@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bea3nsn8rr2dk"
-path="res://.godot/imported/ChocolateChip.png-a31fcb974e062ce4263ab55dfb43a874.ctex"
+uid="uid://jynha58wxck0"
+path="res://.godot/imported/ChocolateChip3.png-bb2d58a37ad7e1d435175ce2dba00874.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Art/ChocolateChip.png"
-dest_files=["res://.godot/imported/ChocolateChip.png-a31fcb974e062ce4263ab55dfb43a874.ctex"]
+source_file="res://Weapons/Art/ChocolateChip3.png"
+dest_files=["res://.godot/imported/ChocolateChip3.png-bb2d58a37ad7e1d435175ce2dba00874.ctex"]
 
 [params]
 

@@ -14,18 +14,18 @@ var attacking : bool = false
 
 func _ready():
 	#profile = load("res://Enemies/Resources/Default.tres")
-	health = round(profile.health*difficulty)
+	health = round(profile.health*difficulty**1.5)
 	animation.sprite_frames = profile.frames
 	hitbox.shape = profile.hitbox
-	if difficulty > 2.0:
-		scale *= 2
+	if difficulty > 4.0:
+		scale *= min(difficulty/2,3)
 	animation.play()
 
 func _physics_process(delta):
 	if random.randi_range(0,10) == 0:
 		personality = Vector2(random.randi_range(-profile.speed,profile.speed), random.randi_range(-profile.speed,profile.speed))/2
 	if attacking:
-		player.update_health(profile.melee_damage*delta*difficulty)
+		player.update_health(profile.melee_damage*delta*difficulty**1.5)
 	velocity = (profile.speed*global_position.direction_to(player.global_position)+personality)*delta*difficulty
 	move_and_slide()
 

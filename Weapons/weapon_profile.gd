@@ -32,10 +32,11 @@ class_name Weapon
 #ovverides lifetime of projectile when > 0
 @export var lifetime_override : float
 #appearance
-@export var texture : Texture2D
+@export var frames : SpriteFrames
 #trail
 @export var trail : ParticleProcessMaterial
 
 #@export var sound
 #size of bullet hitbox
 @export var collision_shape : Shape2D
+@export var collision_offset : Vector2

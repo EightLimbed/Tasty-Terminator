@@ -1,15 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=17 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
+[ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="2_k8u5u"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="2_sbuvf"]
 [ext_resource type="PackedScene" uid="uid://n6s6q7am74l5" path="res://Weapons/Weapon.tscn" id="3_7elcq"]
 [ext_resource type="Texture2D" uid="uid://by5xjmtqfs0bw" path="res://Player/Art/Faces/ScaredFace.png" id="3_s0l8u"]
+[ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="3_sus65"]
 [ext_resource type="PackedScene" uid="uid://cnrs76bn7y2f" path="res://HUD/Joystick/Joystick.tscn" id="3_yls5l"]
 [ext_resource type="Texture2D" uid="uid://pxx526vnf4g4" path="res://Player/Art/Faces/DeadFace.png" id="4_od4f1"]
 [ext_resource type="PackedScene" uid="uid://doi3fmv48pifv" path="res://HUD/HUD.tscn" id="4_us2v5"]
-[ext_resource type="PackedScene" uid="uid://yrcv5ae5ck0o" path="res://DeathScreen.tscn" id="8_v2vt6"]
+[ext_resource type="PackedScene" uid="uid://yrcv5ae5ck0o" path="res://HUD/DeathScreen/DeathScreen.tscn" id="8_v2vt6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uwdok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k8u5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sus65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5fv6r"]
 animations = [{
@@ -40,8 +54,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_855um"]
-radius = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u302"]
+size = Vector2(16, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0mw4"]
 radius = 128.0
@@ -54,19 +68,23 @@ motion_mode = 1
 script = ExtResource("1_tksie")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_uwdok")
 
 [node name="Face" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_5fv6r")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.607843)
 z_index = -1
+y_sort_enabled = true
 position = Vector2(0, 12)
 texture = SubResource("GradientTexture2D_x1mwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_855um")
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_0u302")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

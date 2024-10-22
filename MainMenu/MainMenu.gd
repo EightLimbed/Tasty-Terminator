@@ -7,18 +7,24 @@ extends Control
 @onready var character_name = $VBoxContainer/CharacterSelect/Display/Name
 @onready var achievement_display = $AchievmentDisplay
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
+@onready var world = $World
 var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/Donut.tres")]
 var c_index : int = 0
+var maps : Array[World] = [preload("res://World/Resources/Rural.tres")]
+var m_index : int = 0
 
 func _ready() -> void:
 	achievement_display.visible = false
+	world.update_profile(maps[m_index])
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 	save_file.verify_save()
 	load_achievments()
 	character_display.play()
 
 #things that cannot be called by updates
 func _process(_delta: float) -> void:
-	character_description.custom_minimum_size.y = character_description_label.size.y
+	character_description.custom_minimum_size.y = character_description_label.size.y+3
 
 func load_achievments():
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
@@ -41,7 +47,7 @@ func character_left():
 		c_index = 0
 	character_display.sprite_frames = characters[c_index].sprite_frames
 	character_name.text = characters[c_index].name
-	character_description_label.text = characters[c_index].description
+	character_description_label.text = characters[c_index].description + " (click character again to close)"
 	character_display.play()
 
 func character_right():
@@ -51,8 +57,26 @@ func character_right():
 		c_index = characters.size()-1
 	character_display.sprite_frames = characters[c_index].sprite_frames
 	character_name.text = characters[c_index].name
-	character_description_label.text = characters[c_index].description
+	character_description_label.text = characters[c_index].description + " (click character again to close)"
 	character_display.play()
+
+func world_left():
+	if maps.size()-1 > m_index:
+		m_index += 1
+	else:
+		m_index = 0
+	world.update_profile(maps[m_index])
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
+
+func world_right():
+	if 0 < m_index:
+		m_index -= 1
+	else:
+		m_index = maps.size()-1
+	world.update_profile(maps[m_index])
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
+	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
 func _on_temp_start_pressed() -> void:
 	game.character_profile = characters[c_index]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jqlomtrlh3c2"
-path="res://.godot/imported/GummyBearTrap.png-1130cbbc937afcaaa9359dbc119b2777.ctex"
+path="res://.godot/imported/GummyBearTrap1.png-cbb263c0cd18d081343c67f7949c4481.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/Art/GummyBearTrap.png"
-dest_files=["res://.godot/imported/GummyBearTrap.png-1130cbbc937afcaaa9359dbc119b2777.ctex"]
+source_file="res://Weapons/Art/GummyBearTrap1.png"
+dest_files=["res://.godot/imported/GummyBearTrap1.png-cbb263c0cd18d081343c67f7949c4481.ctex"]
 
 [params]
 

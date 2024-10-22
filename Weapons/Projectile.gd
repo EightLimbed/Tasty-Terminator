@@ -1,27 +1,29 @@
 extends CharacterBody2D
 
-var frames : Texture2D
+var frames : SpriteFrames
 var speed : int = 15000
 var damage : int
 var pierce : int
 var direction : Vector2 = Vector2(1,0)
 var collision_shape : Shape2D
+var collision_offset : Vector2
 var initial_velocity : Vector2
 var lifetime_override : float = 0
 
 @onready var collision = $CollisionShape2D
-@onready var texture = $Sprite2D
+@onready var sprite_frames = $AnimatedSprite2D
 @onready var lifetime = $Lifetime
-@onready var label = $Label
 
 func _ready() -> void:
+	collision.position = collision_offset
 	rotation = direction.angle()
 	if lifetime_override > 0:
 		lifetime.wait_time = lifetime_override
 	else:
 		lifetime.wait_time = min(30000.0/speed, 10)
-	texture.texture = frames
+	sprite_frames.sprite_frames = frames
 	collision.shape = collision_shape
+	sprite_frames.play()
 	lifetime.start()
 
 func _physics_process(delta):

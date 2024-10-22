@@ -13,13 +13,16 @@ var experience : int = 0
 @onready var face = $Face
 @onready var starting_weapon = $WeaponContainer/StartingWeapon
 @onready var death_screen = $HUD/DeathScreen
+@onready var pickup_radius = $Hitbox/CollisionShape2D
 var level : int = 0
 #temp
 
 func start(character_profile):
 	profile = character_profile
+	pickup_radius.shape.radius = profile.aroma
 	starting_weapon.profile = profile.starting_weapon
 	hud.possible_weapons.erase(profile.starting_weapon)
+	starting_weapon.start()
 	animation.sprite_frames = profile.sprite_frames
 	hud.update_health(0,health,profile.max_health.x)
 	for i in profile.head_start:

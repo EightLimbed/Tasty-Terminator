@@ -5,11 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cvcjedeo54fs0" path="res://World/World.tscn" id="3_davef"]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_c1ugx")
 
 [node name="World" parent="." instance=ExtResource("3_davef")]
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="ExperienceContainer" type="Node2D" parent="."]
 

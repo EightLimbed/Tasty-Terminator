@@ -44,7 +44,7 @@ func spawn_enemies_normal(amount, difficulty):
 func spawn_enemies_strong(difficulty):
 	var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 	var instance = enemy.instantiate()
-	instance.difficulty = 1+(wave/25.0)
+	instance.difficulty = (1+(wave/25.0))**2
 	instance.scale = Vector2i(2,2)
 	instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 	instance.profile = world_profile.possible_enemies[enemy_index]

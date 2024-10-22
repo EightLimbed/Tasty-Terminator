@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://cx5kgk7ipm7k"]
+
+[ext_resource type="Texture2D" uid="uid://7kv07tg5m4i0" path="res://Weapons/Art/GLazerWeapon.png" id="1_tnl7y"]
+[ext_resource type="Texture2D" uid="uid://dln2hmd3huh6k" path="res://Weapons/Art/GLazer1.png" id="2_kt71w"]
+[ext_resource type="Texture2D" uid="uid://cpq8ao1ehyfcp" path="res://Weapons/Art/GLazer2.png" id="3_7gqqu"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_xqibr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
+size = Vector2(416, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmsbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kt71w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7gqqu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 32.0
+}]
+
+[resource]
+script = ExtResource("3_xqibr")
+name = "GLazer"
+display = ExtResource("1_tnl7y")
+description = "Sprays a devastating beam of icing, ripping apart enemies."
+aim_type = 1
+spread = Vector2(5, 0)
+multishot = Vector2(1, 0)
+damage = Vector2(25, 5)
+ammo = Vector2(50, 0)
+unload_time = Vector2(0.06, 0)
+reload_time = Vector2(2, -0.05)
+pierce = Vector2(100000, 0)
+speed = Vector2(0, 0)
+scale = Vector2(1, 0.05)
+lifetime_override = 0.063
+frames = SubResource("SpriteFrames_gmsbx")
+collision_shape = SubResource("RectangleShape2D_8hvse")
+collision_offset = Vector2(208, 0)
