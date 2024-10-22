@@ -40,6 +40,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="Menu" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +48,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_geu8k")
+
+[node name="World" parent="." instance=ExtResource("9_byynd")]
+position = Vector2(202.5, 360)
+scale = Vector2(0.3, 0.3)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -71,12 +76,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -256.0
+offset_top = -136.0
 offset_right = 128.0
-offset_bottom = 256.0
+offset_bottom = 376.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+
+[node name="CharacterDescription" type="NinePatchRect" parent="VBoxContainer"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+texture = ExtResource("2_6as2u")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/CharacterDescription"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 253.0
+offset_bottom = 64.0
+text = "The original tasty terminator, fires chocolate chips. gains health and speed every level."
+autowrap_mode = 3
 
 [node name="CharacterSelect" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 80)
@@ -137,13 +160,26 @@ offset_left = -32.0
 offset_top = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
 texture_normal = ExtResource("4_5lfsp")
 texture_hover = ExtResource("6_u6a4v")
 stretch_mode = 3
 
-[node name="CharacterDescription" type="NinePatchRect" parent="VBoxContainer"]
-visible = false
+[node name="Tooltip" type="Label" parent="VBoxContainer/CharacterSelect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = -32.0
+offset_right = 120.0
+offset_bottom = -9.0
+grow_horizontal = 2
+text = "(press character for description)"
+label_settings = ExtResource("5_wyfeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelSelect" type="NinePatchRect" parent="VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
@@ -153,39 +189,33 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/CharacterDescription"]
-layout_mode = 0
+[node name="Label" type="Label" parent="VBoxContainer/LevelSelect"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
 offset_left = 3.0
 offset_right = 253.0
-offset_bottom = 64.0
-text = "The original tasty terminator, fires chocolate chips. gains health and speed every level.  (click character again to close)"
-autowrap_mode = 3
+offset_bottom = 60.0
+text = "Rural:
+Nice open area, broken up by roads. It looks like nobody in sight.
+"
+label_settings = ExtResource("5_wyfeg")
+autowrap_mode = 2
 
-[node name="LevelSelect" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-
-[node name="Description" type="NinePatchRect" parent="VBoxContainer/LevelSelect"]
-texture_filter = 1
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_6as2u")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="Label" type="Label" parent="VBoxContainer/LevelSelect/Description"]
+[node name="TempRightLevel" type="Button" parent="VBoxContainer/LevelSelect"]
 layout_mode = 0
-offset_left = 182.5
-offset_top = 32.0
-offset_right = 222.5
-offset_bottom = 55.0
+offset_left = -28.5
+offset_top = 4.0
+offset_right = -10.5
+offset_bottom = 35.0
+text = "<"
+
+[node name="TempLeftLevel" type="Button" parent="VBoxContainer/LevelSelect"]
+layout_mode = 0
+offset_left = 267.5
+offset_top = 4.0
+offset_right = 285.5
+offset_bottom = 35.0
+text = ">"
 
 [node name="TempStart" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
@@ -213,17 +243,15 @@ text = "Settings"
 visible = false
 layout_mode = 1
 
-[node name="World" parent="." instance=ExtResource("9_byynd")]
-z_index = -100
-position = Vector2(202.5, 360)
-scale = Vector2(0.3, 0.3)
-
+[connection signal="mouse_entered" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/CharacterSelect/TempRightCharacter" to="." method="_on_temp_right_character_pressed"]
 [connection signal="pressed" from="VBoxContainer/CharacterSelect/TempLeftCharacter" to="." method="_on_temp_left_character_pressed"]
-[connection signal="toggled" from="VBoxContainer/CharacterSelect/Display/Face" to="." method="_on_face_toggled"]
-[connection signal="mouse_entered" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_exited"]
+[connection signal="button_down" from="VBoxContainer/CharacterSelect/Display/Face" to="." method="_on_face_button_down"]
+[connection signal="button_up" from="VBoxContainer/CharacterSelect/Display/Face" to="." method="_on_face_button_up"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/TempRightLevel" to="." method="_on_temp_right_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/TempLeftLevel" to="." method="_on_temp_left_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/TempStart" to="." method="_on_temp_start_pressed"]
 [connection signal="pressed" from="TempAchievments" to="." method="_on_temp_achievments_pressed"]

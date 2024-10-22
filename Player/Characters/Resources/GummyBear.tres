@@ -26,6 +26,7 @@ name = "Gummy Bear"
 description = "The sneaky gummy bear lays bear traps behind it. Gains a lot of health per level, and a little bit of flavor."
 starting_weapon = ExtResource("2_iqiq8")
 head_start = 0
+revivals = 0
 max_health = Vector2i(200, 5)
 health_regen = Vector2(4, 0.2)
 speed = Vector2i(15000, 0)

@@ -36,7 +36,7 @@ texture_region_size = Vector2i(48, 48)
 2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cstl2"]
-resource_name = "<null>"
+resource_name = "TreeAndBush"
 texture = ExtResource("8_2aloj")
 texture_region_size = Vector2i(48, 48)
 0:0/size_in_atlas = Vector2i(1, 2)
@@ -59,8 +59,10 @@ sources/2 = SubResource("TileSetAtlasSource_cstl2")
 [resource]
 script = ExtResource("5_2dm3i")
 name = "Rural"
-description = "Nice forested area, broken up by roads. It looks like nobody in sight."
+description = "Nice open area, broken up by roads. It looks like nobody in sight."
+seeded = 0
 tileset = SubResource("TileSet_lavpr")
 road_frequency = 0.006
-obstacle_chance = 5
+obstacle_chance_small = 4
+obstacle_chance_big = 2
 possible_enemies = Array[ExtResource("1_xl7js")]([ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("3_fxpnn"), ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("4_a2aly")])

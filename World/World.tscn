@@ -12,8 +12,6 @@ y_sort_enabled = true
 
 [node name="Roads" type="TileMapLayer" parent="."]
 z_index = -2
-z_as_relative = false
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = -100
-z_as_relative = false

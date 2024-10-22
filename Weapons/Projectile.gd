@@ -9,6 +9,7 @@ var collision_shape : Shape2D
 var collision_offset : Vector2
 var initial_velocity : Vector2
 var lifetime_override : float = 0
+var random = RandomNumberGenerator.new()
 
 @onready var collision = $CollisionShape2D
 @onready var sprite_frames = $AnimatedSprite2D
@@ -24,6 +25,7 @@ func _ready() -> void:
 	sprite_frames.sprite_frames = frames
 	collision.shape = collision_shape
 	sprite_frames.play()
+	sprite_frames.frame = random.randi_range(0,2)
 	lifetime.start()
 
 func _physics_process(delta):

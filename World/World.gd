@@ -7,7 +7,8 @@ var noise = FastNoiseLite.new()
 @onready var ground = $Ground
 @onready var roads = $Roads
 @onready var obstacles = $Obstacles
-var obstacle_chance : int
+var obstacle_chance_big : int
+var obstacle_chance_small : int
 
 func update_profile(profile : World):
 	ground.tile_set = profile.tileset
@@ -17,19 +18,22 @@ func update_profile(profile : World):
 	noise.noise_type = FastNoiseLite.TYPE_CELLULAR
 	noise.cellular_jitter = 0
 	noise.cellular_return_type = FastNoiseLite.RETURN_CELL_VALUE
-	noise.seed = random.randi()
-	obstacle_chance = profile.obstacle_chance
+	noise.seed = profile.seeded
+	obstacle_chance_big = profile.obstacle_chance_big
+	obstacle_chance_small = profile.obstacle_chance_small
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
 	var cache_size = size.x*size.y*1.1
 	roads.clear()
+	obstacles.clear()
+	ground.clear()
 
 	for x in size.x:
 		for y in size.y:
 			var updated_pos = roads.local_to_map(pos)-size/2+Vector2i(x,y)
 			var alt : int = round(noise.get_noise_2dv(updated_pos)*10)
-			random.seed = hash(updated_pos)
+			random.seed = hash(updated_pos*noise.seed)
 			ground.set_cell(updated_pos, 1, Vector2i(random.randi_range(0,2), random.randi_range(0,2)))
 			var surrounding : Array[int] = [round(noise.get_noise_2dv(updated_pos+Vector2i(1,1))*10), 
 											round(noise.get_noise_2dv(updated_pos+Vector2i(-1,1))*10), 
@@ -51,5 +55,11 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 					if roads_cache.size() > cache_size:
 						roads_cache.remove_at(0)
 			else:
-				if random.randi_range(0,obstacle_chance)==0:
-					obstacles.set_cell(updated_pos, 2, Vector2i(0,[0,2,2][random.randi_range(0,2)]))
+				if obstacle_chance_big+obstacle_chance_small > 0:
+					if random.randi_range(0,round((obstacle_chance_big+obstacle_chance_small)/2))==0 and updated_pos.x % 2:
+						var chances : Array = []
+						for i in obstacle_chance_big:
+							chances.append(0)
+						for i in obstacle_chance_small:
+							chances.append(2)
+						obstacles.set_cell(updated_pos, 2, Vector2i(0,chances[random.randi_range(0,chances.size()-1)]))

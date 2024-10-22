@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="World" load_steps=13 format=3 uid="uid://c2oooubttejhw"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_ghitu"]
+[ext_resource type="Resource" uid="uid://78fr3evm7s8r" path="res://Enemies/Resources/Default.tres" id="2_yyd3u"]
+[ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_q0u12"]
+[ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_a6bxq"]
+[ext_resource type="Script" path="res://World/world_profile.gd" id="5_cu8sv"]
+[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/Art/TownRoad.png" id="6_bhkr0"]
+[ext_resource type="Texture2D" uid="uid://c5l8icn7whrw3" path="res://World/Art/TownGrass.png" id="7_1wxno"]
+[ext_resource type="Texture2D" uid="uid://cfmw25t08ap8e" path="res://World/Art/PineAndRock.png" id="8_kedm6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vfs1"]
+texture = ExtResource("6_bhkr0")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qn5v"]
+texture = ExtResource("7_1wxno")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yd14"]
+texture = ExtResource("8_kedm6")
+texture_region_size = Vector2i(48, 48)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = 20
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 24, -3, 27, 3, 27, 6, 24, 3, 21, -3, 21)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 18, -12, 21, 12, 21, 18, 18, 24, 18, 24, 12, 21, 9, -6, 9, -18, 12)
+
+[sub_resource type="TileSet" id="TileSet_4kxhi"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8vfs1")
+sources/1 = SubResource("TileSetAtlasSource_1qn5v")
+sources/2 = SubResource("TileSetAtlasSource_2yd14")
+
+[resource]
+script = ExtResource("5_cu8sv")
+name = "Forest"
+description = "Forest Filled With Trees. AOwuhdiawuhdaiw daiwhda iwudhawi duhawiodua wda"
+seeded = 0
+tileset = SubResource("TileSet_4kxhi")
+road_frequency = 0.003
+obstacle_chance_small = 2
+obstacle_chance_big = 3
+possible_enemies = Array[ExtResource("1_ghitu")]([ExtResource("2_yyd3u"), ExtResource("2_yyd3u"), ExtResource("3_q0u12"), ExtResource("2_yyd3u"), ExtResource("2_yyd3u"), ExtResource("4_a6bxq")])

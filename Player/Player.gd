@@ -58,14 +58,14 @@ func update_health(damage : float):
 
 func update_experience(increase):
 	experience += increase*profile.flavor.x
-	if experience >= level**1.5 + 2:
+	while experience >= level**1.5 + 2:
 		profile.max_health.x += profile.max_health.y
 		profile.health_regen.x += profile.health_regen.y
 		profile.speed.x += profile.speed.y
 		profile.hunger.x += profile.hunger.y
 		profile.flavor.x += profile.flavor.y
 		level += 1
-		experience = 0
+		experience -= level**1.5 + 2
 		hud.level_up()
 	hud.update_experience(0, experience, level**2 + 2)
 
