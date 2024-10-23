@@ -5,12 +5,12 @@
 [ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_q0u12"]
 [ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_a6bxq"]
 [ext_resource type="Script" path="res://World/world_profile.gd" id="5_cu8sv"]
-[ext_resource type="Texture2D" uid="uid://3ihluxn5xw5i" path="res://World/Art/TownRoad.png" id="6_bhkr0"]
-[ext_resource type="Texture2D" uid="uid://c5l8icn7whrw3" path="res://World/Art/TownGrass.png" id="7_1wxno"]
+[ext_resource type="Texture2D" uid="uid://qfb2dxpy8qyo" path="res://World/Art/DirtPathTiles.png" id="6_kya3t"]
+[ext_resource type="Texture2D" uid="uid://bqdq3mdvjlnui" path="res://World/Art/PineGrassTiles.png" id="6_sp6y6"]
 [ext_resource type="Texture2D" uid="uid://cfmw25t08ap8e" path="res://World/Art/PineAndRock.png" id="8_kedm6"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vfs1"]
-texture = ExtResource("6_bhkr0")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2w854"]
+texture = ExtResource("6_kya3t")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -22,8 +22,8 @@ texture_region_size = Vector2i(48, 48)
 1:2/0 = 0
 2:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qn5v"]
-texture = ExtResource("7_1wxno")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1201"]
+texture = ExtResource("6_sp6y6")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -49,9 +49,9 @@ texture_region_size = Vector2i(48, 48)
 [sub_resource type="TileSet" id="TileSet_4kxhi"]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_8vfs1")
-sources/1 = SubResource("TileSetAtlasSource_1qn5v")
 sources/2 = SubResource("TileSetAtlasSource_2yd14")
+sources/0 = SubResource("TileSetAtlasSource_2w854")
+sources/1 = SubResource("TileSetAtlasSource_m1201")
 
 [resource]
 script = ExtResource("5_cu8sv")
