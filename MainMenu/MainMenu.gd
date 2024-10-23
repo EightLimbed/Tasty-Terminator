@@ -16,8 +16,15 @@ extends Control
 var world_seed : int
 var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/Donut.tres")]
 var c_index : int = 0
-var maps : Array[World] = [preload("res://World/Resources/Rural.tres"), preload("res://World/Resources/Forest.tres")]
+var maps : Array[World] = [preload("res://World/Resources/Rural.tres")]
 var m_index : int = 0
+
+#if an achievement unlocks something, add check for achievment, and add resource to respective list
+func load_achievments():
+	if save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"]:
+		characters.append(load("res://Player/Characters/Resources/GummyBear.tres"))
+	if save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"]:
+		maps.append(load("res://World/Resources/Forest.tres"))
 
 func _ready() -> void:
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."
@@ -28,6 +35,8 @@ func _ready() -> void:
 	world.generate_roads(Vector2.ZERO, Vector2i(52,52))
 	world.generate_roads(Vector2.ZERO, Vector2i(52,52))
 	save_file.verify_save()
+	if ResourceLoader.exists("user://save/AchievementLog.tres"):
+		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 	load_achievments()
 	character_display.play()
 
@@ -38,12 +47,6 @@ func _process(_delta: float) -> void:
 	character_description.custom_minimum_size.y = character_description_label.size.y+6
 	level_description.custom_minimum_size.y = level_description_label.size.y+6
 	character_select.custom_minimum_size.y = 80 + character_description_label.size.y+6
-
-func load_achievments():
-	if ResourceLoader.exists("user://save/AchievementLog.tres"):
-		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
-	if save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"]:
-		characters.append(load("res://Player/Characters/Resources/GummyBear.tres"))
 
 func character_left():
 	if characters.size()-1 > c_index:
@@ -90,6 +93,7 @@ func world_right():
 func _on_temp_start_pressed() -> void:
 	game.character_profile = characters[c_index]
 	game.world_profile = maps[m_index]
+	game.save_file = save_file
 	get_tree().root.add_child(game)
 	queue_free()
 

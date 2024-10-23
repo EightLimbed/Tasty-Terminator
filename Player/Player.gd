@@ -68,7 +68,7 @@ func update_experience(increase):
 		level += 1
 		experience -= round(level**1.5 + 2.0)
 		hud.level_up()
-	hud.update_experience(0, experience, level**2 + 2)
+	hud.update_experience(0, experience, level**1.5 + 2)
 
 func _on_hitbox_body_entered(body):
 	body.activated = true

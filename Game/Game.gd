@@ -6,7 +6,7 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var experience_container = $ExperienceContainer
 @onready var wave_timer = $WaveTimer
-@onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
+var save_file : AchievmentsLog
 @onready var achievement_popup = $AchievementPopup/TextureRect
 @onready var achievement_popup_label = $AchievementPopup/TextureRect/Label
 @onready var achievement_popup_timer = $AchievementPopup/AchievementPopupTimer
@@ -16,32 +16,36 @@ var wave : int = 1
 var world_profile : World
 var character_profile : Character
 
-# Called when the node enters the scene tree for the first time.
+#do if condition, then achievement([achievement index]), make sure to add achievment to "res://MainMenu/Achievements/LocalAchievements.tres" manually as well
+func achievments_check():
+	if player.level >= 100:
+		achievment("Reach Level 100 (Unlocks Gummy Bear)")
+	if wave >= 100 and world_profile.name == "Rural":
+		achievment("Reach wave 100 on Rural map (Unlocks Forest map)")
+
 func _ready():
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	player.start(character_profile)
+	if ResourceLoader.exists("user://save/AchievementLog.tres"):
+		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 	spawn_enemies_normal(2, wave)
 
 func _process(_delta: float):
 	world.generate_roads(player.position, Vector2i(24,24))
 	achievments_check()
-
-func achievments_check():
-	if player.level >= 1 and not save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"] == true:
-		achievment("Reach Level 100 (Unlocks Gummy Bear)")
-	if wave > 10 and world_profile.name == "Rural" and not save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"] == true:
-		achievment("Reach wave 100 on Rural map (Unlocks Forest map)")
 	achievement_popup.size.y = achievement_popup_label.size.y+6
 	achievement_popup.position.y = 600 - achievement_popup_label.size.y
 
 func achievment(achievement):
-	print("done")
-	achievement_popup.visible = true
-	save_file.achievements[achievement] = true
-	achievement_popup_label.text = achievement
-	achievement_popup_timer.start()
-	ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
+	if not save_file.achievements[achievement] == true:
+		achievement_popup.visible = true
+		save_file.achievements[achievement] = true
+		achievement_popup_label.text = achievement
+		achievement_popup_timer.start()
+		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
+		if ResourceLoader.exists("user://save/AchievementLog.tres"):
+			save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 
 func spawn_enemies_normal(amount, difficulty):
 	for i in amount-enemy_container.get_child_count():
