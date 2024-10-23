@@ -6,5 +6,5 @@
 script = ExtResource("1_0l0ve")
 achievements = {
 "Reach Level 100 (Unlocks Gummy Bear)": false,
-"Reach wave 100 on Rural map (Unlocks Desert map)": false
+"Reach wave 100 on Rural map (Unlocks Forest map)": false
 }

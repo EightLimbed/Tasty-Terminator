@@ -13,13 +13,13 @@ var random = RandomNumberGenerator.new()
 var level : int = 0
 
 func start():
-	reload.wait_time = profile.reload_time.x
-	unload.wait_time = profile.unload_time.x
+	reload.wait_time = max(profile.reload_time.x,0.01)
+	unload.wait_time = max(profile.unload_time.x,0.01)
 	unload.start()
 
 func _ready() -> void:
-	reload.wait_time = profile.reload_time.x
-	unload.wait_time = profile.unload_time.x
+	reload.wait_time = max(profile.reload_time.x,0.01)
+	unload.wait_time = max(profile.unload_time.x,0.01)
 	unload.start()
 
 #need to add collision layers

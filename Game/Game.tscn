@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvilsyr255ivl"]
+[gd_scene load_steps=6 format=3 uid="uid://dvilsyr255ivl"]
 
 [ext_resource type="Script" path="res://Game/Game.gd" id="1_c1ugx"]
 [ext_resource type="PackedScene" uid="uid://bo2ksvo7qxsqe" path="res://Player/Player.tscn" id="2_v7aot"]
 [ext_resource type="PackedScene" uid="uid://cvcjedeo54fs0" path="res://World/World.tscn" id="3_davef"]
+[ext_resource type="Texture2D" uid="uid://j7s73ymtvcb2" path="res://MainMenu/Art/AchievementUnlocked.png" id="4_5omne"]
+[ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="5_kk7kx"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -26,4 +28,44 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="AchievementPopup" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="NinePatchRect" parent="AchievementPopup"]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 240.0
+offset_right = 128.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5omne")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="AchievementPopup/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 3.0
+offset_right = 122.0
+offset_bottom = 26.0
+grow_horizontal = 2
+label_settings = ExtResource("5_kk7kx")
+autowrap_mode = 3
+
+[node name="AchievementPopupTimer" type="Timer" parent="AchievementPopup"]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="AchievementPopup/AchievementPopupTimer" to="." method="_on_achievment_popup_timer_timeout"]

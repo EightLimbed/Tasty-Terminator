@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlsxkapbmu8a5"]
+[gd_scene load_steps=15 format=3 uid="uid://dlsxkapbmu8a5"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="3_dksqh"]
+[ext_resource type="Texture2D" uid="uid://b3878rfg4xitc" path="res://MainMenu/Art/NextArrow.png" id="3_mor01"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="4_5lfsp"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="4_8g5ns"]
+[ext_resource type="Texture2D" uid="uid://ctf6b1ctguwgr" path="res://MainMenu/Art/NextArrowHover.png" id="4_qmgj8"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="5_wyfeg"]
-[ext_resource type="Texture2D" uid="uid://by5xjmtqfs0bw" path="res://Player/Art/Faces/ScaredFace.png" id="6_u6a4v"]
 [ext_resource type="PackedScene" uid="uid://cjh381wkxqgma" path="res://MainMenu/Achievements/AchievementDisplay.tscn" id="8_uwlwx"]
 [ext_resource type="PackedScene" uid="uid://cvcjedeo54fs0" path="res://World/World.tscn" id="9_byynd"]
 
@@ -67,6 +68,19 @@ label_settings = SubResource("LabelSettings_7v2bj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.607843)
+layout_mode = 2
+offset_left = 75.0
+offset_top = 372.0
+offset_right = 331.0
+offset_bottom = 372.0
+texture = ExtResource("2_6as2u")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
@@ -75,55 +89,71 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -136.0
-offset_right = 128.0
-offset_bottom = 376.0
+offset_left = -127.5
+offset_top = -132.0
+offset_right = 128.5
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterDescription" type="NinePatchRect" parent="VBoxContainer"]
-visible = false
-texture_filter = 1
-custom_minimum_size = Vector2(256, 32)
+[node name="CharacterSelect" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(256, 80)
 layout_mode = 2
+
+[node name="RightButton" type="TextureButton" parent="VBoxContainer/CharacterSelect"]
+layout_mode = 0
+offset_left = 208.0
+offset_right = 248.0
+offset_bottom = 40.0
+texture_normal = ExtResource("3_mor01")
+texture_pressed = ExtResource("4_qmgj8")
+texture_hover = ExtResource("4_qmgj8")
+flip_h = true
+
+[node name="LeftButton" type="TextureButton" parent="VBoxContainer/CharacterSelect"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 16.0
+offset_right = 48.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_mor01")
+texture_pressed = ExtResource("4_qmgj8")
+texture_hover = ExtResource("4_qmgj8")
+
+[node name="Description" type="NinePatchRect" parent="VBoxContainer/CharacterSelect"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -26.0
+offset_right = 128.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("2_6as2u")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/CharacterDescription"]
+[node name="Label" type="Label" parent="VBoxContainer/CharacterSelect/Description"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
 offset_left = 3.0
+offset_top = 3.0
 offset_right = 253.0
-offset_bottom = 64.0
-text = "The original tasty terminator, fires chocolate chips. gains health and speed every level."
+offset_bottom = 26.0
+label_settings = ExtResource("5_wyfeg")
 autowrap_mode = 3
 
-[node name="CharacterSelect" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(64, 80)
-layout_mode = 2
-
-[node name="TempRightCharacter" type="Button" parent="VBoxContainer/CharacterSelect"]
-layout_mode = 0
-offset_left = 201.5
-offset_top = 12.0
-offset_right = 244.5
-offset_bottom = 43.0
-text = ">"
-
-[node name="TempLeftCharacter" type="Button" parent="VBoxContainer/CharacterSelect"]
-layout_mode = 0
-offset_left = 20.5
-offset_top = 6.0
-offset_right = 63.5
-offset_bottom = 37.0
-text = "<"
-
 [node name="Display" type="AnimatedSprite2D" parent="VBoxContainer/CharacterSelect"]
+z_index = 100
 texture_filter = 1
-position = Vector2(124.5, 20)
+position = Vector2(124.5, 16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rcntu")
 frame_progress = 0.366121
@@ -134,23 +164,7 @@ z_index = -1
 position = Vector2(0, 14)
 texture = SubResource("GradientTexture2D_gud3p")
 
-[node name="Name" type="Label" parent="VBoxContainer/CharacterSelect/Display"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = -4.0
-offset_right = 10.5
-offset_bottom = 19.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Cookie"
-label_settings = ExtResource("5_wyfeg")
-horizontal_alignment = 1
-
-[node name="Face" type="TextureButton" parent="VBoxContainer/CharacterSelect/Display"]
+[node name="Face" type="TextureRect" parent="VBoxContainer/CharacterSelect/Display"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -160,24 +174,8 @@ offset_left = -32.0
 offset_top = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_5lfsp")
-texture_hover = ExtResource("6_u6a4v")
+texture = ExtResource("4_5lfsp")
 stretch_mode = 3
-
-[node name="Tooltip" type="Label" parent="VBoxContainer/CharacterSelect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_top = -32.0
-offset_right = 120.0
-offset_bottom = -9.0
-grow_horizontal = 2
-text = "(press character for description)"
-label_settings = ExtResource("5_wyfeg")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LevelSelect" type="NinePatchRect" parent="VBoxContainer"]
 texture_filter = 1
@@ -193,29 +191,37 @@ patch_margin_bottom = 3
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
 offset_left = 3.0
+offset_top = 3.0
 offset_right = 253.0
-offset_bottom = 60.0
+offset_bottom = 63.0
 text = "Rural:
 Nice open area, broken up by roads. It looks like nobody in sight.
 "
 label_settings = ExtResource("5_wyfeg")
 autowrap_mode = 2
 
-[node name="TempRightLevel" type="Button" parent="VBoxContainer/LevelSelect"]
-layout_mode = 0
-offset_left = -28.5
-offset_top = 4.0
-offset_right = -10.5
-offset_bottom = 35.0
-text = "<"
+[node name="RightButtonM" type="TextureButton" parent="VBoxContainer/LevelSelect"]
+offset_left = 272.0
+offset_right = 312.0
+offset_bottom = 40.0
+texture_normal = ExtResource("3_mor01")
+texture_pressed = ExtResource("4_qmgj8")
+texture_hover = ExtResource("4_qmgj8")
+flip_h = true
 
-[node name="TempLeftLevel" type="Button" parent="VBoxContainer/LevelSelect"]
-layout_mode = 0
-offset_left = 267.5
-offset_top = 4.0
-offset_right = 285.5
-offset_bottom = 35.0
-text = ">"
+[node name="LeftButtonM" type="TextureButton" parent="VBoxContainer/LevelSelect"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_mor01")
+texture_pressed = ExtResource("4_qmgj8")
+texture_hover = ExtResource("4_qmgj8")
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
 
 [node name="TempStart" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
@@ -243,15 +249,11 @@ text = "Settings"
 visible = false
 layout_mode = 1
 
-[connection signal="mouse_entered" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/CharacterDescription" to="." method="_on_character_description_mouse_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/CharacterSelect/TempRightCharacter" to="." method="_on_temp_right_character_pressed"]
-[connection signal="pressed" from="VBoxContainer/CharacterSelect/TempLeftCharacter" to="." method="_on_temp_left_character_pressed"]
-[connection signal="button_down" from="VBoxContainer/CharacterSelect/Display/Face" to="." method="_on_face_button_down"]
-[connection signal="button_up" from="VBoxContainer/CharacterSelect/Display/Face" to="." method="_on_face_button_up"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/TempRightLevel" to="." method="_on_temp_right_level_pressed"]
-[connection signal="pressed" from="VBoxContainer/LevelSelect/TempLeftLevel" to="." method="_on_temp_left_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelect/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CharacterSelect/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/RightButtonM" to="." method="_on_right_button_m_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelSelect/LeftButtonM" to="." method="_on_left_button_m_pressed"]
 [connection signal="pressed" from="VBoxContainer/TempStart" to="." method="_on_temp_start_pressed"]
 [connection signal="pressed" from="TempAchievments" to="." method="_on_temp_achievments_pressed"]

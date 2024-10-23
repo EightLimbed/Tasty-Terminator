@@ -7,6 +7,9 @@ extends Node2D
 @onready var experience_container = $ExperienceContainer
 @onready var wave_timer = $WaveTimer
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
+@onready var achievement_popup = $AchievementPopup/TextureRect
+@onready var achievement_popup_label = $AchievementPopup/TextureRect/Label
+@onready var achievement_popup_timer = $AchievementPopup/AchievementPopupTimer
 var enemy = preload("res://Enemies/Enemy.tscn")
 var random = RandomNumberGenerator.new()
 var wave : int = 1
@@ -15,7 +18,7 @@ var character_profile : Character
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(world_profile.name)
+	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	player.start(character_profile)
 	spawn_enemies_normal(2, wave)
@@ -26,11 +29,19 @@ func _process(_delta: float):
 
 func achievments_check():
 	if player.level >= 1 and not save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"] == true:
-		save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"] = true
-		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
-	if wave > 100 and world_profile.name == "Rural" and not save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"] == true:
-		save_file.achievements["Reach wave 100 on Rural map (Unlocks Desert map)"] = true
-		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
+		achievment("Reach Level 100 (Unlocks Gummy Bear)")
+	if wave > 10 and world_profile.name == "Rural" and not save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"] == true:
+		achievment("Reach wave 100 on Rural map (Unlocks Forest map)")
+	achievement_popup.size.y = achievement_popup_label.size.y+6
+	achievement_popup.position.y = 600 - achievement_popup_label.size.y
+
+func achievment(achievement):
+	print("done")
+	achievement_popup.visible = true
+	save_file.achievements[achievement] = true
+	achievement_popup_label.text = achievement
+	achievement_popup_timer.start()
+	ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 
 func spawn_enemies_normal(amount, difficulty):
 	for i in amount-enemy_container.get_child_count():
@@ -75,3 +86,6 @@ func _on_wave_timer_timeout() -> void:
 		spawn_enemies_strong(difficulty*2)
 	wave+= 1
 	wave_timer.start()
+
+func _on_achievment_popup_timer_timeout() -> void:
+	achievement_popup.visible = false

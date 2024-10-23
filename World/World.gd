@@ -56,10 +56,8 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 						roads_cache.remove_at(0)
 			else:
 				if obstacle_chance_big+obstacle_chance_small > 0:
-					if random.randi_range(0,round((obstacle_chance_big+obstacle_chance_small)/2))==0 and updated_pos.x % 2:
-						var chances : Array = []
-						for i in obstacle_chance_big:
-							chances.append(0)
-						for i in obstacle_chance_small:
-							chances.append(2)
-						obstacles.set_cell(updated_pos, 2, Vector2i(0,chances[random.randi_range(0,chances.size()-1)]))
+					var structure = random.randi_range(0,100)
+					if structure<obstacle_chance_big and updated_pos.x % 2:
+						obstacles.set_cell(updated_pos, 2, Vector2i(0,0))
+					elif structure>obstacle_chance_big and structure<obstacle_chance_big+obstacle_chance_small and updated_pos.x % 2:
+						obstacles.set_cell(updated_pos, 2, Vector2i(0,2))

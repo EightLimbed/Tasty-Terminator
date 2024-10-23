@@ -17,8 +17,8 @@ func _ready():
 	health = round(profile.health*difficulty**1.5)
 	animation.sprite_frames = profile.frames
 	hitbox.shape = profile.hitbox
-	if difficulty > 4.0:
-		scale *= min(difficulty/2,3)
+	if difficulty > 2.0:
+		scale *= min(difficulty/2,2)
 	animation.play()
 
 func _physics_process(delta):
@@ -47,7 +47,6 @@ func die():
 	var instance = death.instantiate()
 	instance.global_position = global_position
 	instance.experience = profile.experience_drop*(difficulty+1)
-	print(difficulty)
 	experience_container.add_child.call_deferred(instance)
 	queue_free()
 

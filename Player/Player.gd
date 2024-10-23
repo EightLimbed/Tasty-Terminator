@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 #character profile
-var profile = preload("res://Player/Characters/Resources/GummyBear.tres")
+var profile : Character
 
 #movement
 var input : Vector2
-var health : float = float(profile.max_health.x)
+var health : float
 var experience : int = 0
 @onready var joystick = $Joystick
 @onready var hud = $HUD
@@ -18,9 +18,10 @@ var level : int = 0
 #temp
 
 func start(character_profile):
-	profile = character_profile
+	profile = character_profile.duplicate()
+	health = float(profile.max_health.x)
 	pickup_radius.shape.radius = profile.aroma
-	starting_weapon.profile = profile.starting_weapon
+	starting_weapon.profile = profile.starting_weapon.duplicate()
 	hud.possible_weapons.erase(profile.starting_weapon)
 	starting_weapon.start()
 	animation.sprite_frames = profile.sprite_frames
@@ -41,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	if  health <= 0:
 		face.frame = 2
 		death_screen.death()
-	elif health < profile.max_health.x/2:
+	elif health < profile.max_health.x/2.0:
 		face.frame = 1
 	else:
 		face.frame = 0
@@ -65,7 +66,7 @@ func update_experience(increase):
 		profile.hunger.x += profile.hunger.y
 		profile.flavor.x += profile.flavor.y
 		level += 1
-		experience -= level**1.5 + 2
+		experience -= round(level**1.5 + 2.0)
 		hud.level_up()
 	hud.update_experience(0, experience, level**2 + 2)
 

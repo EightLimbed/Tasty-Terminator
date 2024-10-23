@@ -26,7 +26,7 @@ func update(save_file) -> void:
 		label.position = Vector2(18,0)
 		display.add_child(label)
 		achievement_container.add_child(display)
-		display.custom_minimum_size.y = label.size.y+3
+		display.custom_minimum_size.y = label.size.y+6
 
 func _on_exit_pressed() -> void:
 	visible = false
