@@ -27,7 +27,7 @@ func start(character_profile):
 	animation.sprite_frames = profile.sprite_frames
 	hud.update_health(0,health,profile.max_health.x)
 	for i in profile.head_start:
-		hud.level_up()
+		hud.level_up(0)
 	animation.play()
 
 func _physics_process(delta: float) -> void:
@@ -67,7 +67,7 @@ func update_experience(increase):
 		profile.flavor.x += profile.flavor.y
 		level += 1
 		experience -= round(level**1.5 + 2.0)
-		hud.level_up()
+		hud.level_up(0)
 	hud.update_experience(0, experience, level**1.5 + 2)
 
 func _on_hitbox_body_entered(body):

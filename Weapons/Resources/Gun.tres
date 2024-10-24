@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://bwrkaap4awbh0"]
+
+[ext_resource type="Texture2D" uid="uid://bp2p25xph1jiv" path="res://Weapons/Art/Gun.png" id="1_gd1f5"]
+[ext_resource type="Texture2D" uid="uid://d1khkx71rwey5" path="res://Weapons/Art/GunBullet.png" id="2_0yttb"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_a5275"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
+size = Vector2(10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n724t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0yttb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0yttb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0yttb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_a5275")
+name = "Gun"
+display = ExtResource("1_gd1f5")
+description = "Its getting real"
+aim_type = 2
+spread = Vector2(5, 0)
+multishot = Vector2(1, 0)
+damage = Vector2(999999, 999999)
+ammo = Vector2(6, 0)
+unload_time = Vector2(0.25, 0)
+reload_time = Vector2(1, -0.02)
+pierce = Vector2(999, 0)
+speed = Vector2(75000, 0)
+scale = Vector2(1, 0)
+lifetime_override = 0.0
+frames = SubResource("SpriteFrames_n724t")
+collision_shape = SubResource("RectangleShape2D_8hvse")
+collision_offset = Vector2(0, 0)

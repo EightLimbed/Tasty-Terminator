@@ -15,7 +15,7 @@ extends CanvasLayer
 @onready var autolevel_display = $Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Chipper.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Chipper.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -33,6 +33,9 @@ func load_achievments():
 	if save_file.achievements["Reach level 250 with Cookie (Unlocks Chipper)"]:
 		pass
 		#possible_weapons.append(load("res://Weapons/Resources/Chipper.tres"))
+	if save_file.achievements["Reach level 250 with Gummy Bear (Unlocks Bear Trap)"]:
+		pass
+		#possible_weapons.append(load("res://Weapons/Resources/BearTrap.tres"))
 
 func _ready():
 	save_file.verify_save()
@@ -49,7 +52,7 @@ func _process(_delta: float) -> void:
 	tooltip_box.size.y = tooltip_label.size.y+3
 	update_inventory()
 
-func level_up():
+func level_up(pickup):
 	if player.level < 100 or levels_cached > 0:
 		autolevel_display.visible = false
 		level_display.text = "Level " + str(player.level+1)
@@ -68,6 +71,10 @@ func level_up():
 					option1 = random.randi_range(0, weapon_container.get_child_count()-1)
 				option2 = random.randi_range(0, weapon_container.get_child_count()-1)
 				option3 = random.randi_range(0, weapon_container.get_child_count()-1)
+			if pickup is Weapon:
+				option1 = pickup
+				option2 = pickup
+				option2 = pickup
 			option1_button.update_texture(option1)
 			option2_button.update_texture(option2)
 			option3_button.update_texture(option3)
@@ -177,7 +184,7 @@ func _on_option_1_pressed():
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
-			level_up()
+			level_up(0)
 
 func _on_option_2_pressed():
 	if option2_button.scale == Vector2(1,1):
@@ -198,7 +205,7 @@ func _on_option_2_pressed():
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
-			level_up()
+			level_up(0)
 
 func _on_option_3_pressed():
 	if option3_button.scale == Vector2(1,1):
@@ -219,4 +226,4 @@ func _on_option_3_pressed():
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
-			level_up()
+			level_up(0)

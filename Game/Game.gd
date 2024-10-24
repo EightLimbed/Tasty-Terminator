@@ -78,13 +78,12 @@ func spawn_enemies_formation(_amount):
 
 func group_experience():
 	var alternate = 0
-	if experience_container.get_child_count() > 2000:
-		for child in experience_container.get_children():
-			alternate += 1
-			if alternate % 2:
-				child.queue_free()
-			else:
-				child.experience *= 2
+	for child in experience_container.get_children():
+		alternate += 1
+		if alternate % 2:
+			child.queue_free()
+		else:
+			child.experience *= 2
 
 func _on_wave_timer_timeout() -> void:
 	group_experience()

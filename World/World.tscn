@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvcjedeo54fs0"]
+[gd_scene load_steps=6 format=3 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
+[ext_resource type="Texture2D" uid="uid://bp2p25xph1jiv" path="res://Weapons/Art/Gun.png" id="2_0ral4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqp7k"]
+radius = 64.0
+
+[sub_resource type="Gradient" id="Gradient_exx25"]
+offsets = PackedFloat32Array(0.55, 0.73)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_62pk1"]
+gradient = SubResource("Gradient_exx25")
+width = 48
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -15,3 +31,22 @@ z_index = -2
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = -100
+
+[node name="Gun" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun"]
+shape = SubResource("CircleShape2D_eqp7k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+texture = ExtResource("2_0ral4")
+
+[node name="Shadow" type="Sprite2D" parent="Gun/Sprite2D"]
+modulate = Color(1, 1, 1, 0.607843)
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 12)
+texture = SubResource("GradientTexture2D_62pk1")
+
+[connection signal="body_entered" from="Gun" to="." method="_on_gun_body_entered"]

@@ -7,6 +7,7 @@ var noise = FastNoiseLite.new()
 @onready var ground = $Ground
 @onready var roads = $Roads
 @onready var obstacles = $Obstacles
+@onready var gun = $Gun
 var obstacle_chance_big : int
 var obstacle_chance_small : int
 
@@ -21,6 +22,11 @@ func update_profile(profile : World):
 	noise.seed = profile.seeded
 	obstacle_chance_big = profile.obstacle_chance_big
 	obstacle_chance_small = profile.obstacle_chance_small
+	if profile.name == "Desert":
+		gun.visible = true
+	else:
+		gun.visible = false
+	gun.visible = true
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
@@ -61,3 +67,9 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 						obstacles.set_cell(updated_pos, 2, Vector2i(0,0))
 					elif structure>obstacle_chance_big and structure<obstacle_chance_big+obstacle_chance_small and updated_pos.x % 2:
 						obstacles.set_cell(updated_pos, 2, Vector2i(0,2))
+
+
+
+func _on_gun_body_entered(_body):
+	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
+	HUD.level_up(load("res://Weapons/Resources/Gun.tres"))
