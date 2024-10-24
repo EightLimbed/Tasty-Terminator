@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://nuu78004rygv"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://cdgk0pcxbwiwo"]
 
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="1_r6vpx"]
@@ -32,9 +32,9 @@ animations = [{
 
 [resource]
 script = ExtResource("1_nc1db")
-name = "Chipper"
+name = "Cookie"
 display = ExtResource("1_r6vpx")
-description = "Quickly fires chocolate chips towards the nearest enemy"
+description = "Quickly fires choclate chips towards the nearest enemy"
 aim_type = 2
 spread = Vector2(5, 0.1)
 multishot = Vector2(1, 0.05)
