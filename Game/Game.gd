@@ -19,9 +19,17 @@ var character_profile : Character
 #do if condition, then achievement([achievement index]), make sure to add achievment to "res://MainMenu/Achievements/LocalAchievements.tres" manually as well
 func achievments_check():
 	if player.level >= 100:
-		achievment("Reach Level 100 (Unlocks Gummy Bear)")
+		achievement("Reach level 100 (Unlocks Gummy Bear)")
+	if player.profile.name == "Cookie" and player.level >= 250:
+		achievement("Reach level 250 with Cookie (Unlocks Chipper)")
 	if wave >= 100 and world_profile.name == "Rural":
-		achievment("Reach wave 100 on Rural map (Unlocks Forest map)")
+		achievement("Reach wave 100 on Rural map (Unlocks Forest map)")
+	if player.profile.name == "Gummy Bear" and player.level >= 250:
+		achievement("Reach level 250 with Gummy Bear (Unlocks Bear Trap)")
+	if player.profile.name == "Donut" and player.level >= 250:
+		achievement("Reach level 250 with Donut (Unlocks GLazer)")
+	if weapon_container.get_child(0).level >= 100:
+		achievement("Reach level 100 with starting weapon (Unlocks Donut)")
 
 func _ready():
 	achievement_popup.visible = false
@@ -37,7 +45,7 @@ func _process(_delta: float):
 	achievement_popup.size.y = achievement_popup_label.size.y+6
 	achievement_popup.position.y = 600 - achievement_popup_label.size.y
 
-func achievment(achievement):
+func achievement(achievement):
 	if not save_file.achievements[achievement] == true:
 		achievement_popup.visible = true
 		save_file.achievements[achievement] = true
@@ -82,7 +90,7 @@ func _on_wave_timer_timeout() -> void:
 	group_experience()
 	var difficulty = wave*player.profile.hunger.x
 	if wave**1.5+3 <= 400:
-		spawn_enemies_normal(wave**1.5+3, difficulty)
+		spawn_enemies_normal(wave**1.5+3, difficulty*1000)
 		if random.randi_range(0,5) == 0:
 			spawn_enemies_strong(difficulty)
 	else:

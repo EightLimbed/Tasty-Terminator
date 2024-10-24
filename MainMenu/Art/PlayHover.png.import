@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://obr7cxt50037"
-path="res://.godot/imported/ExitButton.png-dcbe7cc8bd82f019e7bc07edc0dc2983.ctex"
+uid="uid://dcconjmaf36o4"
+path="res://.godot/imported/PlayHover.png-29ee367da25e3c37bfcf9f9fc383e927.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/Art/ExitButton.png"
-dest_files=["res://.godot/imported/ExitButton.png-dcbe7cc8bd82f019e7bc07edc0dc2983.ctex"]
+source_file="res://MainMenu/Art/PlayHover.png"
+dest_files=["res://.godot/imported/PlayHover.png-29ee367da25e3c37bfcf9f9fc383e927.ctex"]
 
 [params]
 

@@ -26,7 +26,7 @@ func _physics_process(delta):
 		personality = Vector2(random.randi_range(-profile.speed,profile.speed), random.randi_range(-profile.speed,profile.speed))/2
 	if attacking:
 		player.update_health(profile.melee_damage*delta*difficulty**1.5)
-	velocity = (profile.speed*global_position.direction_to(player.global_position)+personality)*delta*difficulty
+	velocity = (profile.speed*global_position.direction_to(player.global_position)+personality)*delta*max(difficulty/2, 1)
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):

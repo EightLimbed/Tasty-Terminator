@@ -13,16 +13,22 @@ extends Control
 @onready var achievement_display = $AchievmentDisplay
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 @onready var world = $World
+@onready var cright = $VBoxContainer/CharacterSelect/RightButton
+@onready var cleft = $VBoxContainer/CharacterSelect/LeftButton
+@onready var mright = $VBoxContainer/LevelSelect/RightButtonM
+@onready var mleft = $VBoxContainer/LevelSelect/LeftButtonM
 var world_seed : int
-var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres"), preload("res://Player/Characters/Resources/Donut.tres")]
+var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
 var c_index : int = 0
 var maps : Array[World] = [preload("res://World/Resources/Rural.tres")]
 var m_index : int = 0
 
 #if an achievement unlocks something, add check for achievment, and add resource to respective list
 func load_achievments():
-	if save_file.achievements["Reach Level 100 (Unlocks Gummy Bear)"]:
+	if save_file.achievements["Reach level 100 (Unlocks Gummy Bear)"]:
 		characters.append(load("res://Player/Characters/Resources/GummyBear.tres"))
+	if save_file.achievements["Reach level 100 with starting weapon (Unlocks Donut)"]:
+		characters.append(load("res://Player/Characters/Resources/Donut.tres"))
 	if save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"]:
 		maps.append(load("res://World/Resources/Forest.tres"))
 
@@ -38,6 +44,18 @@ func _ready() -> void:
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 	load_achievments()
+	if characters.size() > 1:
+		cright.visible = true
+		cleft.visible = true
+	else:
+		cright.visible = false
+		cleft.visible = false
+	if maps.size() > 1:
+		mright.visible = true
+		mleft.visible = true
+	else:
+		mright.visible = false
+		mleft.visible = false
 	character_display.play()
 
 #things that cannot be called by updates
@@ -90,7 +108,11 @@ func world_right():
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
-func _on_temp_start_pressed() -> void:
+func _on_achievments_pressed() -> void:
+	achievement_display.update(save_file)
+	achievement_display.visible = true
+
+func _on_start_pressed() -> void:
 	game.character_profile = characters[c_index]
 	game.world_profile = maps[m_index]
 	game.save_file = save_file
@@ -102,13 +124,6 @@ func _on_temp_left_character_pressed():
 
 func _on_temp_right_character_pressed():
 	character_right()
-
-func _on_temp_achievments_pressed() -> void:
-	achievement_display.update(save_file)
-	if achievement_display.visible ==true:
-		achievement_display.visible = false
-	else:
-		achievement_display.visible = true
 
 func _on_left_button_pressed() -> void:
 	character_left()

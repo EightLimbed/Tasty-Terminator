@@ -22,7 +22,7 @@ func update(save_file) -> void:
 		label.text = key
 		label.label_settings = load("res://HUD/Name.tres")
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		label.size.x = 232
+		label.size.x = 256
 		label.position = Vector2(18,0)
 		display.add_child(label)
 		achievement_container.add_child(display)

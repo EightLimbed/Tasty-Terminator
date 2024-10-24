@@ -28,7 +28,7 @@ animations = [{
 
 [resource]
 script = ExtResource("3_xqibr")
-name = "GLazer"
+name = "The GLazer"
 display = ExtResource("1_tnl7y")
 description = "Sprays a devastating beam of icing, ripping apart enemies."
 aim_type = 1

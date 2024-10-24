@@ -13,8 +13,9 @@ extends CanvasLayer
 @onready var tooltip_box = $Levelup/NinePatchRect/LevelTooltip
 @onready var inventory = $Inventory/NinePatchRect/HBoxContainer
 @onready var autolevel_display = $Autolevel
+@onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/GLazer.tres"), preload("res://Weapons/Resources/ChocolateChips.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Chipper.tres"), preload("res://Weapons/Resources/Shotgun.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 3
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -25,7 +26,19 @@ var option1
 var option2
 var option3
 
+#if an achievement unlocks something, add check for achievment, and add resource to respective list
+func load_achievments():
+	if save_file.achievements["Reach level 250 with Donut (Unlocks GLazer)"]:
+		possible_weapons.append(load("res://Weapons/Resources/GLazer.tres"))
+	if save_file.achievements["Reach level 250 with Cookie (Unlocks Chipper)"]:
+		pass
+		#possible_weapons.append(load("res://Weapons/Resources/Chipper.tres"))
+
 func _ready():
+	save_file.verify_save()
+	if ResourceLoader.exists("user://save/AchievementLog.tres"):
+		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
+	load_achievments()
 	autolevel_display.visible = false
 	level_up_window.visible = false
 	tooltip_box.visible = false

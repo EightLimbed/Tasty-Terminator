@@ -32,9 +32,9 @@ animations = [{
 
 [resource]
 script = ExtResource("1_nc1db")
-name = "Cookie"
+name = "Chipper"
 display = ExtResource("1_r6vpx")
-description = "Quickly fires choclate chips towards the nearest enemy"
+description = "Quickly fires chocolate chips towards the nearest enemy"
 aim_type = 2
 spread = Vector2(5, 0.1)
 multishot = Vector2(1, 0.05)
