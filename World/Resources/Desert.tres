@@ -1,16 +1,49 @@
-[gd_resource type="Resource" script_class="World" load_steps=6 format=3 uid="uid://brlpdpyxwrob1"]
+[gd_resource type="Resource" script_class="World" load_steps=11 format=3 uid="uid://brlpdpyxwrob1"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_3rkm6"]
 [ext_resource type="Resource" uid="uid://78fr3evm7s8r" path="res://Enemies/Resources/Default.tres" id="2_40nt1"]
 [ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_h7xvx"]
 [ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_h8te5"]
 [ext_resource type="Script" path="res://World/world_profile.gd" id="5_es17m"]
+[ext_resource type="Texture2D" uid="uid://xeb31ahtgmy" path="res://World/Art/DesertSand.png" id="6_gjjdd"]
+[ext_resource type="Texture2D" uid="uid://c3wcsdi0qt13l" path="res://World/Art/CactusAndBush.png" id="7_usomy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohblr"]
+texture = ExtResource("6_gjjdd")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l704s"]
+texture = ExtResource("7_usomy")
+texture_region_size = Vector2i(48, 48)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+0:0/0/y_sort_origin = 20
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 24, -3, 27, 3, 27, 6, 24, 3, 21, -3, 21)
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dp60p"]
+tile_size = Vector2i(48, 48)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_ohblr")
+sources/2 = SubResource("TileSetAtlasSource_l704s")
 
 [resource]
 script = ExtResource("5_es17m")
 name = "Desert"
 description = ""
-seed = 0
+seeded = 0
+tileset = SubResource("TileSet_dp60p")
 road_frequency = 0.006
-obstacle_chance = 0
+obstacle_chance_small = 10
+obstacle_chance_big = 3
 possible_enemies = Array[ExtResource("1_3rkm6")]([ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("3_h7xvx"), ExtResource("2_40nt1"), ExtResource("2_40nt1"), ExtResource("4_h8te5")])
