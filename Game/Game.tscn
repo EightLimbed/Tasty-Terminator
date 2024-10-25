@@ -67,5 +67,8 @@ process_callback = 0
 wait_time = 3.0
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="AchievementPopup/AchievementPopupTimer" to="." method="_on_achievment_popup_timer_timeout"]

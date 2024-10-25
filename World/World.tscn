@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvcjedeo54fs0"]
+[gd_scene load_steps=8 format=3 uid="uid://cvcjedeo54fs0"]
 
 [ext_resource type="Script" path="res://World/World.gd" id="1_tvg2w"]
 [ext_resource type="Texture2D" uid="uid://bp2p25xph1jiv" path="res://Weapons/Art/Gun.png" id="2_0ral4"]
@@ -18,6 +18,18 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_tnf12"]
+offsets = PackedFloat32Array(0.3, 0.5, 0.7)
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 0, 0.784314, 1, 1, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o7il8"]
+gradient = SubResource("Gradient_tnf12")
+width = 160
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
@@ -33,6 +45,8 @@ z_index = -2
 z_index = -100
 
 [node name="Gun" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(0, -1440)
 collision_layer = 0
 collision_mask = 2
 
@@ -48,5 +62,9 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(0, 12)
 texture = SubResource("GradientTexture2D_62pk1")
+
+[node name="Beam" type="Sprite2D" parent="Gun/Sprite2D"]
+z_index = -2
+texture = SubResource("GradientTexture2D_o7il8")
 
 [connection signal="body_entered" from="Gun" to="." method="_on_gun_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlsxkapbmu8a5"]
+[gd_scene load_steps=22 format=3 uid="uid://dlsxkapbmu8a5"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://46451jilj8p0" path="res://MainMenu/Art/Achievements.png" id="13_qjgmp"]
 [ext_resource type="Texture2D" uid="uid://biuw6bgub55ho" path="res://MainMenu/Art/SettingsHover.png" id="13_wmc3k"]
 [ext_resource type="Texture2D" uid="uid://4o7e384w1i5" path="res://MainMenu/Art/AchievementsHover.png" id="14_eblg8"]
+[ext_resource type="AudioStream" uid="uid://dmyss4xnmjd1n" path="res://MainMenu/Music/TT_TitleTheme.mp3" id="16_h2jgj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7v2bj"]
 font_size = 64
@@ -266,6 +267,12 @@ stretch_mode = 3
 [node name="AchievmentDisplay" parent="." instance=ExtResource("8_uwlwx")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_h2jgj")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="mouse_entered" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_exited"]

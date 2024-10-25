@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://yrcv5ae5ck0o"]
+[gd_scene load_steps=8 format=3 uid="uid://yrcv5ae5ck0o"]
 
 [ext_resource type="Script" path="res://HUD/DeathScreen/DeathScreen.gd" id="1_623hs"]
 [ext_resource type="Texture2D" uid="uid://dmui2a8wc3m2x" path="res://HUD/DeathScreen/Art/Revive.png" id="2_4et3a"]
 [ext_resource type="Texture2D" uid="uid://d5g50oxsct04" path="res://HUD/DeathScreen/Art/ReviveHover.png" id="3_le8on"]
 [ext_resource type="Texture2D" uid="uid://cmo8ax0de7tqu" path="res://HUD/DeathScreen/Art/Menu.png" id="4_rwtg4"]
 [ext_resource type="Texture2D" uid="uid://5u5oacdyl1df" path="res://HUD/DeathScreen/Art/MenuHover.png" id="5_p75dn"]
+[ext_resource type="AudioStream" uid="uid://dv0c7jmm53bum" path="res://HUD/DeathScreen/Music/TT_LoseTheme.mp3" id="6_rwufe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sgfej"]
 font_size = 48
@@ -64,6 +65,9 @@ offset_bottom = 67.0
 text = "You Died"
 label_settings = SubResource("LabelSettings_sgfej")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rwufe")
 
 [connection signal="pressed" from="VBoxContainer/Revive" to="." method="_on_revive_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]

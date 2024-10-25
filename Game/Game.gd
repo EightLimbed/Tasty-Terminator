@@ -10,6 +10,8 @@ var save_file : AchievmentsLog
 @onready var achievement_popup = $AchievementPopup/TextureRect
 @onready var achievement_popup_label = $AchievementPopup/TextureRect/Label
 @onready var achievement_popup_timer = $AchievementPopup/AchievementPopupTimer
+@onready var music = $AudioStreamPlayer
+@onready var playlist : Array[AudioStream] = [preload("res://World/Music/TT_RuralTheme.mp3"),preload("res://World/Music/TT_ForestTheme.mp3"),preload("res://World/Music/TT_DesertTheme.mp3"),preload("res://World/Music/TT_WinterTheme.mp3")]
 var enemy = preload("res://Enemies/Enemy.tscn")
 var random = RandomNumberGenerator.new()
 var wave : int = 1
@@ -36,6 +38,7 @@ func achievments_check():
 func _ready():
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
+	update_music()
 	player.start(character_profile)
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
@@ -47,15 +50,26 @@ func _process(_delta: float):
 	achievement_popup.size.y = achievement_popup_label.size.y+6
 	achievement_popup.position.y = 600 - achievement_popup_label.size.y
 
-func achievement(achievement):
-	if not save_file.achievements[achievement] == true:
+func achievement(achieve):
+	if not save_file.achievements[achieve] == true:
 		achievement_popup.visible = true
-		save_file.achievements[achievement] = true
-		achievement_popup_label.text = achievement
+		save_file.achievements[achieve] = true
+		achievement_popup_label.text = achieve
 		achievement_popup_timer.start()
 		ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 		if ResourceLoader.exists("user://save/AchievementLog.tres"):
 			save_file = ResourceLoader.load("user://save/AchievementLog.tres")
+
+func update_music():
+	if world_profile.name == "Rural":
+		music.stream = playlist[0]
+	if world_profile.name == "Forest":
+		music.stream = playlist[1]
+	if world_profile.name == "Desert":
+		music.stream = playlist[2]
+	if world_profile.name == "Winter":
+		music.stream = playlist[3]
+	music.play()
 
 func spawn_enemies_normal(amount, difficulty):
 	for i in amount-enemy_container.get_child_count():
@@ -79,13 +93,14 @@ func spawn_enemies_formation(_amount):
 	pass
 
 func group_experience():
-	var alternate = 0
-	for child in experience_container.get_children():
-		alternate += 1
-		if alternate % 2:
-			child.queue_free()
-		else:
-			child.experience *= 2
+	if experience_container.get_child_count() > 256:
+		var alternate = 0
+		for child in experience_container.get_children():
+			alternate += 1
+			if alternate % 2:
+				child.queue_free()
+			else:
+				child.experience *= 2
 
 func _on_wave_timer_timeout() -> void:
 	group_experience()

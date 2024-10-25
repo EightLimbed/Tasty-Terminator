@@ -27,6 +27,14 @@ func update(save_file) -> void:
 		display.add_child(label)
 		achievement_container.add_child(display)
 		display.custom_minimum_size.y = label.size.y+6
+	for i in 100:
+		var display = NinePatchRect.new()
+		display.patch_margin_left = 15
+		display.patch_margin_top = 15
+		display.patch_margin_right = 5
+		display.patch_margin_bottom = 5
+		display.texture = locked_texture
+		achievement_container.add_child(display)
 
 func _on_exit_pressed() -> void:
 	visible = false
