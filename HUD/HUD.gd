@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var health_bar = $Healthbar
 @onready var experience_bar = $Experiencebar
+@onready var settings = $Settings
 @onready var level_display = $LevelDisplay
 #add weapon children
 @onready var weapon_scene = preload("res://Weapons/Weapon.tscn")
@@ -159,17 +160,17 @@ func update_level_tooltip(option):
 		if round(child.profile.ammo.x + child.profile.ammo.y) != round(child.profile.ammo.x):
 			tooltip_label.text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
 
-		if round(child.profile.unload_time.x + child.profile.unload_time.y) != round(child.profile.unload_time.x):
-			tooltip_label.text += ", -" + str(-1*(round(child.profile.unload_time.x + child.profile.unload_time.y)-round(child.profile.unload_time.x))) + " unload time"
+		if child.profile.unload_time.x + child.profile.unload_time.y != child.profile.unload_time.x:
+			tooltip_label.text += ", faster reload time"
 
-		if round(child.profile.reload_time.x + child.profile.reload_time.y) != round(child.profile.reload_time.x):
-			tooltip_label.text += ", -" + str(-1*(round(child.profile.reload_time.x + child.profile.reload_time.y)-round(child.profile.reload_time.x))) + " reload time"
+		if child.profile.reload_time.x + child.profile.reload_time.y != child.profile.reload_time.x:
+			tooltip_label.text += ", faster reload time"
 
 		if round(child.profile.pierce.x + child.profile.pierce.y) != round(child.profile.pierce.x):
 			tooltip_label.text += ", +" + str(round(child.profile.pierce.x + child.profile.pierce.y)-round(child.profile.pierce.x)) + " more pierce"
 
 		if round(child.profile.speed.x + child.profile.speed.y) != round(child.profile.speed.x):
-			tooltip_label.text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " faster"
+			tooltip_label.text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " speed"
 
 		if round(child.profile.scale.x + child.profile.scale.y) != round(child.profile.scale.x):
 			tooltip_label.text += ", +" + str(round(child.profile.scale.x + child.profile.scale.y)-round(child.profile.scale.x)) + " size"
@@ -239,3 +240,7 @@ func _on_option_3_pressed():
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
+
+func _on_settings_button_pressed() -> void:
+	settings.visible = true
+	settings.menu_button()

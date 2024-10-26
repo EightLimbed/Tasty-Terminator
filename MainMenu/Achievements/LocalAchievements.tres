@@ -13,3 +13,5 @@ achievements = {
 "Reach wave 100 on Forest map (Unlocks Desert map)": false,
 "Reach wave 100 on Rural map (Unlocks Forest map)": false
 }
+music_volume = 50
+control_type = true

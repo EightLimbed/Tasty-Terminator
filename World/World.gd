@@ -24,6 +24,10 @@ func update_profile(profile : World):
 	obstacle_chance_small = profile.obstacle_chance_small
 	if not profile.name == "Desert":
 		gun.visible = false
+		gun.monitoring = false
+	else:
+		gun.visible = true
+		gun.monitoring = true
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
@@ -69,4 +73,4 @@ func _on_gun_body_entered(_body):
 	print("entered")
 	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
 	HUD.level_up(load("res://Weapons/Resources/Gun.tres"))
-	gun.visible = false
+	gun.queue_free()

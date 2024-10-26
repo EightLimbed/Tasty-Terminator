@@ -5,6 +5,7 @@ var profile : Character
 
 #movement
 var input : Vector2
+var control_type : bool
 var health : float
 var experience : int = 0
 @onready var joystick = $Joystick
@@ -15,7 +16,6 @@ var experience : int = 0
 @onready var death_screen = $HUD/DeathScreen
 @onready var pickup_radius = $Hitbox/CollisionShape2D
 var level : int = 0
-#temp
 
 func start(character_profile):
 	profile = character_profile.duplicate()
@@ -46,11 +46,16 @@ func _physics_process(delta: float) -> void:
 		face.frame = 1
 	else:
 		face.frame = 0
-	#mobile
-	input = joystick.distance
-	#PC
-	#input = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
-	velocity = input*profile.speed.x*delta*joystick.press
+	if control_type:
+		joystick.visible = true
+		input = joystick.distance
+		velocity = input*profile.speed.x*delta*joystick.press
+	else:
+		joystick.visible = false
+		var take = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
+		if not take == Vector2.ZERO:
+			input = take
+		velocity = take*profile.speed.x*delta
 	move_and_slide()
 
 func update_health(damage : float):

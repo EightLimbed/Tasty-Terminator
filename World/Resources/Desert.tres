@@ -5,12 +5,12 @@
 [ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_h7xvx"]
 [ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_h8te5"]
 [ext_resource type="Script" path="res://World/world_profile.gd" id="5_es17m"]
-[ext_resource type="Texture2D" uid="uid://byjrqqvhuirlc" path="res://World/Art/SandPath.png" id="6_71236"]
+[ext_resource type="Texture2D" uid="uid://cm8xcjsv7l33e" path="res://World/Art/DesertRoad.png" id="6_8tx4d"]
 [ext_resource type="Texture2D" uid="uid://xeb31ahtgmy" path="res://World/Art/DesertSand.png" id="6_gjjdd"]
 [ext_resource type="Texture2D" uid="uid://c3wcsdi0qt13l" path="res://World/Art/CactusAndBush.png" id="7_usomy"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48fta"]
-texture = ExtResource("6_71236")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otfid"]
+texture = ExtResource("6_8tx4d")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 1:0/0 = 0
@@ -50,7 +50,7 @@ tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_ohblr")
 sources/2 = SubResource("TileSetAtlasSource_l704s")
-sources/0 = SubResource("TileSetAtlasSource_48fta")
+sources/0 = SubResource("TileSetAtlasSource_otfid")
 
 [resource]
 script = ExtResource("5_es17m")

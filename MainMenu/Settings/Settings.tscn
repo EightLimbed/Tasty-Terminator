@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bndtw5amva0qs"]
+[gd_scene load_steps=17 format=3 uid="uid://bndtw5amva0qs"]
 
 [ext_resource type="Script" path="res://MainMenu/Settings/Settings.gd" id="1_kg16e"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6aba0"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://3rujxkrgrhfo" path="res://HUD/Art/ExperienceBarFull.png" id="6_m1yqs"]
 [ext_resource type="Texture2D" uid="uid://bwwbon3af15p0" path="res://MainMenu/Settings/Art/MusicOff.png" id="6_n61qa"]
 [ext_resource type="Texture2D" uid="uid://dvmvqg0fuq8op" path="res://MainMenu/Settings/Art/MusicHover.png" id="7_camyo"]
+[ext_resource type="Texture2D" uid="uid://b3878rfg4xitc" path="res://MainMenu/Art/NextArrow.png" id="10_i4n6b"]
+[ext_resource type="Texture2D" uid="uid://ctf6b1ctguwgr" path="res://MainMenu/Art/NextArrowHover.png" id="11_1jx05"]
+[ext_resource type="Texture2D" uid="uid://cmo8ax0de7tqu" path="res://HUD/DeathScreen/Art/Menu.png" id="12_a2ldu"]
+[ext_resource type="Texture2D" uid="uid://5u5oacdyl1df" path="res://HUD/DeathScreen/Art/MenuHover.png" id="13_atqan"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ivjvh"]
 font_size = 32
@@ -108,6 +112,7 @@ offset_left = 56.0
 offset_top = 96.0
 offset_right = 88.0
 offset_bottom = 128.0
+theme_override_constants/separation = 16
 
 [node name="Music" type="TextureButton" parent="VBoxContainer"]
 texture_filter = 1
@@ -133,6 +138,75 @@ theme_override_styles/grabber_area = SubResource("StyleBoxTexture_dir7y")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_dir7y")
 value = 50.0
 
+[node name="ControlType" type="Control" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(296, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ControlType"]
+texture_filter = 1
+custom_minimum_size = Vector2(132, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -16.0
+offset_right = 66.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mobile Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButtonM" type="TextureButton" parent="VBoxContainer/ControlType"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_right = -32.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("10_i4n6b")
+texture_pressed = ExtResource("11_1jx05")
+texture_hover = ExtResource("11_1jx05")
+flip_h = true
+
+[node name="LeftButtonM" type="TextureButton" parent="VBoxContainer/ControlType"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 16.0
+grow_vertical = 2
+texture_normal = ExtResource("10_i4n6b")
+texture_pressed = ExtResource("11_1jx05")
+texture_hover = ExtResource("11_1jx05")
+
+[node name="Menu" type="TextureButton" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_a2ldu")
+texture_pressed = ExtResource("13_atqan")
+texture_hover = ExtResource("13_atqan")
+
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="VBoxContainer/Music" to="." method="_on_music_toggled"]
 [connection signal="value_changed" from="VBoxContainer/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ControlType/RightButtonM" to="." method="_on_right_button_m_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlType/LeftButtonM" to="." method="_on_left_button_m_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]

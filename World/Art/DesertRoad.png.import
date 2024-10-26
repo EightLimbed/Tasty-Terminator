@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byjrqqvhuirlc"
-path="res://.godot/imported/SandPath.png-36b4f58ba3f3e0cf44c03dac64f0d9ac.ctex"
+uid="uid://cm8xcjsv7l33e"
+path="res://.godot/imported/DesertRoad.png-db431c86cd5a7404c59929ff78fb5d6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Art/SandPath.png"
-dest_files=["res://.godot/imported/SandPath.png-36b4f58ba3f3e0cf44c03dac64f0d9ac.ctex"]
+source_file="res://World/Art/DesertRoad.png"
+dest_files=["res://.godot/imported/DesertRoad.png-db431c86cd5a7404c59929ff78fb5d6e.ctex"]
 
 [params]
 

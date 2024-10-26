@@ -45,13 +45,14 @@ func max_out():
 	achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
 
 func _ready():
-	max_out()
+	#max_out()
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	update_music()
 	player.start(character_profile)
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
+	player.control_type = save_file.control_type
 	spawn_enemies_normal(2, wave)
 
 func _process(_delta: float):

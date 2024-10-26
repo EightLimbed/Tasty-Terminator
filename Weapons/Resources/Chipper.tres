@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://ctr20q5obwflx"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://nuu78004rygv"]
 
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_nc1db"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="1_r6vpx"]
