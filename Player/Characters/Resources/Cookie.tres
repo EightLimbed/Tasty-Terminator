@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_6ra5x"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="3_67823"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="4_rm3ge"]
-[ext_resource type="Resource" uid="uid://nuu78004rygv" path="res://Weapons/Resources/Chipper.tres" id="4_x4pki"]
+[ext_resource type="Resource" uid="uid://ctr20q5obwflx" path="res://Weapons/Resources/Chipper.tres" id="4_x4pki"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eokbm"]
 animations = [{
