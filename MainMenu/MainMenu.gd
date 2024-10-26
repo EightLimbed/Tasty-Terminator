@@ -11,6 +11,7 @@ extends Control
 @onready var level_description = $VBoxContainer/LevelSelect
 @onready var level_description_label = $VBoxContainer/LevelSelect/Label
 @onready var achievement_display = $AchievmentDisplay
+@onready var settings = $Settings
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 @onready var world = $World
 @onready var cright = $VBoxContainer/CharacterSelect/RightButton
@@ -68,7 +69,7 @@ func _process(_delta: float) -> void:
 	level_description.custom_minimum_size.y = level_description_label.size.y+6
 	character_select.custom_minimum_size.y = 80 + character_description_label.size.y+6
 
-func character_left():
+func character_right():
 	if characters.size()-1 > c_index:
 		c_index += 1
 	else:
@@ -77,7 +78,7 @@ func character_left():
 	character_description_label.text = characters[c_index].name + ":\n" + characters[c_index].description
 	character_display.play()
 
-func character_right():
+func character_left():
 	if 0 < c_index:
 		c_index -= 1
 	else:
@@ -86,7 +87,7 @@ func character_right():
 	character_description_label.text = characters[c_index].name + ":\n" + characters[c_index].description
 	character_display.play()
 
-func world_left():
+func world_right():
 	if maps.size()-1 > m_index:
 		m_index += 1
 	else:
@@ -98,7 +99,7 @@ func world_left():
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
-func world_right():
+func world_left():
 	if 0 < m_index:
 		m_index -= 1
 	else:
@@ -113,6 +114,9 @@ func world_right():
 func _on_achievments_pressed() -> void:
 	achievement_display.update(save_file)
 	achievement_display.visible = true
+
+func _on_settings_pressed() -> void:
+	settings.visible = true
 
 func _on_start_pressed() -> void:
 	game.character_profile = characters[c_index]

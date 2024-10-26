@@ -197,7 +197,6 @@ func _on_option_1_pressed():
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
-	level_up(load("res://Weapons/Resources/Gun.tres"))
 
 func _on_option_2_pressed():
 	if option2_button.scale == Vector2(1,1):

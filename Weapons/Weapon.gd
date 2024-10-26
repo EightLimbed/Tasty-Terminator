@@ -56,6 +56,7 @@ func shoot():
 				projectile_container.add_child.call_deferred(instance)
 		else:
 			projectile_container.add_child.call_deferred(instance)
+		
 
 func upgrade():
 	#spread

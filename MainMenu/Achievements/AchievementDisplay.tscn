@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://MainMenu/Achievements/AchievementDisplay.gd" id="1_ryq6v"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_loxnb"]
-[ext_resource type="Texture2D" uid="uid://cewqqeg6mlhpm" path="res://MainMenu/Art/Exit.png" id="3_1ub4l"]
-[ext_resource type="Texture2D" uid="uid://ssbmpg18bt87" path="res://MainMenu/Art/ExitHover.png" id="4_tsr0v"]
+[ext_resource type="Texture2D" uid="uid://bnjjuhaxbatnu" path="res://MainMenu/Art/Exit.png" id="3_1ub4l"]
+[ext_resource type="Texture2D" uid="uid://be7woavjk0ct6" path="res://MainMenu/Art/ExitHover.png" id="4_tsr0v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_plboe"]
 font_size = 32

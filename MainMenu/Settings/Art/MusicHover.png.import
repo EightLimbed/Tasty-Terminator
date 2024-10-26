@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw4jquffeqmcv"
-path="res://.godot/imported/SettingsHover.png-12370a8c87ef00894559ee23d65b9acc.ctex"
+uid="uid://dvmvqg0fuq8op"
+path="res://.godot/imported/MusicHover.png-9897413217694ae360eb9c887bd812cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/Art/SettingsHover.png"
-dest_files=["res://.godot/imported/SettingsHover.png-12370a8c87ef00894559ee23d65b9acc.ctex"]
+source_file="res://MainMenu/Settings/Art/MusicHover.png"
+dest_files=["res://.godot/imported/MusicHover.png-9897413217694ae360eb9c887bd812cc.ctex"]
 
 [params]
 

@@ -33,8 +33,6 @@ class_name Weapon
 @export var lifetime_override : float
 #appearance
 @export var frames : SpriteFrames
-#trail
-@export var trail : ParticleProcessMaterial
 
 #@export var sound
 #size of bullet hitbox

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlsxkapbmu8a5"]
+[gd_scene load_steps=23 format=3 uid="uid://dlsxkapbmu8a5"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
@@ -10,12 +10,13 @@
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="5_wyfeg"]
 [ext_resource type="PackedScene" uid="uid://cjh381wkxqgma" path="res://MainMenu/Achievements/AchievementDisplay.tscn" id="8_uwlwx"]
 [ext_resource type="PackedScene" uid="uid://cvcjedeo54fs0" path="res://World/World.tscn" id="9_byynd"]
-[ext_resource type="Texture2D" uid="uid://dcconjmaf36o4" path="res://MainMenu/Art/PlayHover.png" id="10_ecsw8"]
-[ext_resource type="Texture2D" uid="uid://b50oi5x7xthtt" path="res://MainMenu/Art/Settings.png" id="12_nkdh7"]
-[ext_resource type="Texture2D" uid="uid://46451jilj8p0" path="res://MainMenu/Art/Achievements.png" id="13_qjgmp"]
-[ext_resource type="Texture2D" uid="uid://biuw6bgub55ho" path="res://MainMenu/Art/SettingsHover.png" id="13_wmc3k"]
-[ext_resource type="Texture2D" uid="uid://4o7e384w1i5" path="res://MainMenu/Art/AchievementsHover.png" id="14_eblg8"]
+[ext_resource type="Texture2D" uid="uid://47gyg4rxsqhq" path="res://MainMenu/Art/PlayHover.png" id="10_ecsw8"]
+[ext_resource type="Texture2D" uid="uid://ckgvjurnmuxhp" path="res://MainMenu/Art/Settings.png" id="12_nkdh7"]
+[ext_resource type="Texture2D" uid="uid://cw07o2ltfpbuu" path="res://MainMenu/Art/Achievements.png" id="13_qjgmp"]
+[ext_resource type="Texture2D" uid="uid://dw4jquffeqmcv" path="res://MainMenu/Art/SettingsHover.png" id="13_wmc3k"]
+[ext_resource type="Texture2D" uid="uid://cxq2xr1cmnpn4" path="res://MainMenu/Art/AchievementsHover.png" id="14_eblg8"]
 [ext_resource type="AudioStream" uid="uid://dmyss4xnmjd1n" path="res://MainMenu/Music/TT_TitleTheme.mp3" id="16_h2jgj"]
+[ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="16_uomdb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7v2bj"]
 font_size = 64
@@ -268,6 +269,10 @@ stretch_mode = 3
 visible = false
 layout_mode = 1
 
+[node name="Settings" parent="." instance=ExtResource("16_uomdb")]
+visible = false
+layout_mode = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_h2jgj")
 autoplay = true
@@ -281,4 +286,5 @@ parameters/looping = true
 [connection signal="pressed" from="VBoxContainer/LevelSelect/RightButtonM" to="." method="_on_right_button_m_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect/LeftButtonM" to="." method="_on_left_button_m_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Start/Achievments" to="." method="_on_achievments_pressed"]

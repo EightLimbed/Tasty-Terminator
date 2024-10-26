@@ -35,7 +35,17 @@ func achievments_check():
 	if wave>= 100 and world.profile.name== 'Forest':
 		achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
 
+func max_out():
+	achievement("Reach level 100 (Unlocks Gummy Bear)")
+	achievement("Reach level 250 with Cookie (Unlocks Chipper)")
+	achievement("Reach wave 100 on Rural map (Unlocks Forest map)")
+	achievement("Reach level 250 with Gummy Bear (Unlocks Bear Trap)")
+	achievement("Reach level 250 with Donut (Unlocks GLazer)")
+	achievement("Reach level 100 with starting weapon (Unlocks Donut)")
+	achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
+
 func _ready():
+	max_out()
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	update_music()
