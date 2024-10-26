@@ -22,8 +22,9 @@ func update_profile(profile : World):
 	noise.seed = profile.seeded
 	obstacle_chance_big = profile.obstacle_chance_big
 	obstacle_chance_small = profile.obstacle_chance_small
-	if not profile.name == "Desert":
-		gun.queue_free()
+	if not gun == null:
+		if not profile.name == "Desert":
+			gun.queue_free()
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
