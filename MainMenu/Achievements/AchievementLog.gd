@@ -4,6 +4,7 @@ class_name AchievmentsLog
 
 @export var achievements : Dictionary
 @export var music_volume : int
+@export var sound_effect_volume : int
 @export var control_type : bool
 
 func verify_save():

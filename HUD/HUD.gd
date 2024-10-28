@@ -26,6 +26,7 @@ var levels_cached : int = 0
 var option1
 var option2
 var option3
+@onready var sound = $AudioStreamPlayer
 
 #if an achievement unlocks something, add check for achievment, and add resource to respective list
 func load_achievments():
@@ -104,6 +105,7 @@ func update_health(minim,value,maxim):
 	health_bar.value = value
 
 func update_experience(minim,value,maxim):
+	sound.play()
 	experience_bar.min_value = minim
 	experience_bar.max_value = maxim
 	experience_bar.value = value
@@ -242,11 +244,11 @@ func option3_pressed():
 			level_up(0)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("1"):
+	if event.is_action_pressed("1") and level_up_window.visible:
 		option1_pressed()
-	if event.is_action_pressed("2"):
+	if event.is_action_pressed("2") and level_up_window.visible:
 		option2_pressed()
-	if event.is_action_pressed("3"):
+	if event.is_action_pressed("3") and level_up_window.visible:
 		option3_pressed()
 
 func _on_option_1_pressed():

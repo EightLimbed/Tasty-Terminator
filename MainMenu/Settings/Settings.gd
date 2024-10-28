@@ -1,11 +1,15 @@
 extends Control
 
 @onready var bus_layout = preload("res://default_bus_layout.tres")
-@onready var music_button = $VBoxContainer/Music
-@onready var music_slider = $VBoxContainer/Music/MusicSlider
+@onready var music_button = $VBoxContainer/Sound/Music
+@onready var music_slider = $VBoxContainer/Sound/Music/MusicSlider
+@onready var sound_effects_button = $VBoxContainer/Sound/SoundEffects
+@onready var sound_effects_slider = $VBoxContainer/Sound/SoundEffects/SoundEffectsSlider
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 @onready var control_label = $VBoxContainer/ControlType/Label
 @onready var menu = $VBoxContainer/Menu
+var music_cache : int
+var sound_effects_cache : int
 
 func _ready() -> void:
 	menu.visible = false
@@ -13,6 +17,7 @@ func _ready() -> void:
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 	AudioServer.set_bus_volume_db(1,linear_to_db(save_file.music_volume/12.0))
 	music_slider.value = save_file.music_volume
+	sound_effects_slider.value = save_file.sound_effect_volume
 	if save_file.control_type:
 		control_label.text = "Mobile Controls"
 	else:
@@ -38,9 +43,31 @@ func _on_music_slider_value_changed(value: float) -> void:
 
 func _on_music_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		music_cache = music_slider.value
 		music_slider.value = 0
 	else:
-		music_slider.value = 50
+		if music_cache > 1:
+			music_slider.value = music_cache
+		else:
+			music_slider.value = 50
+
+func _on_sound_effects_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(2,linear_to_db(value/12.0))
+	save_file.sound_effect_volume = value
+	if value <= 0:
+		sound_effects_button.button_pressed = true
+	else:
+		sound_effects_button.button_pressed = false
+
+func _on_sound_effects_toggled(toggled_on):
+	if toggled_on:
+		sound_effects_cache = sound_effects_slider.value
+		sound_effects_slider.value = 0
+	else:
+		if music_cache > 1:
+			sound_effects_slider.value = sound_effects_cache
+		else:
+			sound_effects_slider.value = 50
 
 func _on_right_button_m_pressed() -> void:
 	if save_file.control_type:

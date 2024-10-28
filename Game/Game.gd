@@ -48,7 +48,7 @@ func max_out():
 	achievement("Reach wave 100 on Desert Map (Unlocks Snow map)")
 
 func _ready():
-	#max_out()
+	max_out()
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	update_music()
