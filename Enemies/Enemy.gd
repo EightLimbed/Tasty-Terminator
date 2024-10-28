@@ -14,11 +14,11 @@ var attacking : bool = false
 
 func _ready():
 	#profile = load("res://Enemies/Resources/Default.tres")
-	health = round(profile.health*difficulty**1.5)
 	animation.sprite_frames = profile.frames
 	hitbox.shape = profile.hitbox
 	if difficulty > 2.0:
 		scale *= min(difficulty/2,2)
+	health = round(scale.x*profile.health*difficulty**1.5)
 	animation.play()
 
 func _physics_process(delta):

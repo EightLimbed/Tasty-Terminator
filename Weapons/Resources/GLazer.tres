@@ -44,4 +44,4 @@ scale = Vector2(1, 0.05)
 lifetime_override = 0.03
 frames = SubResource("SpriteFrames_gmsbx")
 collision_shape = SubResource("RectangleShape2D_8hvse")
-collision_offset = Vector2(208, 0)
+collision_offset = Vector2(216, 0)

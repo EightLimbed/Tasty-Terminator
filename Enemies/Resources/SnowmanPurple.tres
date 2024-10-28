@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://cbc67qtqr07yd"]
+
+[ext_resource type="Texture2D" uid="uid://jvf6oppo4oiq" path="res://Enemies/Art/Snowmen/SnowmanPurple1.png" id="1_d3y1m"]
+[ext_resource type="Texture2D" uid="uid://0sl8ypkkfa45" path="res://Enemies/Art/Snowmen/SnowmanPurple2.png" id="2_2lspb"]
+[ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="3_ex6c0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3d4fu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d3y1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2lspb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7e7ys"]
+size = Vector2(32, 32)
+
+[resource]
+script = ExtResource("3_ex6c0")
+frames = SubResource("SpriteFrames_3d4fu")
+health = 200
+speed = 2000
+melee_damage = 15
+experience_drop = 8
+hitbox = SubResource("RectangleShape2D_7e7ys")
+ranged_damage = 0

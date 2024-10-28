@@ -34,6 +34,8 @@ func load_achievments():
 		maps.append(load("res://World/Resources/Forest.tres"))
 	if save_file.achievements["Reach wave 100 on Forest map (Unlocks Desert map)"]:
 		maps.append(load("res://World/Resources/Desert.tres"))
+	if save_file.achievements["Reach wave 100 on Desert Map (Unlocks Snow map)"]:
+		maps.append(load("res://World/Resources/Snow.tres"))
 
 func _ready() -> void:
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."

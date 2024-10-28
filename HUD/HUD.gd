@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var autolevel_display = $Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Chipper.tres"), preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres"),preload("res://Weapons/Resources/Chipper.tres"),preload("res://Weapons/Resources/BearTrap.tres")]
 var max_weapons : int = 5
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -110,7 +110,7 @@ func update_experience(minim,value,maxim):
 
 func add_weapon(weapon : Weapon):
 	var instance = weapon_scene.instantiate()
-	instance.profile = weapon
+	instance.profile = weapon.duplicate()
 	weapon_container.add_child.call_deferred(instance)
 
 func upgrade_weapon(index : int):
@@ -161,7 +161,7 @@ func update_level_tooltip(option):
 			tooltip_label.text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
 
 		if child.profile.unload_time.x + child.profile.unload_time.y != child.profile.unload_time.x:
-			tooltip_label.text += ", faster reload time"
+			tooltip_label.text += ", faster unload time"
 
 		if child.profile.reload_time.x + child.profile.reload_time.y != child.profile.reload_time.x:
 			tooltip_label.text += ", faster reload time"
@@ -178,7 +178,7 @@ func update_level_tooltip(option):
 	else:
 		tooltip_label.text = option.description
 
-func _on_option_1_pressed():
+func option1_pressed():
 	if option1_button.scale == Vector2(1,1):
 		update_level_tooltip(option1)
 		option1_button.scale = Vector2(1.2,1.2)
@@ -199,7 +199,7 @@ func _on_option_1_pressed():
 			levels_cached -= 1
 			level_up(0)
 
-func _on_option_2_pressed():
+func option2_pressed():
 	if option2_button.scale == Vector2(1,1):
 		update_level_tooltip(option2)
 		option1_button.scale = Vector2(1,1)
@@ -220,7 +220,7 @@ func _on_option_2_pressed():
 			levels_cached -= 1
 			level_up(0)
 
-func _on_option_3_pressed():
+func option3_pressed():
 	if option3_button.scale == Vector2(1,1):
 		update_level_tooltip(option3)
 		option1_button.scale = Vector2(1,1)
@@ -240,6 +240,23 @@ func _on_option_3_pressed():
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("1"):
+		option1_pressed()
+	if event.is_action_pressed("2"):
+		option2_pressed()
+	if event.is_action_pressed("3"):
+		option3_pressed()
+
+func _on_option_1_pressed():
+	option1_pressed()
+
+func _on_option_2_pressed():
+	option2_pressed()
+
+func _on_option_3_pressed():
+	option3_pressed()
 
 func _on_settings_button_pressed() -> void:
 	settings.visible = true

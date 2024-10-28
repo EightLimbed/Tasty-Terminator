@@ -10,6 +10,7 @@ achievements = {
 "Reach level 250 with Cookie (Unlocks Chipper)": false,
 "Reach level 250 with Donut (Unlocks GLazer)": false,
 "Reach level 250 with Gummy Bear (Unlocks Bear Trap)": false,
+"Reach wave 100 on Desert Map (Unlocks Snow map)": false,
 "Reach wave 100 on Forest map (Unlocks Desert map)": false,
 "Reach wave 100 on Rural map (Unlocks Forest map)": false
 }

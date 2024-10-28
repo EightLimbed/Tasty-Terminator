@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3wnvg82kqgvj"
-path="res://.godot/imported/Snow.png-b6ba9b43fb89ced8848327289d572d0f.ctex"
+uid="uid://bpm0co884r221"
+path="res://.godot/imported/SnowMan.png-024a9751574992532412fc26c94610dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Art/Snow.png"
-dest_files=["res://.godot/imported/Snow.png-b6ba9b43fb89ced8848327289d572d0f.ctex"]
+source_file="res://Enemies/Art/Snowmen/SnowMan.png"
+dest_files=["res://.godot/imported/SnowMan.png-024a9751574992532412fc26c94610dd.ctex"]
 
 [params]
 

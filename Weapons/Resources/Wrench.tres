@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=14 format=3 uid="uid://bjpm75lbfaugl"]
+
+[ext_resource type="Texture2D" uid="uid://cew3evt8x062h" path="res://Weapons/Art/Wrench.png" id="1_bkyna"]
+[ext_resource type="Texture2D" uid="uid://duny4ofc811bx" path="res://Weapons/Art/Wrench1.png" id="2_2luau"]
+[ext_resource type="Texture2D" uid="uid://bevs0rtap15qj" path="res://Weapons/Art/Wrench2.png" id="3_36xnc"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_lxfho"]
+[ext_resource type="Texture2D" uid="uid://dqhyu4l577qdw" path="res://Weapons/Art/Wrench3.png" id="4_ii7tl"]
+[ext_resource type="Texture2D" uid="uid://dpoemtdelqgms" path="res://Weapons/Art/Wrench4.png" id="5_fh645"]
+[ext_resource type="Texture2D" uid="uid://dl2cbjl7fmpp0" path="res://Weapons/Art/Wrench5.png" id="6_xxg5v"]
+[ext_resource type="Texture2D" uid="uid://dg617ehy7jm8d" path="res://Weapons/Art/Wrench6.png" id="7_c3at6"]
+[ext_resource type="Texture2D" uid="uid://bl485jrs21j3x" path="res://Weapons/Art/Wrench7.png" id="8_fe60t"]
+[ext_resource type="Texture2D" uid="uid://croab8wam4ttw" path="res://Weapons/Art/Wrench8.png" id="9_43mht"]
+[ext_resource type="Texture2D" uid="uid://l0rnyvwah12o" path="res://Weapons/Art/Wrench9.png" id="10_oog1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tx88"]
+radius = 96.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdjpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2luau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2luau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2luau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_36xnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ii7tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fh645")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xxg5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c3at6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fe60t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_43mht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oog1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[resource]
+script = ExtResource("3_lxfho")
+name = "Wrench"
+display = ExtResource("1_bkyna")
+description = "High damage at a close range. Make some screws loose."
+aim_type = 1
+spread = Vector2(5, 0)
+multishot = Vector2(1, 0)
+damage = Vector2(120, 15)
+ammo = Vector2(1, 0)
+unload_time = Vector2(0.25, 0)
+reload_time = Vector2(1, -0.02)
+pierce = Vector2(999, 0)
+speed = Vector2(10000, 0)
+scale = Vector2(1, 0.1)
+lifetime_override = 0.45
+frames = SubResource("SpriteFrames_rdjpf")
+collision_shape = SubResource("CircleShape2D_1tx88")
+collision_offset = Vector2(0, 0)

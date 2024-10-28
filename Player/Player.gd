@@ -53,9 +53,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		joystick.visible = false
 		var take = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
-		if not take == Vector2.ZERO:
+		if not take == Vector2.ZERO and health >= 0:
 			input = take
-		velocity = take*profile.speed.x*delta
+		if health >= 0:
+			velocity = take*profile.speed.x*delta
 	move_and_slide()
 
 func update_health(damage : float):
