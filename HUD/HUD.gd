@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var autolevel_display = $Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
 var max_weapons : int = 5
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title

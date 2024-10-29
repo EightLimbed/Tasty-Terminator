@@ -62,6 +62,7 @@ color = Color(0, 0, 0, 0.784314)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
 offset_left = 43.0
 offset_top = 134.0
 offset_right = 363.0

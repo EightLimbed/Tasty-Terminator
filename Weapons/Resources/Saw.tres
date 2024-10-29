@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=16 format=3 uid="uid://belk75crsbtpy"]
+
+[ext_resource type="Texture2D" uid="uid://ja2e3s8efbhl" path="res://Weapons/Art/Saw.png" id="1_6eqsa"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_kho14"]
+[ext_resource type="Texture2D" uid="uid://bx60afwf64scc" path="res://Weapons/Art/Saw1.png" id="2_fm165"]
+[ext_resource type="Texture2D" uid="uid://dvi0imtg2hj31" path="res://Weapons/Art/Saw2.png" id="3_wky2x"]
+[ext_resource type="Texture2D" uid="uid://nqdqcp55pi62" path="res://Weapons/Art/Saw3.png" id="4_65ypi"]
+[ext_resource type="Texture2D" uid="uid://ms4vqkxtkqh4" path="res://Weapons/Art/Saw4.png" id="5_uhu83"]
+[ext_resource type="Texture2D" uid="uid://bwox7quc51i03" path="res://Weapons/Art/Saw5.png" id="6_d24p5"]
+[ext_resource type="Texture2D" uid="uid://dpe5m5o1km6qd" path="res://Weapons/Art/Saw6.png" id="7_3kisu"]
+[ext_resource type="Texture2D" uid="uid://crxyoe50h73wq" path="res://Weapons/Art/Saw7.png" id="8_17357"]
+[ext_resource type="Texture2D" uid="uid://cdu3m1doy4fg2" path="res://Weapons/Art/Saw8.png" id="9_5abgi"]
+[ext_resource type="Texture2D" uid="uid://kh1062c4id6h" path="res://Weapons/Art/Saw9.png" id="10_bq5be"]
+[ext_resource type="Texture2D" uid="uid://d0wi180ny03ep" path="res://Weapons/Art/Saw10.png" id="11_8gr6v"]
+[ext_resource type="Texture2D" uid="uid://dg0mr4yuwvmql" path="res://Weapons/Art/Saw11.png" id="12_rwohv"]
+[ext_resource type="Texture2D" uid="uid://bd0s3fnufvays" path="res://Weapons/Art/Saw12.png" id="13_345ro"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f40xy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fm165")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wky2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_65ypi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uhu83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d24p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3kisu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_17357")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5abgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bq5be")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8gr6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rwohv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_345ro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[resource]
+script = ExtResource("1_kho14")
+name = "Saw"
+display = ExtResource("1_6eqsa")
+description = "Spinning saw blade."
+aim_type = 3
+spread = Vector2(5, 0)
+multishot = Vector2(1, 0)
+damage = Vector2(25, 0)
+ammo = Vector2(1, 0)
+unload_time = Vector2(0.5, -0.01)
+reload_time = Vector2(0.5, 0)
+pierce = Vector2(2, 0.1)
+speed = Vector2(0, 0)
+scale = Vector2(1, 0.02)
+lifetime_override = 0.0
+frames = SubResource("SpriteFrames_f40xy")
+collision_offset = Vector2(0, 0)
