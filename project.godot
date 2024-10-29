@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://Enemies/Art/ed/ed-0.png"
 config/icon="res://Player/Characters/Art/CookieWalk-0.png"
+config/windows_native_icon="res://Donut.ico"
 
 [display]
 
