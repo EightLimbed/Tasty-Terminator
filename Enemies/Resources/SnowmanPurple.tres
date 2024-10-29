@@ -27,6 +27,6 @@ frames = SubResource("SpriteFrames_3d4fu")
 health = 200
 speed = 2000
 melee_damage = 15
-experience_drop = 8
+experience_drop = 16
 hitbox = SubResource("RectangleShape2D_7e7ys")
 ranged_damage = 0

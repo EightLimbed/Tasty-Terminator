@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://cxfpebowk1saa"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://cxfpebowk1saa"]
 
 [ext_resource type="Texture2D" uid="uid://bjts4qeqwnf2c" path="res://Weapons/Art/BrickWeapon.png" id="1_rmaku"]
 [ext_resource type="Texture2D" uid="uid://b8u65hv86hrlc" path="res://Weapons/Art/Brick1.png" id="2_u4fky"]
 [ext_resource type="Texture2D" uid="uid://d27cxggre1umd" path="res://Weapons/Art/Brick2.png" id="3_0ebm4"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_nv1hb"]
+[ext_resource type="AudioStream" uid="uid://cy3w0gpbtb85t" path="res://Weapons/Sound/Throw.mp3" id="5_0n2mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(32, 32)
@@ -39,5 +40,6 @@ speed = Vector2(20000, 0)
 scale = Vector2(1, 0)
 lifetime_override = 0.0
 frames = SubResource("SpriteFrames_lj8rd")
+sound = ExtResource("5_0n2mb")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(0, 0)

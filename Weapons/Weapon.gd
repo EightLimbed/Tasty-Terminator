@@ -24,6 +24,8 @@ func _ready() -> void:
 
 #need to add collision layers
 func shoot():
+	if profile.sound:
+		play_sound(profile.sound,AudioServer.get_bus_name(2))
 	var spread = deg_to_rad(profile.spread.x)/round(profile.multishot.x)
 	var spread_offset = deg_to_rad(profile.spread.x/2)
 	for i in round(profile.multishot.x):
@@ -56,7 +58,6 @@ func shoot():
 				projectile_container.add_child.call_deferred(instance)
 		else:
 			projectile_container.add_child.call_deferred(instance)
-		
 
 func upgrade():
 	#spread
@@ -95,6 +96,17 @@ func upgrade():
 	ammo = round(profile.ammo.x)
 	unload.start()
 	level += 1
+
+func play_sound(sound : AudioStream, bus : String):
+	var stream_player = AudioStreamPlayer.new()
+	stream_player.stream = sound
+	stream_player.bus = bus
+	player.add_child(stream_player)
+	stream_player.play()
+	stream_player.connect("finished", audio_finished.bind(stream_player))
+
+func audio_finished(stream_player):
+	stream_player.queue_free()
 
 func find_closest(from : Vector2, selection : Array):
 	if selection.size() > 0:

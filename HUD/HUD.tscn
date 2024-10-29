@@ -12,13 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="7_sv64g"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="10_atq2o"]
-[ext_resource type="AudioStream" uid="uid://k6kkawbccqjn" path="res://Enemies/Sound/ExperiencePickup.mp3" id="13_xfde3"]
+[ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="13_ee3pi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amjjq"]
 font_size = 14
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qu632"]
 font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_32x74")
@@ -292,9 +296,7 @@ offset_bottom = 6.0
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_xfde3")
-volume_db = 24.0
-bus = &"SoundEffects"
+stream = ExtResource("13_ee3pi")
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option1" to="." method="_on_option_1_pressed"]

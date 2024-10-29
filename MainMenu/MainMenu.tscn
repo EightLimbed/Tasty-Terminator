@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlsxkapbmu8a5"]
+[gd_scene load_steps=24 format=3 uid="uid://dlsxkapbmu8a5"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="3_dksqh"]
 [ext_resource type="Texture2D" uid="uid://b3878rfg4xitc" path="res://MainMenu/Art/NextArrow.png" id="3_mor01"]
+[ext_resource type="Texture2D" uid="uid://ca2woehyximxc" path="res://MainMenu/Art/TITLE.png" id="3_wx26e"]
 [ext_resource type="Texture2D" uid="uid://col2ljvlcd2qm" path="res://Player/Art/Faces/DefaultFace.png" id="4_5lfsp"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="4_8g5ns"]
 [ext_resource type="Texture2D" uid="uid://ctf6b1ctguwgr" path="res://MainMenu/Art/NextArrowHover.png" id="4_qmgj8"]
@@ -17,9 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cxq2xr1cmnpn4" path="res://MainMenu/Art/AchievementsHover.png" id="14_eblg8"]
 [ext_resource type="AudioStream" uid="uid://dmyss4xnmjd1n" path="res://MainMenu/Music/TT_TitleTheme.mp3" id="16_h2jgj"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="16_uomdb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7v2bj"]
-font_size = 64
+[ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="19_rw5bm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rcntu"]
 animations = [{
@@ -35,12 +34,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_0d6vo"]
+[sub_resource type="Gradient" id="Gradient_1j8j7"]
 offsets = PackedFloat32Array(0.55, 0.73)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gud3p"]
-gradient = SubResource("Gradient_0d6vo")
+gradient = SubResource("Gradient_1j8j7")
 width = 36
 height = 18
 fill = 1
@@ -64,19 +63,18 @@ script = ExtResource("1_geu8k")
 position = Vector2(202.5, 360)
 scale = Vector2(0.3, 0.3)
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -202.5
 offset_right = 202.5
-offset_bottom = 96.0
+offset_bottom = 192.0
 grow_horizontal = 2
-text = "TastyTerm"
-label_settings = SubResource("LabelSettings_7v2bj")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_wx26e")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0.607843)
@@ -185,6 +183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_5lfsp")
 stretch_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelSelect" type="NinePatchRect" parent="VBoxContainer"]
 texture_filter = 1
@@ -278,6 +277,9 @@ stream = ExtResource("16_h2jgj")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_rw5bm")
 
 [connection signal="mouse_entered" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_exited"]

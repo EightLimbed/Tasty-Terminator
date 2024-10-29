@@ -8,6 +8,7 @@ var noise = FastNoiseLite.new()
 @onready var roads = $Roads
 @onready var obstacles = $Obstacles
 @onready var gun = $Gun
+@onready var revival = $Revival
 var obstacle_chance_big : int
 var obstacle_chance_small : int
 
@@ -70,7 +71,11 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 						obstacles.set_cell(updated_pos, 2, Vector2i(0,2))
 
 func _on_gun_body_entered(_body):
-	print("entered")
 	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
 	HUD.level_up(load("res://Weapons/Resources/Gun.tres"))
 	gun.queue_free()
+
+func _on_revival_body_entered(_body):
+	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
+	HUD.level_up(load("res://Weapons/Resources/Revival.tres"))
+	revival.queue_free()

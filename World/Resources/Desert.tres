@@ -57,7 +57,7 @@ sources/0 = SubResource("TileSetAtlasSource_otfid")
 [resource]
 script = ExtResource("5_es17m")
 name = "Desert"
-description = "Yee haw cowboy"
+description = "Yee haw cowboy (↑→RG)"
 seeded = 0
 tileset = SubResource("TileSet_dp60p")
 road_frequency = 0.004

@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var experience_bar = $Experiencebar
 @onready var settings = $Settings
 @onready var level_display = $LevelDisplay
-#add weapon children
+@onready var click_sound = $AudioStreamPlayer
 @onready var weapon_scene = preload("res://Weapons/Weapon.tscn")
 @onready var game = get_tree().get_root().get_node("Game")
 @onready var player = game.get_node("Player")
@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var autolevel_display = $Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres"),preload("res://Weapons/Resources/Chipper.tres"),preload("res://Weapons/Resources/BearTrap.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
 var max_weapons : int = 5
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -26,18 +26,15 @@ var levels_cached : int = 0
 var option1
 var option2
 var option3
-@onready var sound = $AudioStreamPlayer
 
 #if an achievement unlocks something, add check for achievment, and add resource to respective list
 func load_achievments():
 	if save_file.achievements["Reach level 250 with Donut (Unlocks GLazer)"]:
-		possible_weapons.append(load("res://Weapons/Resources/GLazer.tres"))
+		possible_weapons.append(preload("res://Weapons/Resources/GLazer.tres"))
 	if save_file.achievements["Reach level 250 with Cookie (Unlocks Chipper)"]:
-		pass
-		#possible_weapons.append(load("res://Weapons/Resources/Chipper.tres"))
+		possible_weapons.append(preload("res://Weapons/Resources/Chipper.tres"))
 	if save_file.achievements["Reach level 250 with Gummy Bear (Unlocks Bear Trap)"]:
-		pass
-		#possible_weapons.append(load("res://Weapons/Resources/BearTrap.tres"))
+		possible_weapons.append(preload("res://Weapons/Resources/BearTrap.tres"))
 
 func _ready():
 	save_file.verify_save()
@@ -105,7 +102,6 @@ func update_health(minim,value,maxim):
 	health_bar.value = value
 
 func update_experience(minim,value,maxim):
-	sound.play()
 	experience_bar.min_value = minim
 	experience_bar.max_value = maxim
 	experience_bar.value = value
@@ -181,6 +177,7 @@ func update_level_tooltip(option):
 		tooltip_label.text = option.description
 
 func option1_pressed():
+	click_sound.play()
 	if option1_button.scale == Vector2(1,1):
 		update_level_tooltip(option1)
 		option1_button.scale = Vector2(1.2,1.2)
@@ -194,14 +191,18 @@ func option1_pressed():
 		if option1 is int:
 			upgrade_weapon(option1)
 		else:
-			add_weapon(option1)
-			possible_weapons.erase(option1)
+			if option1.name != "+1 Revival":
+				add_weapon(option1)
+				possible_weapons.erase(option1)
+			else:
+				player.profile.revivals += 1
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
 
 func option2_pressed():
+	click_sound.play()
 	if option2_button.scale == Vector2(1,1):
 		update_level_tooltip(option2)
 		option1_button.scale = Vector2(1,1)
@@ -215,14 +216,18 @@ func option2_pressed():
 		if option2 is int:
 			upgrade_weapon(option2)
 		else:
-			add_weapon(option2)
-			possible_weapons.erase(option2)
+			if option2.name != "+1 Revival":
+				add_weapon(option2)
+				possible_weapons.erase(option2)
+			else:
+				player.profile.revivals += 1
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
 
 func option3_pressed():
+	click_sound.play()
 	if option3_button.scale == Vector2(1,1):
 		update_level_tooltip(option3)
 		option1_button.scale = Vector2(1,1)
@@ -236,19 +241,22 @@ func option3_pressed():
 		if option3 is int:
 			upgrade_weapon(option3)
 		else:
-			add_weapon(option3)
-			possible_weapons.erase(option3)
+			if option3.name != "+1 Revival":
+				add_weapon(option3)
+				possible_weapons.erase(option3)
+			else:
+				player.profile.revivals += 1
 		level_up_window.visible = false
 		if levels_cached > 0:
 			levels_cached -= 1
 			level_up(0)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("1") and level_up_window.visible:
+	if event.is_action_pressed("1") and level_up_window.visible and player.health > 0:
 		option1_pressed()
-	if event.is_action_pressed("2") and level_up_window.visible:
+	if event.is_action_pressed("2") and level_up_window.visible and player.health > 0:
 		option2_pressed()
-	if event.is_action_pressed("3") and level_up_window.visible:
+	if event.is_action_pressed("3") and level_up_window.visible and player.health > 0:
 		option3_pressed()
 
 func _on_option_1_pressed():
@@ -261,5 +269,6 @@ func _on_option_3_pressed():
 	option3_pressed()
 
 func _on_settings_button_pressed() -> void:
+	click_sound.play()
 	settings.visible = true
 	settings.menu_button()

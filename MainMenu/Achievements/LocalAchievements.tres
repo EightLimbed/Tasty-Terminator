@@ -7,12 +7,15 @@ script = ExtResource("1_0l0ve")
 achievements = {
 "Reach level 100 (Unlocks Gummy Bear)": false,
 "Reach level 100 with starting weapon (Unlocks Donut)": false,
+"Reach level 1000": false,
 "Reach level 250 with Cookie (Unlocks Chipper)": false,
 "Reach level 250 with Donut (Unlocks GLazer)": false,
 "Reach level 250 with Gummy Bear (Unlocks Bear Trap)": false,
+"Reach level 500": false,
 "Reach wave 100 on Desert Map (Unlocks Snow map)": false,
 "Reach wave 100 on Forest map (Unlocks Desert map)": false,
 "Reach wave 100 on Rural map (Unlocks Forest map)": false
 }
 music_volume = 50
+sound_effect_volume = 50
 control_type = true

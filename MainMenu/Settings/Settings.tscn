@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bndtw5amva0qs"]
+[gd_scene load_steps=21 format=3 uid="uid://bndtw5amva0qs"]
 
 [ext_resource type="Script" path="res://MainMenu/Settings/Settings.gd" id="1_kg16e"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6aba0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cmo8ax0de7tqu" path="res://HUD/DeathScreen/Art/Menu.png" id="12_a2ldu"]
 [ext_resource type="Texture2D" uid="uid://dgeux4vsp68ya" path="res://MainMenu/Settings/Art/SoundEffectsHover.png" id="12_vbxyd"]
 [ext_resource type="Texture2D" uid="uid://5u5oacdyl1df" path="res://HUD/DeathScreen/Art/MenuHover.png" id="13_atqan"]
+[ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="17_nynot"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ivjvh"]
 font_size = 32
@@ -241,6 +242,9 @@ size_flags_vertical = 4
 texture_normal = ExtResource("12_a2ldu")
 texture_pressed = ExtResource("13_atqan")
 texture_hover = ExtResource("13_atqan")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_nynot")
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="VBoxContainer/Sound/Music" to="." method="_on_music_toggled"]

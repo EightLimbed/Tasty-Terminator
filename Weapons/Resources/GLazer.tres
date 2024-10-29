@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://cx5kgk7ipm7k"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=9 format=3 uid="uid://cx5kgk7ipm7k"]
 
 [ext_resource type="Texture2D" uid="uid://7kv07tg5m4i0" path="res://Weapons/Art/GLazerWeapon.png" id="1_tnl7y"]
 [ext_resource type="Texture2D" uid="uid://dln2hmd3huh6k" path="res://Weapons/Art/GLazer1.png" id="2_kt71w"]
 [ext_resource type="Texture2D" uid="uid://cpq8ao1ehyfcp" path="res://Weapons/Art/GLazer2.png" id="3_7gqqu"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_xqibr"]
 [ext_resource type="Texture2D" uid="uid://fdtv4nijpgj5" path="res://Weapons/Art/GLazer3.png" id="4_kqwk6"]
+[ext_resource type="AudioStream" uid="uid://csquogoxucev0" path="res://Weapons/Sound/GLazer.mp3" id="6_osoqj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(416, 32)
@@ -43,5 +44,6 @@ speed = Vector2(0, 0)
 scale = Vector2(1, 0.05)
 lifetime_override = 0.03
 frames = SubResource("SpriteFrames_gmsbx")
+sound = ExtResource("6_osoqj")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(216, 0)

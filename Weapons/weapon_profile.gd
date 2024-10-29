@@ -33,8 +33,8 @@ class_name Weapon
 @export var lifetime_override : float
 #appearance
 @export var frames : SpriteFrames
-
-#@export var sound
+#sound effect
+@export var sound : AudioStream
 #size of bullet hitbox
 @export var collision_shape : Shape2D
 @export var collision_offset : Vector2

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=14 format=3 uid="uid://bjpm75lbfaugl"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=15 format=3 uid="uid://bjpm75lbfaugl"]
 
 [ext_resource type="Texture2D" uid="uid://cew3evt8x062h" path="res://Weapons/Art/Wrench.png" id="1_bkyna"]
 [ext_resource type="Texture2D" uid="uid://duny4ofc811bx" path="res://Weapons/Art/Wrench1.png" id="2_2luau"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bl485jrs21j3x" path="res://Weapons/Art/Wrench7.png" id="8_fe60t"]
 [ext_resource type="Texture2D" uid="uid://croab8wam4ttw" path="res://Weapons/Art/Wrench8.png" id="9_43mht"]
 [ext_resource type="Texture2D" uid="uid://l0rnyvwah12o" path="res://Weapons/Art/Wrench9.png" id="10_oog1q"]
+[ext_resource type="AudioStream" uid="uid://cy3w0gpbtb85t" path="res://Weapons/Sound/Throw.mp3" id="12_akfbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tx88"]
 radius = 96.0
@@ -73,5 +74,6 @@ speed = Vector2(10000, 0)
 scale = Vector2(1, 0.1)
 lifetime_override = 0.45
 frames = SubResource("SpriteFrames_rdjpf")
+sound = ExtResource("12_akfbr")
 collision_shape = SubResource("CircleShape2D_1tx88")
 collision_offset = Vector2(0, 0)

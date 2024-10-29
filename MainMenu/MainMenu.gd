@@ -1,6 +1,7 @@
 extends Control
 
 @onready var game = preload("res://Game/Game.tscn").instantiate()
+@onready var click_sound = $AudioStreamPlayer2
 @onready var random = RandomNumberGenerator.new()
 @onready var background = $NinePatchRect
 @onready var vbox = $VBoxContainer
@@ -27,15 +28,15 @@ var m_index : int = 0
 #if an achievement unlocks something, add check for achievment, and add resource to respective list
 func load_achievments():
 	if save_file.achievements["Reach level 100 (Unlocks Gummy Bear)"]:
-		characters.append(load("res://Player/Characters/Resources/GummyBear.tres"))
+		characters.append(preload("res://Player/Characters/Resources/GummyBear.tres"))
 	if save_file.achievements["Reach level 100 with starting weapon (Unlocks Donut)"]:
-		characters.append(load("res://Player/Characters/Resources/Donut.tres"))
+		characters.append(preload("res://Player/Characters/Resources/Donut.tres"))
 	if save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"]:
-		maps.append(load("res://World/Resources/Forest.tres"))
+		maps.append(preload("res://World/Resources/Forest.tres"))
 	if save_file.achievements["Reach wave 100 on Forest map (Unlocks Desert map)"]:
-		maps.append(load("res://World/Resources/Desert.tres"))
+		maps.append(preload("res://World/Resources/Desert.tres"))
 	if save_file.achievements["Reach wave 100 on Desert Map (Unlocks Snow map)"]:
-		maps.append(load("res://World/Resources/Snow.tres"))
+		maps.append(preload("res://World/Resources/Snow.tres"))
 
 func _ready() -> void:
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."
@@ -72,6 +73,7 @@ func _process(_delta: float) -> void:
 	character_select.custom_minimum_size.y = 80 + character_description_label.size.y+6
 
 func character_right():
+	click_sound.play()
 	if characters.size()-1 > c_index:
 		c_index += 1
 	else:
@@ -81,6 +83,7 @@ func character_right():
 	character_display.play()
 
 func character_left():
+	click_sound.play()
 	if 0 < c_index:
 		c_index -= 1
 	else:
@@ -90,6 +93,7 @@ func character_left():
 	character_display.play()
 
 func world_right():
+	click_sound.play()
 	if maps.size()-1 > m_index:
 		m_index += 1
 	else:
@@ -102,6 +106,7 @@ func world_right():
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
 func world_left():
+	click_sound.play()
 	if 0 < m_index:
 		m_index -= 1
 	else:
@@ -114,24 +119,21 @@ func world_left():
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
 func _on_achievments_pressed() -> void:
+	click_sound.play()
 	achievement_display.update(save_file)
 	achievement_display.visible = true
 
 func _on_settings_pressed() -> void:
+	click_sound.play()
 	settings.visible = true
 
 func _on_start_pressed() -> void:
+	click_sound.play()
 	game.character_profile = characters[c_index]
 	game.world_profile = maps[m_index]
 	game.save_file = save_file
 	get_tree().root.add_child(game)
 	queue_free()
-
-func _on_temp_left_character_pressed():
-	character_left()
-
-func _on_temp_right_character_pressed():
-	character_right()
 
 func _on_left_button_pressed() -> void:
 	character_left()

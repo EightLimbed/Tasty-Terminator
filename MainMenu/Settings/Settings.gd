@@ -8,6 +8,7 @@ extends Control
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 @onready var control_label = $VBoxContainer/ControlType/Label
 @onready var menu = $VBoxContainer/Menu
+@onready var click_sound = $AudioStreamPlayer
 var music_cache : int
 var sound_effects_cache : int
 
@@ -15,7 +16,6 @@ func _ready() -> void:
 	menu.visible = false
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
-	AudioServer.set_bus_volume_db(1,linear_to_db(save_file.music_volume/12.0))
 	music_slider.value = save_file.music_volume
 	sound_effects_slider.value = save_file.sound_effect_volume
 	if save_file.control_type:
@@ -24,9 +24,11 @@ func _ready() -> void:
 		control_label.text = "Keyboard Controls"
 
 func menu_button():
+	click_sound.play()
 	menu.visible = true
 
 func _on_exit_pressed() -> void:
+	click_sound.play()
 	if menu.visible:
 		var player = get_tree().get_root().get_node("Game").get_node("Player")
 		player.control_type = save_file.control_type
@@ -34,7 +36,8 @@ func _on_exit_pressed() -> void:
 	ResourceSaver.save(save_file, "user://save/AchievementLog.tres")
 
 func _on_music_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(1,linear_to_db(value/12.0))
+	click_sound.play()
+	AudioServer.set_bus_volume_db(1,linear_to_db(value/100.0))
 	save_file.music_volume = value
 	if value <= 0:
 		music_button.button_pressed = true
@@ -42,6 +45,7 @@ func _on_music_slider_value_changed(value: float) -> void:
 		music_button.button_pressed = false
 
 func _on_music_toggled(toggled_on: bool) -> void:
+	click_sound.play()
 	if toggled_on:
 		music_cache = music_slider.value
 		music_slider.value = 0
@@ -52,7 +56,8 @@ func _on_music_toggled(toggled_on: bool) -> void:
 			music_slider.value = 50
 
 func _on_sound_effects_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(2,linear_to_db(value/12.0))
+	click_sound.play()
+	AudioServer.set_bus_volume_db(2,linear_to_db(value/100.0))
 	save_file.sound_effect_volume = value
 	if value <= 0:
 		sound_effects_button.button_pressed = true
@@ -60,6 +65,7 @@ func _on_sound_effects_slider_value_changed(value):
 		sound_effects_button.button_pressed = false
 
 func _on_sound_effects_toggled(toggled_on):
+	click_sound.play()
 	if toggled_on:
 		sound_effects_cache = sound_effects_slider.value
 		sound_effects_slider.value = 0
@@ -70,6 +76,7 @@ func _on_sound_effects_toggled(toggled_on):
 			sound_effects_slider.value = 50
 
 func _on_right_button_m_pressed() -> void:
+	click_sound.play()
 	if save_file.control_type:
 		save_file.control_type = false
 		control_label.text = "Keyboard Controls"
@@ -78,6 +85,7 @@ func _on_right_button_m_pressed() -> void:
 		control_label.text = "Mobile Controls"
 
 func _on_left_button_m_pressed() -> void:
+	click_sound.play()
 	if save_file.control_type:
 		save_file.control_type = false
 		control_label.text = "Keyboard Controls"
@@ -86,6 +94,7 @@ func _on_left_button_m_pressed() -> void:
 		control_label.text = "Mobile Controls"
 
 func _on_menu_pressed() -> void:
+	click_sound.play()
 	var game = get_tree().get_root().get_node("Game")
 	get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")
 	game.queue_free()

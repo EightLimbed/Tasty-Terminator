@@ -36,6 +36,10 @@ func achievments_check():
 		achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
 	if wave >= 100 and world_profile.name == "Desert":
 		achievement("Reach wave 100 on Desert Map (Unlocks Snow map)")
+	if player.level >= 500:
+		achievement("Reach level 500")
+	if player.level >= 1000:
+		achievement("Reach level 1000")
 
 func max_out():
 	achievement("Reach level 100 (Unlocks Gummy Bear)")

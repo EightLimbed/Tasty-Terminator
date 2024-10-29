@@ -3,6 +3,7 @@ extends Control
 @onready var achievement_container = $ScrollContainer/VBoxContainer
 @onready var unlocked_texture : Texture2D = load("res://MainMenu/Art/AchievementUnlocked.png")
 @onready var locked_texture : Texture2D = load("res://MainMenu/Art/AchievementLocked.png")
+@onready var click_sound = $AudioStreamPlayer
 
 func update(save_file) -> void:
 	for child in achievement_container.get_children():
@@ -37,4 +38,5 @@ func update(save_file) -> void:
 		#achievement_container.add_child(display)
 
 func _on_exit_pressed() -> void:
+	click_sound.play()
 	visible = false
