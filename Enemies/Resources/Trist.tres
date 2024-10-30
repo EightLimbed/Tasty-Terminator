@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://5viifpnr5dmv"]
 
-[ext_resource type="Texture2D" uid="uid://7huol0rlrcc6" path="res://Enemies/Art/tristan/tristan-0.png" id="1_m6rex"]
-[ext_resource type="Texture2D" uid="uid://b1niv20s7sj14" path="res://Enemies/Art/tristan/tristan-1.png" id="2_ynfav"]
+[ext_resource type="Texture2D" uid="uid://b8nrsmxymx8y3" path="res://Enemies/Art/tristan/tristan-0.png" id="1_m6rex"]
+[ext_resource type="Texture2D" uid="uid://car7eevfh8acq" path="res://Enemies/Art/tristan/tristan-1.png" id="2_ynfav"]
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="3_l1kxx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_734tm"]
