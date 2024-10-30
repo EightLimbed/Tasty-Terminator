@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=16 format=3 uid="uid://belk75crsbtpy"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=18 format=3 uid="uid://belk75crsbtpy"]
 
 [ext_resource type="Texture2D" uid="uid://ja2e3s8efbhl" path="res://Weapons/Art/Saw.png" id="1_6eqsa"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_kho14"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://d0wi180ny03ep" path="res://Weapons/Art/Saw10.png" id="11_8gr6v"]
 [ext_resource type="Texture2D" uid="uid://dg0mr4yuwvmql" path="res://Weapons/Art/Saw11.png" id="12_rwohv"]
 [ext_resource type="Texture2D" uid="uid://bd0s3fnufvays" path="res://Weapons/Art/Saw12.png" id="13_345ro"]
+[ext_resource type="AudioStream" uid="uid://cy3w0gpbtb85t" path="res://Weapons/Sound/Throw.mp3" id="15_42ata"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7kjy4"]
+radius = 116.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f40xy"]
 animations = [{
@@ -56,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 16.0
+"speed": 24.0
 }]
 
 [resource]
@@ -64,16 +68,19 @@ script = ExtResource("1_kho14")
 name = "Saw"
 display = ExtResource("1_6eqsa")
 description = "Spinning saw blade."
-aim_type = 3
-spread = Vector2(5, 0)
-multishot = Vector2(1, 0)
-damage = Vector2(25, 0)
+aim_type = 0
+spread = Vector2(360, 0)
+multishot = Vector2(1, 0.1)
+damage = Vector2(25, 5)
 ammo = Vector2(1, 0)
-unload_time = Vector2(0.5, -0.01)
-reload_time = Vector2(0.5, 0)
-pierce = Vector2(2, 0.1)
+unload_time = Vector2(0.15, 0)
+reload_time = Vector2(0.15, 0)
+pierce = Vector2(999, 0)
 speed = Vector2(0, 0)
 scale = Vector2(1, 0.02)
-lifetime_override = 0.0
+lifetime_override = 0.5
+follow_player = false
 frames = SubResource("SpriteFrames_f40xy")
+sound = ExtResource("15_42ata")
+collision_shape = SubResource("CircleShape2D_7kjy4")
 collision_offset = Vector2(0, 0)

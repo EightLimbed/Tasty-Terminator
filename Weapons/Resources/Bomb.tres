@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=11 format=3 uid="uid://cdssdnvmwhynf"]
+
+[ext_resource type="Texture2D" uid="uid://glea567rdws5" path="res://Weapons/Art/Bomb.png" id="1_0sa6j"]
+[ext_resource type="Texture2D" uid="uid://0vbbxm0mdota" path="res://Weapons/Art/Bomb2.png" id="2_hdg35"]
+[ext_resource type="Texture2D" uid="uid://dcls58h3hkmla" path="res://Weapons/Art/Bomb3.png" id="3_b8wmc"]
+[ext_resource type="Texture2D" uid="uid://rve4gn5y243t" path="res://Weapons/Art/Bomb4.png" id="4_gvjls"]
+[ext_resource type="Texture2D" uid="uid://bj8vpsisojtqk" path="res://Weapons/Art/Bomb5.png" id="5_8cbfg"]
+[ext_resource type="Texture2D" uid="uid://ueytwlf2pe7i" path="res://Weapons/Art/Bomb6.png" id="6_kjmyt"]
+[ext_resource type="Texture2D" uid="uid://ce31xa0wyh87e" path="res://Weapons/Art/Bomb7.png" id="7_h2wf6"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="14_y1cur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1oc7v"]
+radius = 96.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f40xy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0sa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hdg35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b8wmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gvjls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8cbfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kjmyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h2wf6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[resource]
+script = ExtResource("14_y1cur")
+name = "Bomb"
+display = ExtResource("1_0sa6j")
+description = "Dangerous explosive."
+aim_type = 3
+spread = Vector2(5, 0)
+multishot = Vector2(1, 0)
+damage = Vector2(125, 20)
+ammo = Vector2(1, 0)
+unload_time = Vector2(0.5, 0)
+reload_time = Vector2(0.5, 0)
+pierce = Vector2(9999, 0)
+speed = Vector2(0, 0)
+scale = Vector2(1, 0.02)
+lifetime_override = 1.0
+frames = SubResource("SpriteFrames_f40xy")
+collision_shape = SubResource("CircleShape2D_1oc7v")
+collision_offset = Vector2(0, 0)

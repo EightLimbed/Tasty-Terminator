@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var autolevel_display = $Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
-var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
+var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Bomb.tres"),preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
 var max_weapons : int = 5
 var levels_cached : int = 0
 @onready var levels_display = $Levelup/NinePatchRect/Title
@@ -158,10 +158,10 @@ func update_level_tooltip(option):
 		if round(child.profile.ammo.x + child.profile.ammo.y) != round(child.profile.ammo.x):
 			tooltip_label.text += ", +" + str(round(child.profile.ammo.x + child.profile.ammo.y)-round(child.profile.ammo.x)) + " ammo"
 
-		if child.profile.unload_time.x + child.profile.unload_time.y != child.profile.unload_time.x:
+		if child.profile.unload_time.y != 0:
 			tooltip_label.text += ", faster unload time"
 
-		if child.profile.reload_time.x + child.profile.reload_time.y != child.profile.reload_time.x:
+		if child.profile.reload_time.y != 0:
 			tooltip_label.text += ", faster reload time"
 
 		if round(child.profile.pierce.x + child.profile.pierce.y) != round(child.profile.pierce.x):
@@ -170,8 +170,8 @@ func update_level_tooltip(option):
 		if round(child.profile.speed.x + child.profile.speed.y) != round(child.profile.speed.x):
 			tooltip_label.text += ", +" + str(round(child.profile.speed.x + child.profile.speed.y)-round(child.profile.speed.x)) + " speed"
 
-		if round(child.profile.scale.x + child.profile.scale.y) != round(child.profile.scale.x):
-			tooltip_label.text += ", +" + str(round(child.profile.scale.x + child.profile.scale.y)-round(child.profile.scale.x)) + " size"
+		if child.profile.scale.y != 0:
+			tooltip_label.text += ", +" + str(round(child.profile.scale.y*100)) + "% size"
 
 	else:
 		tooltip_label.text = option.description

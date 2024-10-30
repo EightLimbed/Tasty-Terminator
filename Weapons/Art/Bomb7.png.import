@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2c472hsfp5px"
-path="res://.godot/imported/Title.png-8bd1f60d7b4e347b5adf08f4741bf978.ctex"
+uid="uid://ce31xa0wyh87e"
+path="res://.godot/imported/Bomb7.png-dea32dd041e9cd7073a9e716a2091c46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/Art/Title.png"
-dest_files=["res://.godot/imported/Title.png-8bd1f60d7b4e347b5adf08f4741bf978.ctex"]
+source_file="res://Weapons/Art/Bomb7.png"
+dest_files=["res://.godot/imported/Bomb7.png-dea32dd041e9cd7073a9e716a2091c46.ctex"]
 
 [params]
 

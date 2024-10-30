@@ -24,7 +24,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 0.0
+"speed": 32.0
 }]
 
 [resource]
@@ -35,14 +35,15 @@ description = "Sprays a devastating beam of icing, ripping apart enemies."
 aim_type = 1
 spread = Vector2(5, 0)
 multishot = Vector2(1, 0)
-damage = Vector2(20, 3)
+damage = Vector2(25, 5)
 ammo = Vector2(100, 0)
-unload_time = Vector2(0.01, 0)
+unload_time = Vector2(0.04, 0)
 reload_time = Vector2(2, -0.05)
 pierce = Vector2(100000, 0)
 speed = Vector2(0, 0)
 scale = Vector2(1, 0.05)
-lifetime_override = 0.03
+lifetime_override = 0.04
+follow_player = false
 frames = SubResource("SpriteFrames_gmsbx")
 sound = ExtResource("6_osoqj")
 collision_shape = SubResource("RectangleShape2D_8hvse")

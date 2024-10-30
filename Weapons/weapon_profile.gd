@@ -31,6 +31,8 @@ class_name Weapon
 @export var scale : Vector2
 #ovverides lifetime of projectile when > 0
 @export var lifetime_override : float
+#determines whether projectile stays anchored to the player
+@export var follow_player : bool
 #appearance
 @export var frames : SpriteFrames
 #sound effect

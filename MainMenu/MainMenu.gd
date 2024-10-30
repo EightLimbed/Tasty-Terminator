@@ -66,8 +66,8 @@ func _ready() -> void:
 
 #things that cannot be called by updates
 func _process(_delta: float) -> void:
-	background.size = vbox.size+Vector2(112,227)
-	background.position = vbox.position-Vector2(56,221)
+	background.size = vbox.size+Vector2(112,12)
+	background.position = vbox.position-Vector2(56,6)
 	character_description.custom_minimum_size.y = character_description_label.size.y+6
 	level_description.custom_minimum_size.y = level_description_label.size.y+6
 	character_select.custom_minimum_size.y = 80 + character_description_label.size.y+6

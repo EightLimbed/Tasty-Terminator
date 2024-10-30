@@ -7,7 +7,7 @@ var ammo : int = 0
 @onready var enemy_container = get_tree().get_root().get_node("Game").get_node("EnemyContainer")
 var projectile = preload("res://Weapons/Projectile.tscn")
 var random = RandomNumberGenerator.new()
-@onready var player = get_parent().get_parent()
+@onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var unload = $Unload
 @onready var reload = $Reload
 var level : int = 0
@@ -39,7 +39,6 @@ func shoot():
 		instance.pierce = profile.pierce.x
 		instance.damage = profile.damage.x
 		instance.collision_shape = profile.collision_shape
-		instance.initial_velocity = player.velocity
 		instance.lifetime_override = profile.lifetime_override
 		instance.collision_offset = profile.collision_offset
 		if profile.aim_type == 0:
@@ -57,7 +56,12 @@ func shoot():
 			if player.velocity != Vector2.ZERO:
 				projectile_container.add_child.call_deferred(instance)
 		else:
-			projectile_container.add_child.call_deferred(instance)
+			if profile.follow_player:
+				instance.position = Vector2.ZERO
+				player.add_child.call_deferred(instance)
+			else:
+				instance.initial_velocity = player.velocity
+				projectile_container.add_child.call_deferred(instance)
 
 func upgrade():
 	#spread
