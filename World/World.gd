@@ -1,14 +1,15 @@
 extends Node2D
 
 var roads_cache : Array = []
+var pickups_cache : Array = []
 
 var random = RandomNumberGenerator.new()
 var noise = FastNoiseLite.new()
 @onready var ground = $Ground
 @onready var roads = $Roads
 @onready var obstacles = $Obstacles
-@onready var gun = $Gun
-@onready var revival = $Revival
+var pickup = preload("res://Weapons/Pickup.tscn")
+var pickup_selection : Array[Weapon] = [preload("res://Weapons/Resources/Revival.tres")]
 var obstacle_chance_big : int
 var obstacle_chance_small : int
 
@@ -23,12 +24,9 @@ func update_profile(profile : World):
 	noise.seed = profile.seeded
 	obstacle_chance_big = profile.obstacle_chance_big
 	obstacle_chance_small = profile.obstacle_chance_small
-	if not profile.name == "Desert":
-		gun.visible = false
-		gun.monitoring = false
-	else:
-		gun.visible = true
-		gun.monitoring = true
+	if profile.name == "Desert":
+		create_pickup(pickup_selection[0], Vector2(0,-4096))
+		create_pickup(load("res://Weapons/Resources/Gun.tres"), Vector2(4096,-4096))
 
 #roads
 func generate_roads(pos : Vector2i, size : Vector2i):
@@ -42,6 +40,10 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 			var updated_pos = roads.local_to_map(pos)-size/2+Vector2i(x,y)
 			var alt : int = round(noise.get_noise_2dv(updated_pos)*10)
 			random.seed = hash(updated_pos*noise.seed)
+			if random.randi_range(0,100) == 0:
+				if not pickups_cache.has(updated_pos):
+					create_pickup(pickup_selection[random.randi_range(0,pickup_selection.size()-1)], roads.map_to_local(updated_pos))
+					pickups_cache.append(updated_pos)
 			ground.set_cell(updated_pos, 1, Vector2i(random.randi_range(0,2), random.randi_range(0,2)))
 			var surrounding : Array[int] = [round(noise.get_noise_2dv(updated_pos+Vector2i(1,1))*10), 
 											round(noise.get_noise_2dv(updated_pos+Vector2i(-1,1))*10), 
@@ -70,12 +72,8 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 					elif structure>obstacle_chance_big and structure<obstacle_chance_big+obstacle_chance_small and updated_pos.x % 2:
 						obstacles.set_cell(updated_pos, 2, Vector2i(0,2))
 
-func _on_gun_body_entered(_body):
-	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
-	HUD.level_up(load("res://Weapons/Resources/Gun.tres"))
-	gun.queue_free()
-
-func _on_revival_body_entered(_body):
-	var HUD = get_tree().get_root().get_node("Game").get_node("Player").get_node("HUD")
-	HUD.level_up(load("res://Weapons/Resources/Revival.tres"))
-	revival.queue_free()
+func create_pickup(profile, pos):
+	var instance = pickup.instantiate()
+	instance.profile = profile
+	instance.position = pos
+	self.add_child.call_deferred(instance)

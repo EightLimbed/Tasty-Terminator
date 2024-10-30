@@ -110,6 +110,10 @@ func spawn_enemies_strong(difficulty):
 func spawn_enemies_formation(_amount):
 	pass
 
+func magnet():
+	for child in experience_container.get_children():
+		child.activated = true
+
 func group_experience():
 	if experience_container.get_child_count() > 256:
 		var alternate = 0

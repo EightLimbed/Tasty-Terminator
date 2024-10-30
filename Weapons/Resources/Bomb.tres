@@ -93,6 +93,7 @@ pierce = Vector2(9999, 0)
 speed = Vector2(0, 0)
 scale = Vector2(1, 0.02)
 lifetime_override = 1.0
+follow_player = false
 frames = SubResource("SpriteFrames_f40xy")
 collision_shape = SubResource("CircleShape2D_1oc7v")
 collision_offset = Vector2(0, 0)

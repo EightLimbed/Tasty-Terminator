@@ -19,6 +19,7 @@ var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Bomb.tres"),preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
 var max_weapons : int = 5
 var levels_cached : int = 0
+var items_cached : Array[Weapon] = []
 @onready var levels_display = $Levelup/NinePatchRect/Title
 @onready var option1_button = $Levelup/NinePatchRect/Option1
 @onready var option2_button = $Levelup/NinePatchRect/Option2
@@ -46,26 +47,34 @@ func _ready():
 	tooltip_box.visible = false
 
 func _process(_delta: float) -> void:
-	#stuff that cant go off of existing updates
 	level_display.text = "Level " + str(player.level+1) + ", Wave " + str(game.wave)
 	tooltip_box.size.y = tooltip_label.size.y+3
 	update_inventory()
 
 func level_up(pickup):
 	if pickup is Weapon:
+		if level_up_window.visible:
+			if option1 == pickup:
+				items_cached.append(option1)
+			else:
+				levels_cached += 1
 		option1 = pickup
 		option2 = pickup
 		option3 = pickup
 		option1_button.update_texture(option1)
 		option2_button.update_texture(option2)
 		option3_button.update_texture(option3)
-		if level_up_window.visible:
-				levels_cached += 1
 		level_up_window.visible = true
 		if levels_cached > 0:
-			levels_display.text = "Item Found, " + str(levels_cached+1) + " Level Ups"
+			if items_cached.size() > 1:
+				levels_display.text = str(items_cached.size()+1) + " Items Found, " + str(levels_cached+1) + " Level Ups"
+			else:
+				levels_display.text = "Item Found, " + str(levels_cached+1) + " Level Ups"
 		else:
-			levels_display.text = "Item Found"
+			if items_cached.size() > 1:
+				levels_display.text = str(items_cached.size()+1) + " Items Found"
+			else:
+				levels_display.text = "Item Found"
 	else:
 		if player.level < 100 or levels_cached > 0:
 			autolevel_display.visible = false
@@ -197,9 +206,13 @@ func option1_pressed():
 			else:
 				player.profile.revivals += 1
 		level_up_window.visible = false
-		if levels_cached > 0:
-			levels_cached -= 1
-			level_up(0)
+		if items_cached.size() > 0:
+			level_up(items_cached[0])
+			items_cached.remove_at(0)
+		else:
+			if levels_cached > 0:
+				levels_cached -= 1
+				level_up(0)
 
 func option2_pressed():
 	click_sound.play()
@@ -222,9 +235,13 @@ func option2_pressed():
 			else:
 				player.profile.revivals += 1
 		level_up_window.visible = false
-		if levels_cached > 0:
-			levels_cached -= 1
-			level_up(0)
+		if items_cached.size() > 0:
+			level_up(items_cached[0])
+			items_cached.remove_at(0)
+		else:
+			if levels_cached > 0:
+				levels_cached -= 1
+				level_up(0)
 
 func option3_pressed():
 	click_sound.play()
@@ -247,9 +264,13 @@ func option3_pressed():
 			else:
 				player.profile.revivals += 1
 		level_up_window.visible = false
-		if levels_cached > 0:
-			levels_cached -= 1
-			level_up(0)
+		if items_cached.size() > 0:
+			level_up(items_cached[0])
+			items_cached.remove_at(0)
+		else:
+			if levels_cached > 0:
+				levels_cached -= 1
+				level_up(0)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("1") and level_up_window.visible and player.health > 0:

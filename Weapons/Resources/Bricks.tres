@@ -39,6 +39,7 @@ pierce = Vector2(2, 0.1)
 speed = Vector2(20000, 0)
 scale = Vector2(1, 0)
 lifetime_override = 0.0
+follow_player = false
 frames = SubResource("SpriteFrames_lj8rd")
 sound = ExtResource("5_0n2mb")
 collision_shape = SubResource("RectangleShape2D_8hvse")
