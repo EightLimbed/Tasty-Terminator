@@ -35,8 +35,8 @@ func load_achievments():
 		maps.append(preload("res://World/Resources/Forest.tres"))
 	if save_file.achievements["Reach wave 100 on Forest map (Unlocks Desert map)"]:
 		maps.append(preload("res://World/Resources/Desert.tres"))
-	if save_file.achievements["Reach wave 100 on Desert Map (Unlocks Snow map)"]:
-		maps.append(preload("res://World/Resources/Snow.tres"))
+	#if save_file.achievements["Reach wave 100 on Desert Map (Unlocks Snow map)"]:
+		#maps.append(preload("res://World/Resources/Snow.tres"))
 
 func _ready() -> void:
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."
@@ -66,8 +66,8 @@ func _ready() -> void:
 
 #things that cannot be called by updates
 func _process(_delta: float) -> void:
-	background.size = vbox.size+Vector2(112,12)
-	background.position = vbox.position-Vector2(56,6)
+	background.size = vbox.size+Vector2(112,227)
+	background.position = vbox.position-Vector2(56,221)
 	character_description.custom_minimum_size.y = character_description_label.size.y+6
 	level_description.custom_minimum_size.y = level_description_label.size.y+6
 	character_select.custom_minimum_size.y = 80 + character_description_label.size.y+6
