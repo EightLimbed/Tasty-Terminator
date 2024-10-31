@@ -60,7 +60,7 @@ func _ready():
 	if ResourceLoader.exists("user://save/AchievementLog.tres"):
 		save_file = ResourceLoader.load("user://save/AchievementLog.tres")
 	player.control_type = save_file.control_type
-	spawn_enemies_normal(2, wave)
+	spawn_enemies_normal(2)
 
 func _process(_delta: float):
 	world.generate_roads(player.position, Vector2i(24,24))
@@ -89,19 +89,19 @@ func update_music():
 		music.stream = playlist[3]
 	music.play()
 
-func spawn_enemies_normal(amount, difficulty):
+func spawn_enemies_normal(amount):
 	for i in amount-enemy_container.get_child_count():
 		var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 		var instance = enemy.instantiate()
-		instance.difficulty = 1+(wave/25.0)  
+		instance.difficulty = (1+(wave/40.0)) * player.profile.hunger
 		instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 		instance.profile = world_profile.possible_enemies[enemy_index]
 		enemy_container.add_child.call_deferred(instance)
 
-func spawn_enemies_strong(difficulty):
+func spawn_enemies_strong():
 	var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 	var instance = enemy.instantiate()
-	instance.difficulty = (1+(wave/25.0))**2
+	instance.difficulty = ((1+(wave/25.0))**2) * player.profile.hunger
 	instance.scale = Vector2i(2,2)
 	instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 	instance.profile = world_profile.possible_enemies[enemy_index]
@@ -126,14 +126,13 @@ func group_experience():
 
 func _on_wave_timer_timeout() -> void:
 	group_experience()
-	var difficulty = wave*player.profile.hunger.x
-	if wave**1.5+3 <= 400:
-		spawn_enemies_normal(wave**1.5+3, difficulty*1000)
+	if wave**1.5+3 <= 256:
+		spawn_enemies_normal(wave**1.5+3)
 		if random.randi_range(0,5) == 0:
-			spawn_enemies_strong(difficulty)
+			spawn_enemies_strong()
 	else:
-		spawn_enemies_normal(400, difficulty*1.1)
-		spawn_enemies_strong(difficulty*2)
+		spawn_enemies_normal(256)
+		spawn_enemies_strong()
 	wave+= 1
 	wave_timer.start()
 

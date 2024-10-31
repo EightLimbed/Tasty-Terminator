@@ -71,10 +71,10 @@ func upgrade():
 	if profile.spread.x > 360:
 		profile.spread.x = 360
 	#multishot
-	if profile.multishot.x < profile.spread.x/10:
+	if profile.multishot.x < profile.spread.x/20:
 		profile.multishot.x += profile.multishot.y
 	else:
-		profile.multishot.x = round(profile.spread.x/10)
+		profile.multishot.x = round(profile.spread.x/10)+1
 		profile.damage.x += profile.multishot.y*profile.damage.y
 	#damage
 	profile.damage.x += profile.damage.y
