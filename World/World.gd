@@ -8,12 +8,17 @@ var noise = FastNoiseLite.new()
 @onready var ground = $Ground
 @onready var roads = $Roads
 @onready var obstacles = $Obstacles
+@onready var pickup_container = $PickupContainer
 var pickup = preload("res://Weapons/Pickup.tscn")
-var pickup_selection : Array[Weapon] = [preload("res://Weapons/Resources/Revival.tres")]
+var pickup_selection : Array[Weapon] = [preload("res://Weapons/Resources/Magnet.tres"),preload("res://Weapons/Resources/Magnet.tres"),preload("res://Weapons/Resources/Magnet.tres"),preload("res://Weapons/Resources/Revival.tres")]
 var obstacle_chance_big : int
 var obstacle_chance_small : int
+var pickup_chance : int
 
 func update_profile(profile : World):
+	pickups_cache.clear()
+	for child in pickup_container.get_children():
+		child.queue_free()
 	ground.tile_set = profile.tileset
 	roads.tile_set = profile.tileset
 	obstacles.tile_set = profile.tileset
@@ -24,6 +29,7 @@ func update_profile(profile : World):
 	noise.seed = profile.seeded
 	obstacle_chance_big = profile.obstacle_chance_big
 	obstacle_chance_small = profile.obstacle_chance_small
+	pickup_chance = profile.pickup_chance
 	if profile.name == "Desert":
 		create_pickup(pickup_selection[0], Vector2(0,-4096))
 		create_pickup(load("res://Weapons/Resources/Gun.tres"), Vector2(4096,-4096))
@@ -40,7 +46,7 @@ func generate_roads(pos : Vector2i, size : Vector2i):
 			var updated_pos = roads.local_to_map(pos)-size/2+Vector2i(x,y)
 			var alt : int = round(noise.get_noise_2dv(updated_pos)*10)
 			random.seed = hash(updated_pos*noise.seed)
-			if random.randi_range(0,100) == 0:
+			if random.randi_range(0,pickup_chance) == 0 and pickup_chance > 0 and not updated_pos.x % 2:
 				if not pickups_cache.has(updated_pos):
 					create_pickup(pickup_selection[random.randi_range(0,pickup_selection.size()-1)], roads.map_to_local(updated_pos))
 					pickups_cache.append(updated_pos)
@@ -76,4 +82,4 @@ func create_pickup(profile, pos):
 	var instance = pickup.instantiate()
 	instance.profile = profile
 	instance.position = pos
-	self.add_child.call_deferred(instance)
+	pickup_container.add_child.call_deferred(instance)

@@ -14,6 +14,4 @@ class_name World
 
 #possible enemies (does same algorithm for selection, so keep in mind order used
 @export var possible_enemies : Array[Enemy]
-
-#powerup textures
-@export var crate_textures : SpriteFrames
+@export var pickup_chance : int

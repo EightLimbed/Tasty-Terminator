@@ -63,3 +63,4 @@ road_frequency = 0.003
 obstacle_chance_small = 10
 obstacle_chance_big = 35
 possible_enemies = Array[ExtResource("1_ghitu")]([ExtResource("2_yyd3u"), ExtResource("2_yyd3u"), ExtResource("3_q0u12"), ExtResource("2_yyd3u"), ExtResource("2_yyd3u"), ExtResource("4_a6bxq")])
+pickup_chance = 600

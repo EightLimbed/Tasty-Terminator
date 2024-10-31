@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhrkrusxugybe"]
+[gd_scene load_steps=8 format=3 uid="uid://sgxjhj2m4q3q"]
 
-[ext_resource type="Texture2D" uid="uid://br431enhhdbgy" path="res://Weapons/Art/Revival.png" id="1_3c31u"]
 [ext_resource type="Script" path="res://Weapons/Pickup.gd" id="1_eydee"]
+[ext_resource type="Texture2D" uid="uid://b2voii1ttkdr" path="res://Weapons/Art/Magnet.png" id="2_pvt1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ugkdt"]
 radius = 64.0
@@ -31,8 +31,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Pickup" type="Area2D"]
-z_index = 1
-position = Vector2(48, -2880)
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_eydee")
@@ -41,17 +40,19 @@ script = ExtResource("1_eydee")
 shape = SubResource("CircleShape2D_ugkdt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("1_3c31u")
+position = Vector2(0, -8)
+texture = ExtResource("2_pvt1d")
 
 [node name="Shadow" type="Sprite2D" parent="Sprite2D2"]
 modulate = Color(1, 1, 1, 0.607843)
 z_index = -1
 y_sort_enabled = true
-position = Vector2(0, 12)
+position = Vector2(0, 24)
 texture = SubResource("GradientTexture2D_e5iu2")
 
 [node name="Beam" type="Sprite2D" parent="Sprite2D2"]
 z_index = -2
+position = Vector2(0, 8)
 texture = SubResource("GradientTexture2D_v7fe3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

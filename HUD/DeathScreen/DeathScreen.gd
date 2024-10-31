@@ -17,6 +17,8 @@ func _ready():
 	visible = false
 
 func death():
+	player.input = Vector2.ZERO
+	player.velocity = Vector2.ZERO
 	settings.visible = false
 	display.sprite_frames = player.profile.sprite_frames
 	score.text = "You reached level " + str(player.level) + " at wave " + str(game.wave)
