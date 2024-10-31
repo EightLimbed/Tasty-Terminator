@@ -29,4 +29,3 @@ speed = 4000
 melee_damage = 10
 experience_drop = 3
 hitbox = SubResource("RectangleShape2D_ojw8c")
-ranged_damage = 0
