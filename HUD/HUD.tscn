@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=19 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -13,6 +13,9 @@
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="10_atq2o"]
 [ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="13_ee3pi"]
+[ext_resource type="AudioStream" uid="uid://5wxkyhqjy51n" path="res://Weapons/Sound/Revival.mp3" id="14_fr5pi"]
+[ext_resource type="AudioStream" uid="uid://bpvmis7q4nsld" path="res://HUD/DeathScreen/Music/Pickup.mp3" id="15_pgmb6"]
+[ext_resource type="AudioStream" uid="uid://dhr78m7rdvtn3" path="res://HUD/DeathScreen/Music/Magnet.mp3" id="16_xondl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amjjq"]
 font_size = 14
@@ -297,6 +300,18 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ee3pi")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_fr5pi")
+bus = &"SoundEffects"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_pgmb6")
+bus = &"SoundEffects"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_xondl")
+bus = &"SoundEffects"
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option1" to="." method="_on_option_1_pressed"]

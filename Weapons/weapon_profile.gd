@@ -35,8 +35,10 @@ class_name Weapon
 @export var follow_player : bool
 #appearance
 @export var frames : SpriteFrames
-#sound effect
+#firing sound effect
 @export var sound : AudioStream
+#hit sound effect
+@export var hit_sound : AudioStream
 #size of bullet hitbox
 @export var collision_shape : Shape2D
 @export var collision_offset : Vector2

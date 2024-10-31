@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://yrcv5ae5ck0o"]
+[gd_scene load_steps=18 format=3 uid="uid://yrcv5ae5ck0o"]
 
 [ext_resource type="Script" path="res://HUD/DeathScreen/DeathScreen.gd" id="1_623hs"]
 [ext_resource type="Texture2D" uid="uid://dmui2a8wc3m2x" path="res://HUD/DeathScreen/Art/Revive.png" id="2_4et3a"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="9_chass"]
 [ext_resource type="Texture2D" uid="uid://dvytqvkcigcqi" path="res://Player/Characters/Art/CookieWalk-1.png" id="9_rggg7"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="10_2pwn8"]
+[ext_resource type="AudioStream" uid="uid://5wxkyhqjy51n" path="res://Weapons/Sound/Revival.mp3" id="10_fgnbk"]
 [ext_resource type="Texture2D" uid="uid://pxx526vnf4g4" path="res://Player/Art/Faces/DeadFace.png" id="11_phi35"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sgfej"]
@@ -130,6 +131,9 @@ bus = &"Music"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_chass")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fgnbk")
 
 [node name="Display" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

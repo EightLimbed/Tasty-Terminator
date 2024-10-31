@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://bwrkaap4awbh0"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://bwrkaap4awbh0"]
 
 [ext_resource type="Texture2D" uid="uid://bp2p25xph1jiv" path="res://Weapons/Art/Gun.png" id="1_gd1f5"]
 [ext_resource type="Texture2D" uid="uid://006umhtvhf28" path="res://Weapons/Art/GunBullet.png" id="2_0yttb"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_a5275"]
-[ext_resource type="AudioStream" uid="uid://cq8btoflo5wno" path="res://Weapons/Sound/Gunshot.mp3" id="4_g4til"]
+[ext_resource type="AudioStream" uid="uid://bd5set2qt1bjd" path="res://Weapons/Sound/Smack.mp3" id="3_nv443"]
+[ext_resource type="AudioStream" uid="uid://4mtygq8jkfvt" path="res://Weapons/Sound/Gunshot.mp3" id="4_g4til"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(416, 16)
@@ -41,7 +42,9 @@ pierce = Vector2(999, 0)
 speed = Vector2(75000, 0)
 scale = Vector2(1, 0)
 lifetime_override = 0.1
+follow_player = false
 frames = SubResource("SpriteFrames_n724t")
 sound = ExtResource("4_g4til")
+hit_sound = ExtResource("3_nv443")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(216, 0)

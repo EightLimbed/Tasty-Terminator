@@ -15,6 +15,7 @@ var experience : int = 0
 @onready var starting_weapon = $WeaponContainer/StartingWeapon
 @onready var death_screen = $HUD/DeathScreen
 @onready var pickup_radius = $Hitbox/CollisionShape2D
+@onready var level_up_sound = $AudioStreamPlayer
 var level : int = 0
 
 func start(character_profile):
@@ -73,6 +74,7 @@ func update_experience(increase):
 		profile.flavor.x += profile.flavor.y
 		level += 1
 		experience -= round(level**1.5 + 2.0)
+		level_up_sound.play()
 		hud.level_up(0)
 	hud.update_experience(0, experience, level**1.5 + 2)
 

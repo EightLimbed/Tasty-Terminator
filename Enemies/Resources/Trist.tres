@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=6 format=3 uid="uid://5viifpnr5dmv"]
 
-[ext_resource type="Texture2D" uid="uid://7huol0rlrcc6" path="res://Enemies/Art/tristan/tristan-0.png" id="1_m6rex"]
-[ext_resource type="Texture2D" uid="uid://b1niv20s7sj14" path="res://Enemies/Art/tristan/tristan-1.png" id="2_ynfav"]
+[ext_resource type="Texture2D" uid="uid://q60hnrrb5f8a" path="res://Enemies/Art/tristan/Tristan1.png" id="1_ccqos"]
+[ext_resource type="Texture2D" uid="uid://dhrabh0j0kh47" path="res://Enemies/Art/tristan/Tristan2.png" id="2_k5lko"]
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="3_l1kxx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_734tm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_m6rex")
+"texture": ExtResource("1_ccqos")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ynfav")
+"texture": ExtResource("2_k5lko")
 }],
 "loop": true,
 "name": &"default",
@@ -29,4 +29,3 @@ speed = 6000
 melee_damage = 40
 experience_drop = 2
 hitbox = SubResource("RectangleShape2D_7e7ys")
-ranged_damage = 0

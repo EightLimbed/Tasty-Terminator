@@ -5,6 +5,9 @@ extends CanvasLayer
 @onready var settings = $Settings
 @onready var level_display = $LevelDisplay
 @onready var click_sound = $AudioStreamPlayer
+@onready var revival_sound = $AudioStreamPlayer2
+@onready var pickup_sound = $AudioStreamPlayer3
+@onready var magnet_sound = $AudioStreamPlayer4
 @onready var weapon_scene = preload("res://Weapons/Weapon.tscn")
 @onready var game = get_tree().get_root().get_node("Game")
 @onready var player = game.get_node("Player")
@@ -53,6 +56,7 @@ func _process(_delta: float) -> void:
 
 func level_up(pickup):
 	if pickup is Weapon:
+		pickup_sound.play()
 		option1 = pickup
 		option2 = pickup
 		option3 = pickup
@@ -194,8 +198,10 @@ func option1_pressed():
 			upgrade_weapon(option1)
 		else:
 			if option1.name == "+1 Revival":
+				revival_sound.play()
 				player.profile.revivals += 1
 			elif option1.name == "Magnet":
+				magnet_sound.play()
 				game.magnet()
 			else:
 				add_weapon(option1)
@@ -225,8 +231,10 @@ func option2_pressed():
 			upgrade_weapon(option2)
 		else:
 			if option2.name == "+1 Revival":
+				revival_sound.play()
 				player.profile.revivals += 1
-			elif option2.name == "XP Magnet":
+			elif option2.name == "Magnet":
+				magnet_sound.play()
 				game.magnet()
 			else:
 				add_weapon(option2)
@@ -256,8 +264,10 @@ func option3_pressed():
 			upgrade_weapon(option3)
 		else:
 			if option3.name == "+1 Revival":
+				revival_sound.play()
 				player.profile.revivals += 1
-			elif option3.name == "XP Magnet":
+			elif option3.name == "Magnet":
+				magnet_sound.play()
 				game.magnet()
 			else:
 				add_weapon(option3)

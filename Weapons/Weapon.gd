@@ -31,6 +31,8 @@ func shoot():
 	for i in round(profile.multishot.x):
 		var instance = projectile.instantiate()
 		instance.global_position = global_position
+		if profile.hit_sound:
+			instance.hit_sound = profile.hit_sound
 		#instance.collision_layer = 4
 		instance.scale.x = profile.scale.x
 		instance.scale.y = profile.scale.x

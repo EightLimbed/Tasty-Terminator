@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo2ksvo7qxsqe"]
+[gd_scene load_steps=18 format=3 uid="uid://bo2ksvo7qxsqe"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_tksie"]
 [ext_resource type="Texture2D" uid="uid://bt10bgswjsytr" path="res://Player/Characters/Art/CookieWalk-0.png" id="2_k8u5u"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://pxx526vnf4g4" path="res://Player/Art/Faces/DeadFace.png" id="4_od4f1"]
 [ext_resource type="PackedScene" uid="uid://doi3fmv48pifv" path="res://HUD/HUD.tscn" id="4_us2v5"]
 [ext_resource type="PackedScene" uid="uid://yrcv5ae5ck0o" path="res://HUD/DeathScreen/DeathScreen.tscn" id="8_v2vt6"]
+[ext_resource type="AudioStream" uid="uid://c1xc1xmgdc52d" path="res://HUD/DeathScreen/Music/Levelup.mp3" id="11_kdk0a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uwdok"]
 animations = [{
@@ -104,5 +105,9 @@ shape = SubResource("CircleShape2D_d0mw4")
 [node name="HUD" parent="." instance=ExtResource("4_us2v5")]
 
 [node name="DeathScreen" parent="HUD" instance=ExtResource("8_v2vt6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_kdk0a")
+bus = &"SoundEffects"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

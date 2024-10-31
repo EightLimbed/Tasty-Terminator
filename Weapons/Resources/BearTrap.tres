@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://b2i4um2wn8wr4"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=8 format=3 uid="uid://b2i4um2wn8wr4"]
 
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_cu0f2"]
 [ext_resource type="Texture2D" uid="uid://jqlomtrlh3c2" path="res://Weapons/Art/GummyBearTrap1.png" id="1_fdoan"]
 [ext_resource type="Texture2D" uid="uid://cesliln3rxeov" path="res://Weapons/Art/GummyBearTrap2.png" id="2_5e60v"]
 [ext_resource type="Texture2D" uid="uid://dfxpisxqoma2r" path="res://Weapons/Art/GummyBearTrap3.png" id="3_w5nm8"]
+[ext_resource type="AudioStream" uid="uid://bd5set2qt1bjd" path="res://Weapons/Sound/Smack.mp3" id="4_bahrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvse"]
 size = Vector2(32, 32)
@@ -97,5 +98,6 @@ scale = Vector2(1, 0.03)
 lifetime_override = 0.0
 follow_player = false
 frames = SubResource("SpriteFrames_2jska")
+hit_sound = ExtResource("4_bahrf")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(0, 0)

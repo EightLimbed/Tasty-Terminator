@@ -10,6 +10,7 @@ var collision_offset : Vector2
 var initial_velocity : Vector2
 var lifetime_override : float = 0
 var random = RandomNumberGenerator.new()
+var hit_sound : AudioStream
 
 @onready var collision = $CollisionShape2D
 @onready var sprite_frames = $AnimatedSprite2D
@@ -32,9 +33,22 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_pierce():
+	if hit_sound:
+		play_sound(hit_sound,AudioServer.get_bus_name(2))
 	pierce -= 1
 	if pierce == 0:
 		queue_free()
+
+func play_sound(sound : AudioStream, bus : String):
+	var stream_player = AudioStreamPlayer.new()
+	stream_player.stream = sound
+	stream_player.bus = bus
+	get_tree().get_root().get_node("Game").add_child(stream_player)
+	stream_player.play()
+	stream_player.connect("finished", audio_finished.bind(stream_player))
+
+func audio_finished(stream_player):
+	stream_player.queue_free()
 
 func _on_lifetime_timeout() -> void:
 	queue_free()

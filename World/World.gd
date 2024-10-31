@@ -31,7 +31,7 @@ func update_profile(profile : World):
 	obstacle_chance_small = profile.obstacle_chance_small
 	pickup_chance = profile.pickup_chance
 	if profile.name == "Desert":
-		create_pickup(pickup_selection[0], Vector2(0,-4096))
+		create_pickup(pickup_selection[3], Vector2(0,-4096))
 		create_pickup(load("res://Weapons/Resources/Gun.tres"), Vector2(4096,-4096))
 
 #roads

@@ -65,5 +65,5 @@ tileset = SubResource("TileSet_lavpr")
 road_frequency = 0.006
 obstacle_chance_small = 30
 obstacle_chance_big = 10
-possible_enemies = Array[ExtResource("1_xl7js")]([ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("3_fxpnn"), ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("4_a2aly")])
-pickup_chance = 1000
+possible_enemies = Array[ExtResource("1_xl7js")]([ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("3_fxpnn"), ExtResource("2_md1qa"), ExtResource("2_md1qa"), ExtResource("4_a2aly"), ExtResource("2_md1qa")])
+pickup_chance = 2000

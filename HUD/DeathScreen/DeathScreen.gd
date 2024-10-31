@@ -12,6 +12,7 @@ extends Control
 @onready var score = $Score
 @onready var display = $Display
 @onready var click_sound = $AudioStreamPlayer2
+@onready var revival_sound = $AudioStreamPlayer3
 
 func _ready():
 	visible = false
@@ -41,6 +42,7 @@ func _on_menu_pressed():
 	game.queue_free()
 
 func _on_revive_pressed():
+	revival_sound.play()
 	click_sound.play()
 	music.stop()
 	game.update_music()

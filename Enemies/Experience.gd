@@ -28,6 +28,3 @@ func play_sound(sound : AudioStream, bus : String):
 
 func audio_finished(stream_player):
 	stream_player.queue_free()
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
