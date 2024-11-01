@@ -40,6 +40,7 @@ func shoot():
 		instance.speed = profile.speed.x
 		instance.pierce = profile.pierce.x
 		instance.damage = profile.damage.x
+		instance.ricochet = profile.ricochet
 		instance.collision_shape = profile.collision_shape
 		instance.lifetime_override = profile.lifetime_override
 		instance.collision_offset = profile.collision_offset
@@ -57,6 +58,7 @@ func shoot():
 			instance.initial_velocity = Vector2.ZERO
 			if player.velocity != Vector2.ZERO:
 				projectile_container.add_child.call_deferred(instance)
+		
 		else:
 			if profile.follow_player:
 				instance.position = Vector2.ZERO

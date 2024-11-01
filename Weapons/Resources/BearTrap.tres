@@ -101,3 +101,4 @@ frames = SubResource("SpriteFrames_2jska")
 hit_sound = ExtResource("4_bahrf")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(0, 0)
+ricochet = false

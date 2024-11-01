@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var frames : SpriteFrames
 var speed : int = 15000
 var damage : int
@@ -11,7 +12,7 @@ var initial_velocity : Vector2
 var lifetime_override : float = 0
 var random = RandomNumberGenerator.new()
 var hit_sound : AudioStream
-
+var ricochet : bool
 @onready var collision = $CollisionShape2D
 @onready var sprite_frames = $AnimatedSprite2D
 @onready var lifetime = $Lifetime
@@ -33,6 +34,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_pierce():
+	if ricochet:
+		direction = (Vector2(random.randi(),random.randi())/2).normalized()
 	if hit_sound:
 		play_sound(hit_sound,AudioServer.get_bus_name(2))
 	pierce -= 1

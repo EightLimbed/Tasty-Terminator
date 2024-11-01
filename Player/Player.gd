@@ -22,7 +22,8 @@ func start(character_profile):
 	profile = character_profile.duplicate()
 	health = float(profile.max_health.x)
 	pickup_radius.shape.radius = profile.aroma
-	starting_weapon.profile = profile.starting_weapon.duplicate()
+	if profile.starting_weapon:
+		starting_weapon.profile = profile.starting_weapon.duplicate()
 	hud.possible_weapons.erase(profile.starting_weapon)
 	starting_weapon.start()
 	animation.sprite_frames = profile.sprite_frames
