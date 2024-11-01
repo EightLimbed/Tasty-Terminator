@@ -93,7 +93,7 @@ func spawn_enemies_normal(amount):
 	for i in amount-enemy_container.get_child_count():
 		var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 		var instance = enemy.instantiate()
-		instance.difficulty = (1+(wave/40.0)) * player.profile.hunger
+		instance.difficulty = (1+(wave/40.0)) * player.profile.hunger.x
 		instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 		instance.profile = world_profile.possible_enemies[enemy_index]
 		enemy_container.add_child.call_deferred(instance)
@@ -101,7 +101,7 @@ func spawn_enemies_normal(amount):
 func spawn_enemies_strong():
 	var enemy_index = random.randi_range(0, min(world_profile.possible_enemies.size()-1, wave))
 	var instance = enemy.instantiate()
-	instance.difficulty = ((1+(wave/25.0))**2) * player.profile.hunger
+	instance.difficulty = ((1+(wave/25.0))**2) * player.profile.hunger.x
 	instance.scale = Vector2i(2,2)
 	instance.global_position = player.global_position+(Vector2(1,0).rotated(random.randf_range(0,2*PI))*random.randi_range(800,1600))
 	instance.profile = world_profile.possible_enemies[enemy_index]

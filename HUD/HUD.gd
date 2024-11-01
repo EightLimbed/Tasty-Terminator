@@ -80,10 +80,6 @@ func level_up(pickup):
 				levels_cached += 1
 			else:
 				level_up_window.visible = true
-				if levels_cached > 0:
-					levels_display.text = str(levels_cached+1) + " Level Ups"
-				else:
-					levels_display.text = "Level Up"
 				if player.level - levels_cached <= 1 and possible_weapons.size() >= 1:
 					option1 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
 					option2 = possible_weapons[random.randi_range(0,possible_weapons.size()-1)]
@@ -101,6 +97,10 @@ func level_up(pickup):
 		else:
 			autolevel_display.visible = true
 			upgrade_weapon(random.randi_range(0, weapon_container.get_child_count()-1))
+		if levels_cached > 0:
+			levels_display.text = str(levels_cached+1) + " Level Ups"
+		else:
+			levels_display.text = "Level Up"
 
 func update_health(minim,value,maxim):
 	health_bar.min_value = minim
