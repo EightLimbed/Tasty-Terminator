@@ -35,7 +35,7 @@ func _physics_process(delta):
 
 func update_pierce():
 	if ricochet:
-		direction = (Vector2(random.randi(),random.randi())/2).normalized()
+		direction = (Vector2(random.randi(),random.randi())).normalized()
 	if hit_sound:
 		play_sound(hit_sound,AudioServer.get_bus_name(2))
 	pierce -= 1

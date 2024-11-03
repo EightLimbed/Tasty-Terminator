@@ -48,3 +48,4 @@ frames = SubResource("SpriteFrames_gmsbx")
 sound = ExtResource("6_osoqj")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(216, 0)
+ricochet = false

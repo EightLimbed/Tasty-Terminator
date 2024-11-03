@@ -30,12 +30,16 @@ outline_color = Color(0, 0, 0, 1)
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_32x74")
 
-[node name="Experiencebar" type="TextureProgressBar" parent="."]
+[node name="Info" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Experiencebar" type="TextureProgressBar" parent="Info"]
 texture_filter = 1
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 354.0
-offset_bottom = 15.0
+offset_right = 351.0
+offset_bottom = 12.0
 nine_patch_stretch = true
 stretch_margin_left = 3
 stretch_margin_top = 3
@@ -44,12 +48,11 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("4_1x6n8")
 
-[node name="Healthbar" type="TextureProgressBar" parent="."]
+[node name="Healthbar" type="TextureProgressBar" parent="Info"]
 texture_filter = 1
-offset_left = 3.0
-offset_top = 20.0
-offset_right = 131.0
-offset_bottom = 32.0
+offset_top = 17.0
+offset_right = 128.0
+offset_bottom = 29.0
 nine_patch_stretch = true
 stretch_margin_left = 3
 stretch_margin_top = 3
@@ -58,55 +61,57 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("3_a3f6f")
 
-[node name="SettingsButton" type="TextureButton" parent="."]
+[node name="SettingsButton" type="TextureButton" parent="Info"]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_top = 3.0
-offset_right = -8.0
-offset_bottom = 35.0
+offset_left = 322.0
+offset_right = 354.0
+offset_bottom = 32.0
 grow_horizontal = 0
 texture_normal = ExtResource("5_j4qj0")
 texture_pressed = ExtResource("6_lcm36")
 texture_hover = ExtResource("6_lcm36")
 
-[node name="LevelDisplay" type="Label" parent="."]
+[node name="LevelDisplay" type="Label" parent="Info"]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -68.5
-offset_top = 16.0
-offset_right = 151.5
-offset_bottom = 36.0
+offset_left = 111.0
+offset_top = 13.0
+offset_right = 331.0
+offset_bottom = 33.0
 grow_horizontal = 2
 text = "Level 420, Wave 69"
 label_settings = SubResource("LabelSettings_amjjq")
 clip_text = true
 
-[node name="Autolevel" type="TextureRect" parent="."]
+[node name="Autolevel" type="TextureRect" parent="Info"]
 texture_filter = 1
-offset_top = 35.0
-offset_right = 38.0
-offset_bottom = 61.0
+offset_left = -3.0
+offset_top = 32.0
+offset_right = 35.0
+offset_bottom = 58.0
 texture = ExtResource("5_x65on")
 stretch_mode = 3
 
 [node name="Levelup" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -214.0
+offset_top = -576.0
 offset_right = 20.0
-offset_bottom = -174.0
+offset_bottom = -536.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Levelup"]
 texture_filter = 1
@@ -263,9 +268,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -64.0
-offset_right = 20.0
+offset_left = -202.5
+offset_top = -72.0
+offset_right = 202.5
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -313,7 +318,7 @@ bus = &"SoundEffects"
 stream = ExtResource("16_xondl")
 bus = &"SoundEffects"
 
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Info/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option1" to="." method="_on_option_1_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option2" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option3" to="." method="_on_option_3_pressed"]

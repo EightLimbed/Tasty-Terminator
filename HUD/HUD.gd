@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var health_bar = $Healthbar
-@onready var experience_bar = $Experiencebar
+@onready var health_bar = $Info/Healthbar
+@onready var experience_bar = $Info/Experiencebar
 @onready var settings = $Settings
-@onready var level_display = $LevelDisplay
+@onready var level_display = $Info/LevelDisplay
 @onready var click_sound = $AudioStreamPlayer
 @onready var revival_sound = $AudioStreamPlayer2
 @onready var pickup_sound = $AudioStreamPlayer3
@@ -16,7 +16,7 @@ extends CanvasLayer
 @onready var tooltip_label = $Levelup/NinePatchRect/LevelTooltip/Label
 @onready var tooltip_box = $Levelup/NinePatchRect/LevelTooltip
 @onready var inventory = $Inventory/HBoxContainer
-@onready var autolevel_display = $Autolevel
+@onready var autolevel_display = $Info/Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
 var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]

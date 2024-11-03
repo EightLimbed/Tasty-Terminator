@@ -21,3 +21,4 @@ scale = Vector2(0, 0)
 lifetime_override = 0.0
 follow_player = false
 collision_offset = Vector2(0, 0)
+ricochet = false
