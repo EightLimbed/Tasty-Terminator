@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://78fr3evm7s8r" path="res://Enemies/Resources/Default.tres" id="2_yyd3u"]
 [ext_resource type="Resource" uid="uid://chemtbmxj513n" path="res://Enemies/Resources/Edd.tres" id="3_q0u12"]
 [ext_resource type="Resource" uid="uid://dk4nsth4f4c1e" path="res://Enemies/Resources/Dryd.tres" id="4_a6bxq"]
-[ext_resource type="Resource" uid="uid://bebcutc0f7ss1" path="res://Enemies/Resources/Bigfoot.tres" id="5_8fuj2"]
+[ext_resource type="Resource" uid="uid://67iu4kln4mkn" path="res://Enemies/Resources/Bigfoot.tres" id="5_8fuj2"]
 [ext_resource type="Script" path="res://World/world_profile.gd" id="5_cu8sv"]
 [ext_resource type="Texture2D" uid="uid://qfb2dxpy8qyo" path="res://World/Art/DirtPathTiles.png" id="6_kya3t"]
 [ext_resource type="Texture2D" uid="uid://bqdq3mdvjlnui" path="res://World/Art/PineGrassTiles.png" id="6_sp6y6"]

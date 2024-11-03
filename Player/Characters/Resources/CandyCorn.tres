@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Character" load_steps=6 format=3 uid="uid://celcr61klhqyg"]
+[gd_resource type="Resource" script_class="Character" load_steps=6 format=3 uid="uid://4qevxcc2j84w"]
 
 [ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_wbpfb"]
 [ext_resource type="Texture2D" uid="uid://d4aw2rhy6ds2n" path="res://Player/Characters/Art/CandyCornWalk-0.png" id="2_b20eq"]
 [ext_resource type="Texture2D" uid="uid://q8jxn832r24y" path="res://Player/Characters/Art/CandyCornWalk-1.png" id="3_gvxe1"]
-[ext_resource type="Resource" uid="uid://dxi5ft2as2tyj" path="res://Weapons/Resources/Minions.tres" id="4_dwk8m"]
+[ext_resource type="Resource" uid="uid://bayb3phoauu5l" path="res://Weapons/Resources/Minions.tres" id="4_dwk8m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jjwi2"]
 animations = [{
