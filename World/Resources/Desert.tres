@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="World" load_steps=12 format=3 uid="uid://brlpdpyxwrob1"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_profile.gd" id="1_3rkm6"]
-[ext_resource type="Resource" uid="uid://c0vs133evtoyo" path="res://Enemies/Resources/Cowboy.tres" id="3_bnkko"]
+[ext_resource type="Resource" uid="uid://ca17vtbpxdwvl" path="res://Enemies/Resources/Cowboy.tres" id="3_bnkko"]
 [ext_resource type="Resource" uid="uid://5viifpnr5dmv" path="res://Enemies/Resources/Trist.tres" id="5_2m63q"]
 [ext_resource type="Script" path="res://World/world_profile.gd" id="5_es17m"]
 [ext_resource type="Texture2D" uid="uid://cm8xcjsv7l33e" path="res://World/Art/DesertRoad.png" id="6_8tx4d"]

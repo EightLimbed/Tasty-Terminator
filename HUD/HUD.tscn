@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=20 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ru4lid6uuk2m" path="res://HUD/Art/Autolevel.png" id="5_x65on"]
 [ext_resource type="Texture2D" uid="uid://dw4jquffeqmcv" path="res://MainMenu/Art/SettingsHover.png" id="6_lcm36"]
 [ext_resource type="Script" path="res://HUD/LevelOption.gd" id="6_xajst"]
+[ext_resource type="Script" path="res://MultiTouchTextureButton.gd" id="7_57g5l"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="7_sv64g"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="10_atq2o"]
@@ -38,6 +39,7 @@ offset_bottom = 40.0
 
 [node name="Experiencebar" type="TextureProgressBar" parent="Info"]
 texture_filter = 1
+layout_mode = 0
 offset_right = 351.0
 offset_bottom = 12.0
 nine_patch_stretch = true
@@ -50,6 +52,7 @@ texture_progress = ExtResource("4_1x6n8")
 
 [node name="Healthbar" type="TextureProgressBar" parent="Info"]
 texture_filter = 1
+layout_mode = 0
 offset_top = 17.0
 offset_right = 128.0
 offset_bottom = 29.0
@@ -74,6 +77,7 @@ grow_horizontal = 0
 texture_normal = ExtResource("5_j4qj0")
 texture_pressed = ExtResource("6_lcm36")
 texture_hover = ExtResource("6_lcm36")
+script = ExtResource("7_57g5l")
 
 [node name="LevelDisplay" type="Label" parent="Info"]
 texture_filter = 1
@@ -92,6 +96,7 @@ clip_text = true
 
 [node name="Autolevel" type="TextureRect" parent="Info"]
 texture_filter = 1
+layout_mode = 0
 offset_left = -3.0
 offset_top = 32.0
 offset_right = 35.0
