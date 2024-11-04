@@ -10,7 +10,6 @@ var random = RandomNumberGenerator.new()
 @onready var player = get_tree().get_root().get_node("Game").get_node("Player")
 @onready var unload = $Unload
 @onready var reload = $Reload
-var ricochet_container = []
 var level : int = 0
 
 func start():
@@ -53,19 +52,8 @@ func shoot():
 				dir = Vector2(0,1)
 			instance.direction = dir.rotated(spread*i-spread_offset)
 		if profile.aim_type == 2:
-			var closest_en =find_closest(global_position, enemy_container.get_children())-player.velocity/5
-			var dir = global_position.direction_to(closest_en)
+			var dir = global_position.direction_to(find_closest(global_position, enemy_container.get_children())-player.velocity/5)
 			instance.direction = dir.rotated(spread*i-spread_offset)
-			if instance.ricochet:
-				
-				ricochet_container.append(instance)
-				for proj in ricochet_container:
-					
-					if not proj == null:
-						proj.target= closest_en
-					else:
-						ricochet_container.erase(proj)
-					
 		if profile.aim_type == 3:
 			instance.initial_velocity = Vector2.ZERO
 			if player.velocity != Vector2.ZERO:

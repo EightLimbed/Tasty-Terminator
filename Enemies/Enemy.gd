@@ -32,9 +32,8 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	#print(body.collision_layer)
 	if body.collision_layer == 8:
-		health -= body.damage
 		body.update_pierce()
-		
+		health -= body.damage
 		if health <= 0:
 			die()
 	if body.collision_layer == 2:
