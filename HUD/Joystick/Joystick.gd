@@ -10,7 +10,7 @@ func _process(_delta):
 		global_position = get_global_mouse_position()-Vector2(64,64)
 		knob.position = Vector2(64,64)
 		press = 0
-		modulate.a = 0
+		modulate.a = 155
 	else:
 		distance = (get_global_mouse_position()-global_position-Vector2(64,64)).limit_length(64)/64
 		knob.position = distance*64+Vector2(64,64)
