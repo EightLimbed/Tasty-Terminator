@@ -1,4 +1,4 @@
-extends TouchScreenButton
+extends MultiTouchTextureButton
 
 var joystick_pressed : bool = false
 @onready var knob = $Knob
@@ -17,8 +17,9 @@ func _process(_delta):
 		press = 1
 		modulate.a = 155
 
-func _on_pressed() -> void:
+func _on_button_down() -> void:
 	joystick_pressed = true
 
-func _on_released() -> void:
+
+func _on_button_up() -> void:
 	joystick_pressed = false
