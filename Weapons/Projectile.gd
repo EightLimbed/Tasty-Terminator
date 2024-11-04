@@ -12,14 +12,16 @@ var initial_velocity : Vector2
 var lifetime_override : float = 0
 var random = RandomNumberGenerator.new()
 var hit_sound : AudioStream
-var ricochet : bool
+
+var circling_radius : int
 @onready var collision = $CollisionShape2D
 @onready var sprite_frames = $AnimatedSprite2D
 @onready var lifetime = $Lifetime
 
 func _ready() -> void:
 	collision.position = collision_offset
-	rotation = direction.angle()
+	if circling_radius == 0:
+			rotation = direction.angle()
 	if lifetime_override > 0:
 		lifetime.wait_time = lifetime_override
 	else:
@@ -30,12 +32,17 @@ func _ready() -> void:
 	lifetime.start()
 
 func _physics_process(delta):
+	if not circling_radius == 0:
+		if position.x>circling_radius or position.x<-circling_radius:
+			direction.x = sign(circling_radius- position.x)
+		if position.y>circling_radius or position.y<-circling_radius:
+			direction.y = sign(circling_radius -position.y)
+		
 	velocity = (delta*speed*direction)+initial_velocity
 	move_and_slide()
 
 func update_pierce():
-	if ricochet:
-		direction = (Vector2(random.randi(),random.randi())).normalized()
+	
 	if hit_sound:
 		play_sound(hit_sound,AudioServer.get_bus_name(2))
 	pierce -= 1

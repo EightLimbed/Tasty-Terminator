@@ -20,7 +20,7 @@ extends Control
 @onready var mright = $VBoxContainer/LevelSelect/RightButtonM
 @onready var mleft = $VBoxContainer/LevelSelect/LeftButtonM
 var world_seed : int
-var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
+var characters : Array[Character] = [preload("res://Player/Characters/Resources/CandyCorn.tres")]
 var c_index : int = 0
 var maps : Array[World] = [preload("res://World/Resources/Rural.tres")]
 var m_index : int = 0
