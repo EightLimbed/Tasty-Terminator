@@ -1,4 +1,4 @@
-extends MultiTouchTextureButton
+extends TouchScreenButton
 
 var upgrade_texture = preload("res://HUD/Art/UpgradeWeapon.png")
 var new_texture = preload("res://HUD/Art/NewWeapon.png")

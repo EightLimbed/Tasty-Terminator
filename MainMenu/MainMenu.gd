@@ -20,7 +20,7 @@ extends Control
 @onready var mright = $VBoxContainer/LevelSelect/RightButtonM
 @onready var mleft = $VBoxContainer/LevelSelect/LeftButtonM
 var world_seed : int
-var characters : Array[Character] = [preload("res://Player/Characters/Resources/CandyCorn.tres")]
+var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
 var c_index : int = 0
 var maps : Array[World] = [preload("res://World/Resources/Rural.tres")]
 var m_index : int = 0
@@ -118,16 +118,16 @@ func world_left():
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 	world.generate_roads(Vector2.ZERO, Vector2i(32,52))
 
-func _on_achievments_pressed() -> void:
+func _on_achievments_released() -> void:
 	click_sound.play()
 	achievement_display.update(save_file)
 	achievement_display.visible = true
 
-func _on_settings_pressed() -> void:
+func _on_settings_released() -> void:
 	click_sound.play()
 	settings.visible = true
 
-func _on_start_pressed() -> void:
+func _on_start_released() -> void:
 	click_sound.play()
 	game.character_profile = characters[c_index]
 	game.world_profile = maps[m_index]
@@ -135,14 +135,14 @@ func _on_start_pressed() -> void:
 	get_tree().root.add_child(game)
 	queue_free()
 
-func _on_left_button_pressed() -> void:
+func _on_left_button_released() -> void:
 	character_left()
 
-func _on_right_button_pressed() -> void:
+func _on_right_button_released() -> void:
 	character_right()
 
-func _on_right_button_m_pressed() -> void:
+func _on_right_button_m_released() -> void:
 	world_right()
 
-func _on_left_button_m_pressed() -> void:
+func _on_left_button_m_released() -> void:
 	world_left()

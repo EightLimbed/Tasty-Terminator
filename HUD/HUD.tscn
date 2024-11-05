@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=19 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ru4lid6uuk2m" path="res://HUD/Art/Autolevel.png" id="5_x65on"]
 [ext_resource type="Texture2D" uid="uid://dw4jquffeqmcv" path="res://MainMenu/Art/SettingsHover.png" id="6_lcm36"]
 [ext_resource type="Script" path="res://HUD/LevelOption.gd" id="6_xajst"]
-[ext_resource type="Script" path="res://MultiTouchTextureButton.gd" id="7_57g5l"]
 [ext_resource type="Texture2D" uid="uid://cngd8yyvpyxfw" path="res://Weapons/Art/ChocolateChipWeapon.png" id="7_sv64g"]
 [ext_resource type="LabelSettings" uid="uid://b02ry3r2kq5vl" path="res://HUD/Name.tres" id="8_w8bml"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="10_atq2o"]
@@ -40,7 +39,7 @@ offset_bottom = 40.0
 [node name="Experiencebar" type="TextureProgressBar" parent="Info"]
 texture_filter = 1
 layout_mode = 0
-offset_right = 351.0
+offset_right = 355.0
 offset_bottom = 12.0
 nine_patch_stretch = true
 stretch_margin_left = 3
@@ -64,20 +63,11 @@ stretch_margin_bottom = 3
 texture_under = ExtResource("2_7wn1q")
 texture_progress = ExtResource("3_a3f6f")
 
-[node name="SettingsButton" type="TextureButton" parent="Info"]
+[node name="SettingsButton" type="TouchScreenButton" parent="Info"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 322.0
-offset_right = 354.0
-offset_bottom = 32.0
-grow_horizontal = 0
+position = Vector2(369, 4)
 texture_normal = ExtResource("5_j4qj0")
 texture_pressed = ExtResource("6_lcm36")
-texture_hover = ExtResource("6_lcm36")
-script = ExtResource("7_57g5l")
 
 [node name="LevelDisplay" type="Label" parent="Info"]
 texture_filter = 1
@@ -85,9 +75,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 111.0
+offset_left = 113.0
 offset_top = 13.0
-offset_right = 331.0
+offset_right = 333.0
 offset_bottom = 33.0
 grow_horizontal = 2
 text = "Level 420, Wave 69"
@@ -139,20 +129,13 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="Option1" type="TextureButton" parent="Levelup/NinePatchRect"]
+[node name="Option1" type="TouchScreenButton" parent="Levelup/NinePatchRect"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 80.0
-offset_bottom = 112.0
-pivot_offset = Vector2(32, 48)
+position = Vector2(16, 16)
 texture_normal = ExtResource("5_3or5x")
-stretch_mode = 4
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option1"]
-layout_mode = 0
 offset_top = 30.0
 offset_right = 64.0
 offset_bottom = 78.0
@@ -160,7 +143,6 @@ texture = ExtResource("7_sv64g")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Levelup/NinePatchRect/Option1"]
-layout_mode = 0
 offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0
@@ -169,20 +151,13 @@ label_settings = ExtResource("8_w8bml")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Option2" type="TextureButton" parent="Levelup/NinePatchRect"]
+[node name="Option2" type="TouchScreenButton" parent="Levelup/NinePatchRect"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 112.0
-offset_top = 16.0
-offset_right = 176.0
-offset_bottom = 112.0
-pivot_offset = Vector2(32, 48)
+position = Vector2(112, 16)
 texture_normal = ExtResource("5_3or5x")
-stretch_mode = 4
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option2"]
-layout_mode = 0
 offset_top = 30.0
 offset_right = 64.0
 offset_bottom = 78.0
@@ -190,7 +165,6 @@ texture = ExtResource("7_sv64g")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Levelup/NinePatchRect/Option2"]
-layout_mode = 0
 offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0
@@ -199,20 +173,13 @@ label_settings = ExtResource("8_w8bml")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Option3" type="TextureButton" parent="Levelup/NinePatchRect"]
+[node name="Option3" type="TouchScreenButton" parent="Levelup/NinePatchRect"]
 texture_filter = 1
-layout_mode = 2
-offset_left = 212.0
-offset_top = 16.0
-offset_right = 276.0
-offset_bottom = 112.0
-pivot_offset = Vector2(32, 48)
+position = Vector2(208, 16)
 texture_normal = ExtResource("5_3or5x")
-stretch_mode = 4
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option3"]
-layout_mode = 0
 offset_left = 3.0
 offset_top = 30.0
 offset_right = 63.0
@@ -221,7 +188,6 @@ texture = ExtResource("7_sv64g")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="Levelup/NinePatchRect/Option3"]
-layout_mode = 0
 offset_left = -32.0
 offset_top = 74.0
 offset_right = 96.0

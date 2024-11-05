@@ -186,13 +186,19 @@ func option1_pressed():
 	click_sound.play()
 	if option1_button.scale == Vector2(1,1):
 		update_level_tooltip(option1)
-		option1_button.scale = Vector2(1.2,1.2)
+		option1_button.scale = Vector2(1.125,1.125)
+		option1_button.position = Vector2(12,12)
 		option2_button.scale = Vector2(1,1)
+		option2_button.position = Vector2(112,16)
 		option3_button.scale = Vector2(1,1)
+		option3_button.position = Vector2(208,16)
 	else:
 		option1_button.scale = Vector2(1,1)
+		option1_button.position = Vector2(16,16)
 		option2_button.scale = Vector2(1,1)
+		option2_button.position = Vector2(112,16)
 		option3_button.scale = Vector2(1,1)
+		option3_button.position = Vector2(208,16)
 		tooltip_box.visible = false
 		if option1 is int:
 			upgrade_weapon(option1)
@@ -220,12 +226,18 @@ func option2_pressed():
 	if option2_button.scale == Vector2(1,1):
 		update_level_tooltip(option2)
 		option1_button.scale = Vector2(1,1)
-		option2_button.scale = Vector2(1.2,1.2)
+		option1_button.position = Vector2(16,16)
+		option2_button.scale = Vector2(1.125,1.125)
+		option2_button.position = Vector2(108,12)
 		option3_button.scale = Vector2(1,1)
+		option3_button.position = Vector2(208,16)
 	else:
 		option1_button.scale = Vector2(1,1)
+		option1_button.position = Vector2(16,16)
 		option2_button.scale = Vector2(1,1)
+		option2_button.position = Vector2(112,16)
 		option3_button.scale = Vector2(1,1)
+		option3_button.position = Vector2(208,16)
 		tooltip_box.visible = false
 		if option2 is int:
 			upgrade_weapon(option2)
@@ -253,12 +265,18 @@ func option3_pressed():
 	if option3_button.scale == Vector2(1,1):
 		update_level_tooltip(option3)
 		option1_button.scale = Vector2(1,1)
+		option1_button.position = Vector2(16,16)
 		option2_button.scale = Vector2(1,1)
-		option3_button.scale = Vector2(1.2,1.2)
+		option2_button.position = Vector2(112,16)
+		option3_button.scale = Vector2(1.125,1.125)
+		option3_button.position = Vector2(204,12)
 	else:
 		option1_button.scale = Vector2(1,1)
+		option1_button.position = Vector2(16,16)
 		option2_button.scale = Vector2(1,1)
+		option2_button.position = Vector2(112,16)
 		option3_button.scale = Vector2(1,1)
+		option3_button.position = Vector2(208,16)
 		tooltip_box.visible = false
 		if option3 is int:
 			upgrade_weapon(option3)

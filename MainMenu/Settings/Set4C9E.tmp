@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bndtw5amva0qs"]
+[gd_scene load_steps=16 format=3 uid="uid://bndtw5amva0qs"]
 
 [ext_resource type="Script" path="res://MainMenu/Settings/Settings.gd" id="1_kg16e"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6aba0"]
@@ -8,12 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bwwbon3af15p0" path="res://MainMenu/Settings/Art/MusicOff.png" id="6_n61qa"]
 [ext_resource type="Texture2D" uid="uid://dvmvqg0fuq8op" path="res://MainMenu/Settings/Art/MusicHover.png" id="7_camyo"]
 [ext_resource type="PackedScene" uid="uid://gepkvb4508h4" path="res://MainMenu/Settings/MobileSlider.tscn" id="7_jgq54"]
-[ext_resource type="Texture2D" uid="uid://yfrcjnsipkuh" path="res://MainMenu/Settings/Art/SoundEffectsOn.png" id="10_0npu5"]
 [ext_resource type="Texture2D" uid="uid://b3878rfg4xitc" path="res://MainMenu/Art/NextArrow.png" id="10_i4n6b"]
 [ext_resource type="Texture2D" uid="uid://ctf6b1ctguwgr" path="res://MainMenu/Art/NextArrowHover.png" id="11_1jx05"]
-[ext_resource type="Texture2D" uid="uid://dloytji0753k2" path="res://MainMenu/Settings/Art/SoundEffectsOff.png" id="11_n24jb"]
 [ext_resource type="Texture2D" uid="uid://cmo8ax0de7tqu" path="res://HUD/DeathScreen/Art/Menu.png" id="12_a2ldu"]
-[ext_resource type="Texture2D" uid="uid://dgeux4vsp68ya" path="res://MainMenu/Settings/Art/SoundEffectsHover.png" id="12_vbxyd"]
 [ext_resource type="Texture2D" uid="uid://5u5oacdyl1df" path="res://HUD/DeathScreen/Art/MenuHover.png" id="13_atqan"]
 [ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="17_nynot"]
 
@@ -31,23 +28,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_camyo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6gsb2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_0npu5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_n24jb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_vbxyd")
 }],
 "loop": true,
 "name": &"default",
@@ -138,28 +118,9 @@ custom_minimum_size = Vector2(296, 32)
 layout_mode = 2
 
 [node name="Display" type="AnimatedSprite2D" parent="VBoxContainer/Music"]
-position = Vector2(16, 16)
 sprite_frames = SubResource("SpriteFrames_h0xhs")
 
 [node name="Slider" parent="VBoxContainer/Music" instance=ExtResource("7_jgq54")]
-custom_minimum_size = Vector2(240, 6)
-layout_mode = 1
-offset_left = 48.0
-offset_top = 12.0
-offset_right = -8.0
-offset_bottom = -14.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="SoundEffects" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(296, 32)
-layout_mode = 2
-
-[node name="Display" type="AnimatedSprite2D" parent="VBoxContainer/SoundEffects"]
-position = Vector2(16, 16)
-sprite_frames = SubResource("SpriteFrames_6gsb2")
-
-[node name="Slider" parent="VBoxContainer/SoundEffects" instance=ExtResource("7_jgq54")]
 custom_minimum_size = Vector2(240, 6)
 layout_mode = 1
 offset_left = 48.0
@@ -217,9 +178,8 @@ texture_pressed = ExtResource("13_atqan")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_nynot")
 
-[connection signal="released" from="Exit" to="." method="_on_exit_released"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="VBoxContainer/Music/Slider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/SoundEffects/Slider" to="." method="_on_sound_effects_slider_value_changed"]
-[connection signal="released" from="VBoxContainer/ControlType/RightButtonM" to="." method="_on_right_button_m_released"]
-[connection signal="released" from="VBoxContainer/ControlType/LeftButtonM" to="." method="_on_left_button_m_released"]
-[connection signal="released" from="VBoxContainer/Menu/Menu" to="." method="_on_menu_released"]
+[connection signal="pressed" from="VBoxContainer/ControlType/RightButtonM" to="." method="_on_right_button_m_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlType/LeftButtonM" to="." method="_on_left_button_m_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu/Menu" to="." method="_on_menu_pressed"]

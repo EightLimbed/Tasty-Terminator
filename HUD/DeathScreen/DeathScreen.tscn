@@ -89,21 +89,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Menu" type="TextureButton" parent="VBoxContainer"]
-texture_filter = 1
+[node name="Control" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+
+[node name="Menu" type="TouchScreenButton" parent="VBoxContainer/Control"]
+texture_filter = 1
 texture_normal = ExtResource("4_rwtg4")
 texture_pressed = ExtResource("5_p75dn")
-texture_hover = ExtResource("5_p75dn")
 
-[node name="Revive" type="TextureButton" parent="VBoxContainer"]
-texture_filter = 1
+[node name="Control2" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+
+[node name="Revive" type="TouchScreenButton" parent="VBoxContainer/Control2"]
+texture_filter = 1
 texture_normal = ExtResource("2_4et3a")
 texture_pressed = ExtResource("3_le8on")
-texture_hover = ExtResource("3_le8on")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -141,12 +143,6 @@ position = Vector2(199, 297)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_dc1ts")
 
-[node name="Shadow" type="Sprite2D" parent="Display"]
-modulate = Color(1, 1, 1, 0.607843)
-z_index = -1
-position = Vector2(0, 14)
-texture = SubResource("GradientTexture2D_wuq2f")
-
 [node name="Face" type="TextureRect" parent="Display"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,5 +157,11 @@ texture = ExtResource("11_phi35")
 stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/Revive" to="." method="_on_revive_pressed"]
+[node name="Shadow" type="Sprite2D" parent="Display"]
+self_modulate = Color(1, 1, 1, 0.607843)
+show_behind_parent = true
+position = Vector2(0, 14)
+texture = SubResource("GradientTexture2D_wuq2f")
+
+[connection signal="released" from="VBoxContainer/Control/Menu" to="." method="_on_menu_released"]
+[connection signal="released" from="VBoxContainer/Control2/Revive" to="." method="_on_revive_released"]

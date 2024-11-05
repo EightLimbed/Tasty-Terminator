@@ -7,7 +7,7 @@ extends Control
 @onready var player = game.get_node("Player")
 @onready var settings = player.get_node("HUD").get_node("Settings")
 @onready var joystick = player.get_node("Joystick")
-@onready var revive = $VBoxContainer/Revive
+@onready var revive = $VBoxContainer/Control2/Revive
 @onready var music = $AudioStreamPlayer
 @onready var score = $Score
 @onready var display = $Display
@@ -36,12 +36,12 @@ func death():
 			revive.visible = false
 		joystick.visible = false
 
-func _on_menu_pressed():
+func _on_menu_released():
 	click_sound.play()
 	get_tree().change_scene_to_file("res://MainMenu/MainMenu.tscn")
 	game.queue_free()
 
-func _on_revive_pressed():
+func _on_revive_released():
 	revival_sound.play()
 	click_sound.play()
 	music.stop()

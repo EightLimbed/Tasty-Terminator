@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://HUD/Joystick/Joystick.gd" id="1_i8p71"]
 [ext_resource type="Texture2D" uid="uid://bn64u7jn23fsi" path="res://HUD/Joystick/Art/Knob.png" id="3_y5pfh"]
 
-[node name="Joystick" type="TextureButton"]
+[node name="Joystick" type="TouchScreenButton"]
 z_index = 100
 texture_filter = 1
 texture_normal = ExtResource("1_b6bk4")
@@ -16,5 +16,5 @@ z_index = 100
 position = Vector2(64, 64)
 texture = ExtResource("3_y5pfh")
 
-[connection signal="button_down" from="." to="." method="_on_button_down"]
-[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="released" from="." to="." method="_on_released"]

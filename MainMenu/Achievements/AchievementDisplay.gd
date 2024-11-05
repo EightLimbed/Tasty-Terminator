@@ -1,6 +1,6 @@
 extends Control
 
-@onready var achievement_container = $ScrollContainer/VBoxContainer
+@onready var achievement_container = $VBoxContainer
 @onready var unlocked_texture : Texture2D = load("res://MainMenu/Art/AchievementUnlocked.png")
 @onready var locked_texture : Texture2D = load("res://MainMenu/Art/AchievementLocked.png")
 @onready var click_sound = $AudioStreamPlayer
@@ -37,6 +37,6 @@ func update(save_file) -> void:
 		#display.texture = locked_texture
 		#achievement_container.add_child(display)
 
-func _on_exit_pressed() -> void:
+func _on_exit_released() -> void:
 	click_sound.play()
 	visible = false

@@ -46,5 +46,4 @@ sound = ExtResource("5_0n2mb")
 hit_sound = ExtResource("4_78s6b")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(0, 0)
-circling = false
-cricling_radius = Vector2(0, 0)
+circling_radius = Vector2i(0, 0)

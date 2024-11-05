@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gepkvb4508h4"]
+
+[ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="3_srodt"]
+[ext_resource type="Texture2D" uid="uid://3rujxkrgrhfo" path="res://HUD/Art/ExperienceBarFull.png" id="4_ifyat"]
+[ext_resource type="Texture2D" uid="uid://ciyg6mu5y30k2" path="res://Enemies/Art/XP.png" id="5_cl7a5"]
+[ext_resource type="Script" path="res://MainMenu/Settings/MobileSlider.gd" id="6_0mf23"]
+
+[node name="Slider" type="TextureProgressBar"]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 6)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -149.0
+offset_bottom = -714.0
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("3_srodt")
+texture_progress = ExtResource("4_ifyat")
+script = ExtResource("6_0mf23")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(-8, -5)
+texture_normal = ExtResource("5_cl7a5")
+texture_pressed = ExtResource("5_cl7a5")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
