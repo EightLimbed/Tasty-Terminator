@@ -18,6 +18,7 @@ extends CanvasLayer
 @onready var inventory = $Inventory/HBoxContainer
 @onready var autolevel_display = $Info/Autolevel
 @onready var save_file = preload("res://MainMenu/Achievements/LocalAchievements.tres")
+@onready var joystick = $Joystick
 var random = RandomNumberGenerator.new()
 var possible_weapons : Array[Weapon] = [preload("res://Weapons/Resources/Saw.tres"),preload("res://Weapons/Resources/Wrench.tres"),preload("res://Weapons/Resources/Bricks.tres")]
 var max_weapons : int = 5
@@ -300,21 +301,14 @@ func option3_pressed():
 			level_up(0)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("1") and level_up_window.visible and player.health > 0:
+	if event.is_action_pressed("Option1") and level_up_window.visible and player.health > 0:
 		option1_pressed()
-	if event.is_action_pressed("2") and level_up_window.visible and player.health > 0:
+	if event.is_action_pressed("Option2") and level_up_window.visible and player.health > 0:
 		option2_pressed()
-	if event.is_action_pressed("3") and level_up_window.visible and player.health > 0:
+	if event.is_action_pressed("Option3") and level_up_window.visible and player.health > 0:
 		option3_pressed()
-
-func _on_option_1_pressed():
-	option1_pressed()
-
-func _on_option_2_pressed():
-	option2_pressed()
-
-func _on_option_3_pressed():
-	option3_pressed()
+	if event.is_action("Joystick"):
+		joystick.joystick_pressed = true
 
 func _on_settings_button_pressed() -> void:
 	click_sound.play()

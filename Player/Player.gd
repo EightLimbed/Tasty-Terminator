@@ -8,7 +8,6 @@ var input : Vector2
 var control_type : bool
 var health : float
 var experience : int = 0
-@onready var joystick = $Joystick
 @onready var hud = $HUD
 @onready var animation = $AnimatedSprite2D
 @onready var face = $Face
@@ -49,11 +48,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		face.frame = 0
 	if control_type:
-		joystick.visible = true
-		input = joystick.distance
-		velocity = input*profile.speed.x*delta*joystick.press
+		hud.joystick.visible = true
+		input = hud.joystick.distance
+		velocity = input*profile.speed.x*delta*hud.joystick.press
 	else:
-		joystick.visible = false
+		hud.joystick.visible = false
 		var take = Vector2(int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left")), int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))).normalized()
 		if not take == Vector2.ZERO and health >= 0:
 			input = take

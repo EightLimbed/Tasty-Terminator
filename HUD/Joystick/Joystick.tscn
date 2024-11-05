@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnrs76bn7y2f"]
+[gd_scene load_steps=4 format=3 uid="uid://f30mr183ou3t"]
 
 [ext_resource type="Texture2D" uid="uid://de0rx2d0s677q" path="res://HUD/Joystick/Art/Joystick.png" id="1_b6bk4"]
 [ext_resource type="Script" path="res://HUD/Joystick/Joystick.gd" id="1_i8p71"]
@@ -16,5 +16,4 @@ z_index = 100
 position = Vector2(64, 64)
 texture = ExtResource("3_y5pfh")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="released" from="." to="." method="_on_released"]

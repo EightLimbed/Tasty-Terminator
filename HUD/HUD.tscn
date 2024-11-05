@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://doi3fmv48pifv"]
+[gd_scene load_steps=20 format=3 uid="uid://doi3fmv48pifv"]
 
 [ext_resource type="Script" path="res://HUD/HUD.gd" id="1_32x74"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_7wn1q"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://5wxkyhqjy51n" path="res://Weapons/Sound/Revival.mp3" id="14_fr5pi"]
 [ext_resource type="AudioStream" uid="uid://bpvmis7q4nsld" path="res://HUD/DeathScreen/Music/Pickup.mp3" id="15_pgmb6"]
 [ext_resource type="AudioStream" uid="uid://dhr78m7rdvtn3" path="res://HUD/DeathScreen/Music/Magnet.mp3" id="16_xondl"]
+[ext_resource type="PackedScene" uid="uid://f30mr183ou3t" path="res://HUD/Joystick/Joystick.tscn" id="17_lxjs6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amjjq"]
 font_size = 14
@@ -133,6 +134,7 @@ patch_margin_bottom = 3
 texture_filter = 1
 position = Vector2(16, 16)
 texture_normal = ExtResource("5_3or5x")
+action = "Option1"
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option1"]
@@ -155,6 +157,7 @@ vertical_alignment = 1
 texture_filter = 1
 position = Vector2(112, 16)
 texture_normal = ExtResource("5_3or5x")
+action = "Option2"
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option2"]
@@ -177,6 +180,7 @@ vertical_alignment = 1
 texture_filter = 1
 position = Vector2(208, 16)
 texture_normal = ExtResource("5_3or5x")
+action = "Option3"
 script = ExtResource("6_xajst")
 
 [node name="TextureRect" type="TextureRect" parent="Levelup/NinePatchRect/Option3"]
@@ -288,6 +292,10 @@ bus = &"SoundEffects"
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_xondl")
 bus = &"SoundEffects"
+
+[node name="Joystick" parent="." instance=ExtResource("17_lxjs6")]
+position = Vector2(137, 520)
+action = "Joystick"
 
 [connection signal="pressed" from="Info/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Levelup/NinePatchRect/Option1" to="." method="_on_option_1_pressed"]

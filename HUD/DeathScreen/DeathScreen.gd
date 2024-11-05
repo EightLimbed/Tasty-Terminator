@@ -6,7 +6,6 @@ extends Control
 @onready var game_music = game.get_node("AudioStreamPlayer")
 @onready var player = game.get_node("Player")
 @onready var settings = player.get_node("HUD").get_node("Settings")
-@onready var joystick = player.get_node("Joystick")
 @onready var revive = $VBoxContainer/Control2/Revive
 @onready var music = $AudioStreamPlayer
 @onready var score = $Score
@@ -34,7 +33,6 @@ func death():
 			revive.visible = true
 		else:
 			revive.visible = false
-		joystick.visible = false
 
 func _on_menu_released():
 	click_sound.play()
@@ -50,4 +48,3 @@ func _on_revive_released():
 	wave_timer.start()
 	visible = false
 	player.update_health(-player.profile.max_health.x/2)
-	joystick.visible = true
