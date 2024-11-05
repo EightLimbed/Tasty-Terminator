@@ -300,7 +300,7 @@ func option3_pressed():
 			levels_cached -= 1
 			level_up(0)
 
-func _input(event: InputEvent) -> void:
+func _input(event) -> void:
 	if event.is_action_pressed("Option1") and level_up_window.visible and player.health > 0:
 		option1_pressed()
 	if event.is_action_pressed("Option2") and level_up_window.visible and player.health > 0:
