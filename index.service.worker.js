@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1730855175|2965875201';
+const CACHE_VERSION = '1730915920|87590701';
 /** @type {string} */
 const CACHE_PREFIX = 'Tasty Terminator-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
