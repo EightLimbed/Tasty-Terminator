@@ -301,14 +301,15 @@ func option3_pressed():
 			level_up(0)
 
 func _input(event) -> void:
-	if event.is_action_pressed("Option1") and level_up_window.visible and player.health > 0:
-		option1_pressed()
-	if event.is_action_pressed("Option2") and level_up_window.visible and player.health > 0:
-		option2_pressed()
-	if event.is_action_pressed("Option3") and level_up_window.visible and player.health > 0:
-		option3_pressed()
-	if event.is_action("Joystick"):
-		joystick.joystick_pressed = true
+	if event.is_pressed():
+		if event.is_action_pressed("Option1") and level_up_window.visible and player.health > 0:
+			option1_pressed()
+		if event.is_action_pressed("Option2") and level_up_window.visible and player.health > 0:
+			option2_pressed()
+		if event.is_action_pressed("Option3") and level_up_window.visible and player.health > 0:
+			option3_pressed()
+		if event.is_action_pressed("Joystick"):
+			joystick.joystick_pressed = true
 
 func _on_settings_button_pressed() -> void:
 	click_sound.play()
