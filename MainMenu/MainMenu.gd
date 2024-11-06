@@ -31,12 +31,16 @@ func load_achievments():
 		characters.append(preload("res://Player/Characters/Resources/GummyBear.tres"))
 	if save_file.achievements["Reach level 100 with starting weapon (Unlocks Donut)"]:
 		characters.append(preload("res://Player/Characters/Resources/Donut.tres"))
+	if save_file.achievements["Come back from the dead twice in a single game (Unlocks Candy Corn)"]:
+		characters.append(preload("res://Player/Characters/Resources/CandyCorn.tres"))
 	if save_file.achievements["Reach wave 100 on Rural map (Unlocks Forest map)"]:
 		maps.append(preload("res://World/Resources/Forest.tres"))
 	if save_file.achievements["Reach wave 100 on Forest map (Unlocks Desert map)"]:
 		maps.append(preload("res://World/Resources/Desert.tres"))
 	if save_file.achievements["Reach wave 100 on Desert Map (Unlocks Snow map)"]:
 		maps.append(preload("res://World/Resources/Snow.tres"))
+	if save_file.achievements["Reach wave 200 with Cookie on Snow map (Unlocks Candy Cane)"]:
+		characters.append(preload("res://Player/Characters/Resources/CandyCane.tres"))
 
 func _ready() -> void:
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."
@@ -136,13 +140,13 @@ func _on_start_released() -> void:
 	queue_free()
 
 func _on_left_button_released() -> void:
-	character_left()
-
-func _on_right_button_released() -> void:
 	character_right()
 
+func _on_right_button_released() -> void:
+	character_left()
+
 func _on_right_button_m_released() -> void:
-	world_right()
+	world_left()
 
 func _on_left_button_m_released() -> void:
-	world_left()
+	world_right()

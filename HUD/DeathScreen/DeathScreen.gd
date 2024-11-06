@@ -40,6 +40,7 @@ func _on_menu_released():
 	game.queue_free()
 
 func _on_revive_released():
+	game.total_revives += 1
 	revival_sound.play()
 	click_sound.play()
 	music.stop()

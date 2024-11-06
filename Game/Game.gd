@@ -17,6 +17,7 @@ var random = RandomNumberGenerator.new()
 var wave : int = 1
 var world_profile : World
 var character_profile : Character
+var total_revives : int = 2
 
 #do if condition, then achievement([achievement index]), make sure to add achievment to "res://MainMenu/Achievements/LocalAchievements.tres" manually as well
 func achievments_check():
@@ -32,6 +33,8 @@ func achievments_check():
 		achievement("Reach level 250 with Donut (Unlocks GLazer)")
 	if weapon_container.get_child(0).level >= 100:
 		achievement("Reach level 100 with starting weapon (Unlocks Donut)")
+	if player.profile.name == "Candy Corn" and player.level >= 100:
+		achievement("Reach level 100 with Candy Corn (Unlocks Ghosts)")
 	if wave >= 100 and world_profile.name == "Forest":
 		achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
 	if wave >= 100 and world_profile.name == "Desert":
@@ -40,8 +43,13 @@ func achievments_check():
 		achievement("Reach level 500")
 	if player.level >= 1000:
 		achievement("Reach level 1000")
+	if total_revives >= 2:
+		achievement("Come back from the dead twice in a single game (Unlocks Candy Corn)")
+	if wave >= 200 and player.profile.name == "Cookie" and world_profile.name == "Snow":
+		achievement("Reach wave 200 with Cookie on Snow map (Unlocks Candy Cane)")
 
 func max_out():
+	achievement("Reach wave 200 with Cookie on Snow map (Unlocks Candy Cane)")
 	achievement("Reach level 100 (Unlocks Gummy Bear)")
 	achievement("Reach level 250 with Cookie (Unlocks Chipper)")
 	achievement("Reach wave 100 on Rural map (Unlocks Forest map)")
@@ -50,9 +58,11 @@ func max_out():
 	achievement("Reach level 100 with starting weapon (Unlocks Donut)")
 	achievement("Reach wave 100 on Forest map (Unlocks Desert map)")
 	achievement("Reach wave 100 on Desert Map (Unlocks Snow map)")
+	achievement("Come back from the dead twice in a single game (Unlocks Candy Corn)")
+	achievement("Reach level 100 with Candy Corn (Unlocks Ghosts)")
 
 func _ready():
-	#max_out()
+	max_out()
 	achievement_popup.visible = false
 	world.update_profile(world_profile)
 	update_music()

@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_0l0ve")
 achievements = {
+"Come back from the dead twice in a single game (Unlocks Candy Corn)": false,
 "Reach level 100 (Unlocks Gummy Bear)": false,
+"Reach level 100 with Candy Corn (Unlocks Ghosts)": false,
 "Reach level 100 with starting weapon (Unlocks Donut)": false,
 "Reach level 1000": false,
 "Reach level 250 with Cookie (Unlocks Chipper)": false,
@@ -14,7 +16,8 @@ achievements = {
 "Reach level 500": false,
 "Reach wave 100 on Desert Map (Unlocks Snow map)": false,
 "Reach wave 100 on Forest map (Unlocks Desert map)": false,
-"Reach wave 100 on Rural map (Unlocks Forest map)": false
+"Reach wave 100 on Rural map (Unlocks Forest map)": false,
+"Reach wave 200 with Cookie on Snow map (Unlocks Candy Cane)": false
 }
 music_volume = 50
 sound_effect_volume = 50

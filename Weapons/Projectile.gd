@@ -12,6 +12,7 @@ var initial_velocity : Vector2
 var lifetime_override : float = 0
 var random = RandomNumberGenerator.new()
 var hit_sound : AudioStream
+var rotated : bool
 
 var circling_radius : int
 @onready var collision = $CollisionShape2D
@@ -20,7 +21,7 @@ var circling_radius : int
 
 func _ready() -> void:
 	collision.position = collision_offset
-	if circling_radius == 0:
+	if rotated:
 			rotation = direction.angle()
 	if lifetime_override > 0:
 		lifetime.wait_time = lifetime_override
@@ -37,7 +38,8 @@ func _physics_process(delta):
 			direction.x = sign(circling_radius- position.x)
 		if position.y>circling_radius or position.y<-circling_radius:
 			direction.y = sign(circling_radius -position.y)
-		
+		if rotated:
+			rotation = direction.angle()
 	velocity = (delta*speed*direction)+initial_velocity
 	move_and_slide()
 

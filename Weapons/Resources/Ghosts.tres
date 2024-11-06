@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://bayb3phoauu5l"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://bayb3phoauu5l"]
 
-[ext_resource type="Texture2D" uid="uid://dtw3mpxl45ruk" path="res://Weapons/Art/MiniCandyCorn-0.png" id="1_uqixs"]
-[ext_resource type="Texture2D" uid="uid://dlu46odr521gk" path="res://Weapons/Art/MiniCandyCorn-1.png" id="2_82ocp"]
+[ext_resource type="Texture2D" uid="uid://cmkme7pdrba2h" path="res://Weapons/Art/BigGhost.png" id="1_03gxx"]
 [ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="2_v4aex"]
+[ext_resource type="Texture2D" uid="uid://cch5sbpl4716r" path="res://Weapons/Art/Ghost.png" id="2_y6i0t"]
+[ext_resource type="AudioStream" uid="uid://bd5set2qt1bjd" path="res://Weapons/Sound/Smack.mp3" id="4_im7by"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pwp8"]
 size = Vector2(10, 16)
@@ -11,10 +12,7 @@ size = Vector2(10, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_uqixs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_82ocp")
+"texture": ExtResource("2_y6i0t")
 }],
 "loop": true,
 "name": &"default",
@@ -24,8 +22,8 @@ animations = [{
 [resource]
 script = ExtResource("2_v4aex")
 name = "Ghosts"
-display = ExtResource("1_uqixs")
-description = "Spooky protectors"
+display = ExtResource("1_03gxx")
+description = "Spooky protectors, they circle around you and deal damage."
 aim_type = 2
 spread = Vector2(0, 0)
 multishot = Vector2(1, 0)
@@ -39,6 +37,8 @@ scale = Vector2(1, 0)
 lifetime_override = 10.0
 follow_player = true
 frames = SubResource("SpriteFrames_a3lft")
+hit_sound = ExtResource("4_im7by")
 collision_shape = SubResource("RectangleShape2D_0pwp8")
 collision_offset = Vector2(0, 0)
+rotate = false
 circling_radius = Vector2i(50, 5)

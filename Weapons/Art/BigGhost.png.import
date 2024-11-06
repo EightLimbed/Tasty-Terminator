@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b10npdmakrrd0"
-path="res://.godot/imported/CandyCaneWalk-1.png-59af650d5cb81e5630b5c8483b6dd67d.ctex"
+uid="uid://cmkme7pdrba2h"
+path="res://.godot/imported/BigGhost.png-e4d9292d9536ebe8aea78e0a4fd771ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Characters/Art/CandyCaneWalk-1.png"
-dest_files=["res://.godot/imported/CandyCaneWalk-1.png-59af650d5cb81e5630b5c8483b6dd67d.ctex"]
+source_file="res://Weapons/Art/BigGhost.png"
+dest_files=["res://.godot/imported/BigGhost.png-e4d9292d9536ebe8aea78e0a4fd771ad.ctex"]
 
 [params]
 

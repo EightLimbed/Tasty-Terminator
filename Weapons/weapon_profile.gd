@@ -42,6 +42,7 @@ class_name Weapon
 #size of bullet hitbox
 @export var collision_shape : Shape2D
 @export var collision_offset : Vector2
-#for ghosts
-
+#rotate sprite
+@export var rotate : bool = true
+#orbiting
 @export var circling_radius : Vector2i

@@ -40,12 +40,11 @@ func shoot():
 		instance.speed = profile.speed.x
 		instance.pierce = profile.pierce.x
 		instance.damage = profile.damage.x + max(0,(profile.multishot.x-(profile.spread.x/20)+1)*profile.damage.x/profile.multishot.x)
-
 		instance.collision_shape = profile.collision_shape
 		instance.lifetime_override = profile.lifetime_override
-		
+		instance.rotated = profile.rotate
 		instance.circling_radius = profile.circling_radius.x
-		
+
 		if profile.aim_type == 0:
 			instance.direction = Vector2(0,1).rotated(spread*(i-1))
 		if profile.aim_type == 1:

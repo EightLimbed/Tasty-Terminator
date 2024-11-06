@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p1ebnoelrtmi"
-path="res://.godot/imported/CandyCaneWalk-0.png-ad3b7072eae4e367abb3ab052fab0639.ctex"
+uid="uid://nfxrwem8p1ee"
+path="res://.godot/imported/Poster.png-59c08a4b1a71fcb496aaade996ff213c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Characters/Art/CandyCaneWalk-0.png"
-dest_files=["res://.godot/imported/CandyCaneWalk-0.png-ad3b7072eae4e367abb3ab052fab0639.ctex"]
+source_file="res://Poster.png"
+dest_files=["res://.godot/imported/Poster.png-59c08a4b1a71fcb496aaade996ff213c.ctex"]
 
 [params]
 

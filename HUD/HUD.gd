@@ -40,6 +40,8 @@ func load_achievments():
 		possible_weapons.append(preload("res://Weapons/Resources/Chipper.tres"))
 	if save_file.achievements["Reach level 250 with Gummy Bear (Unlocks Bear Trap)"]:
 		possible_weapons.append(preload("res://Weapons/Resources/BearTrap.tres"))
+	if save_file.achievements["Reach level 100 with Candy Corn (Unlocks Ghosts)"]:
+		possible_weapons.append(preload("res://Weapons/Resources/Ghosts.tres"))
 
 func _ready():
 	save_file.verify_save()
