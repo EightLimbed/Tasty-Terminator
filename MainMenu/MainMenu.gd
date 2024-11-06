@@ -19,6 +19,7 @@ extends Control
 @onready var cleft = $VBoxContainer/CharacterSelect/LeftButton
 @onready var mright = $VBoxContainer/LevelSelect/RightButtonM
 @onready var mleft = $VBoxContainer/LevelSelect/LeftButtonM
+@onready var loading_screen = $Loading
 var world_seed : int
 var characters : Array[Character] = [preload("res://Player/Characters/Resources/Cookie.tres")]
 var c_index : int = 0
@@ -43,6 +44,7 @@ func load_achievments():
 		characters.append(preload("res://Player/Characters/Resources/CandyCane.tres"))
 
 func _ready() -> void:
+	loading_screen.visible = false
 	character_description_label.text = "Cookie:\nThe original tasty terminator, fires chocolate chips. gains health and speed every level."
 	world_seed = random.randi()
 	achievement_display.visible = false
@@ -136,6 +138,7 @@ func _on_start_released() -> void:
 	game.character_profile = characters[c_index]
 	game.world_profile = maps[m_index]
 	game.save_file = save_file
+	loading_screen.visible = true
 	get_tree().root.add_child(game)
 	queue_free()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dlsxkapbmu8a5"]
+[gd_scene load_steps=25 format=3 uid="uid://dlsxkapbmu8a5"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_geu8k"]
 [ext_resource type="Texture2D" uid="uid://dv0lei01qofet" path="res://HUD/Art/HealthbarEmpty.png" id="2_6as2u"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dmyss4xnmjd1n" path="res://MainMenu/Music/TT_TitleTheme.mp3" id="16_h2jgj"]
 [ext_resource type="PackedScene" uid="uid://bndtw5amva0qs" path="res://MainMenu/Settings/Settings.tscn" id="16_uomdb"]
 [ext_resource type="AudioStream" uid="uid://i7erqq6ehicc" path="res://MainMenu/Music/Click.wav" id="19_rw5bm"]
+[ext_resource type="Texture2D" uid="uid://dii2o1fxssfkl" path="res://SplashScreen.png" id="20_vtl0c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rcntu"]
 animations = [{
@@ -265,6 +266,14 @@ parameters/looping = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_rw5bm")
+
+[node name="Loading" type="TextureRect" parent="."]
+visible = false
+top_level = true
+layout_mode = 0
+offset_right = 405.0
+offset_bottom = 720.0
+texture = ExtResource("20_vtl0c")
 
 [connection signal="mouse_entered" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CharacterSelect" to="." method="_on_character_select_mouse_exited"]
