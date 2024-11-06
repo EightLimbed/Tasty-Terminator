@@ -17,7 +17,7 @@ var random = RandomNumberGenerator.new()
 var wave : int = 1
 var world_profile : World
 var character_profile : Character
-var total_revives : int = 2
+var total_revives : int = 0
 
 #do if condition, then achievement([achievement index]), make sure to add achievment to "res://MainMenu/Achievements/LocalAchievements.tres" manually as well
 func achievments_check():
