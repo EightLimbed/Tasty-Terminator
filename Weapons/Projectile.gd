@@ -35,9 +35,9 @@ func _ready() -> void:
 func _physics_process(delta):
 	if not circling_radius == 0:
 		if position.x>circling_radius or position.x<-circling_radius:
-			direction.x = sign(circling_radius- position.x)
+			direction.x = random.randi_range(0,sign(circling_radius- position.x))
 		if position.y>circling_radius or position.y<-circling_radius:
-			direction.y = sign(circling_radius -position.y)
+			direction.y = random.randi_range(0,sign(circling_radius -position.y))
 		if rotated:
 			rotation = direction.angle()
 	velocity = (delta*speed*direction)+initial_velocity

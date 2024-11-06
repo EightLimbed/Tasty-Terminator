@@ -101,4 +101,5 @@ frames = SubResource("SpriteFrames_2jska")
 hit_sound = ExtResource("4_bahrf")
 collision_shape = SubResource("RectangleShape2D_8hvse")
 collision_offset = Vector2(0, 0)
+rotate = true
 circling_radius = Vector2i(0, 0)
