@@ -26,9 +26,9 @@ func _ready() -> void:
 func shoot():
 	if profile.sound:
 		play_sound(profile.sound,AudioServer.get_bus_name(2))
-	var spread = deg_to_rad(profile.spread.x)/round(profile.multishot.x)
+	var spread = deg_to_rad(profile.spread.x)/round(min(profile.multishot.x,(profile.spread.x/20)+1))
 	var spread_offset = deg_to_rad(profile.spread.x/2)
-	for i in round(profile.multishot.x):
+	for i in round(min(profile.multishot.x,(profile.spread.x/20)+1)):
 		var instance = projectile.instantiate()
 		instance.global_position = global_position
 		if profile.hit_sound:
@@ -39,7 +39,7 @@ func shoot():
 		instance.frames = profile.frames
 		instance.speed = profile.speed.x
 		instance.pierce = profile.pierce.x
-		instance.damage = profile.damage.x
+		instance.damage = profile.damage.x + max(0,(profile.multishot.x-(profile.spread.x/20)+1)*profile.damage.x/profile.multishot.x)
 
 		instance.collision_shape = profile.collision_shape
 		instance.lifetime_override = profile.lifetime_override
@@ -75,11 +75,7 @@ func upgrade():
 	if profile.spread.x > 360:
 		profile.spread.x = 360
 	#multishot
-	if profile.multishot.x < profile.spread.x/20:
-		profile.multishot.x += profile.multishot.y
-	else:
-		profile.multishot.x = round(profile.spread.x/10)+1
-		profile.damage.x += profile.multishot.y*profile.damage.y
+	profile.multishot.x += profile.multishot.y
 	#damage
 	profile.damage.x += profile.damage.y
 	#ammo
