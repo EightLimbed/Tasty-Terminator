@@ -15,6 +15,7 @@ run/main_scene="res://MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://SplashScreen.png"
+boot_splash/use_filter=false
 config/icon="res://Player/Characters/Art/CookieWalk-0.png"
 config/windows_native_icon="res://Donut.ico"
 
@@ -81,7 +82,6 @@ Joystick={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
