@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=7 format=3 uid="uid://cphp5xhxfs1g3"]
 
-[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="1_0opys"]
-[ext_resource type="Texture2D" uid="uid://dex8vv3jekh0t" path="res://Player/Characters/Art/CandyCaneSideways.png" id="1_resba"]
-[ext_resource type="AudioStream" uid="uid://u6cxqlaqhsgp" path="res://Weapons/Sound/Hit.mp3" id="2_ccas2"]
-[ext_resource type="AudioStream" uid="uid://cy3w0gpbtb85t" path="res://Weapons/Sound/Throw.mp3" id="4_iw7bj"]
+[ext_resource type="Texture2D" uid="uid://dex8vv3jekh0t" path="res://Player/Characters/Art/CandyCaneSideways.png" id="1_ktyyr"]
+[ext_resource type="AudioStream" uid="uid://u6cxqlaqhsgp" path="res://Weapons/Sound/Hit.mp3" id="2_6fjgu"]
+[ext_resource type="Script" path="res://Weapons/weapon_profile.gd" id="3_gr7aq"]
+[ext_resource type="AudioStream" uid="uid://cy3w0gpbtb85t" path="res://Weapons/Sound/Throw.mp3" id="4_fc0vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpaln"]
 size = Vector2(64, 64)
@@ -12,7 +12,7 @@ size = Vector2(64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_resba")
+"texture": ExtResource("1_ktyyr")
 }],
 "loop": true,
 "name": &"default",
@@ -20,25 +20,25 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_0opys")
-name = "Candy Cane"
-display = ExtResource("1_resba")
+script = ExtResource("3_gr7aq")
+name = "The Cane"
+display = ExtResource("1_ktyyr")
 description = "Rapidly dash around, skewering enemies with your sharp point"
-aim_type = 0
+aim_type = 2
 spread = Vector2(360, 0)
-multishot = Vector2(3, 0)
+multishot = Vector2(3, 0.01)
 damage = Vector2(75, 12)
 ammo = Vector2(2, 0)
 unload_time = Vector2(0.1, 0)
 reload_time = Vector2(4.8, 0)
 pierce = Vector2(99999, 0)
-speed = Vector2(150000, 1000)
+speed = Vector2(100000, 1000)
 scale = Vector2(1, 0.01)
 lifetime_override = 2.0
 follow_player = true
 frames = SubResource("SpriteFrames_g3nn2")
-sound = ExtResource("4_iw7bj")
-hit_sound = ExtResource("2_ccas2")
+sound = ExtResource("4_fc0vm")
+hit_sound = ExtResource("2_6fjgu")
 collision_shape = SubResource("RectangleShape2D_xpaln")
 collision_offset = Vector2(0, 0)
 rotate = true

@@ -7,7 +7,7 @@ var profile : Character
 var input : Vector2
 var control_type : bool
 var health : float
-var experience : int = 0
+var experience : float = 0
 @onready var hud = $HUD
 @onready var animation = $AnimatedSprite2D
 @onready var face = $Face
@@ -76,7 +76,7 @@ func update_experience(increase):
 		experience -= round(level**1.5 + 2.0)
 		level_up_sound.play()
 		hud.level_up(0)
-	hud.update_experience(0, experience, level**1.5 + 2)
+	hud.update_experience(0, experience*10, (level**1.5 + 2)*10)
 
 func _on_hitbox_body_entered(body):
 	body.activated = true

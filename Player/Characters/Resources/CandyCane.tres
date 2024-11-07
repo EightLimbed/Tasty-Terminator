@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Character" load_steps=6 format=3 uid="uid://cyk38rswtf0yv"]
 
 [ext_resource type="Script" path="res://Player/Characters/character_profile.gd" id="1_wnye8"]
-[ext_resource type="Resource" uid="uid://cphp5xhxfs1g3" path="res://Weapons/Resources/CandyCane.tres" id="2_2uafr"]
+[ext_resource type="Resource" uid="uid://cphp5xhxfs1g3" path="res://Weapons/Resources/TheCane.tres" id="2_2uafr"]
 [ext_resource type="Texture2D" uid="uid://drg4et2cdrbes" path="res://Player/Characters/Art/CandyCaneWalk1.png" id="2_7prfd"]
 [ext_resource type="Texture2D" uid="uid://buqqxq0v7ylrr" path="res://Player/Characters/Art/CandyCaneWalk0.png" id="3_fn255"]
 
